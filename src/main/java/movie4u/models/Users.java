@@ -1,4 +1,4 @@
-package movie4u.models;
+package movie4u.models; 
 
 import java.time.LocalDate;
 
