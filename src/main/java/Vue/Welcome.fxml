@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.WelcomeCntrl">
+   <children>
+      <Label layoutX="165.0" layoutY="40.0" text=" WELCOME TO MOVIE4u" />
+      <Label layoutX="46.0" layoutY="92.0" text=" Are you ?" />
+      <Button layoutX="165.0" layoutY="141.0" mnemonicParsing="false" onAction="#actor" prefHeight="25.0" prefWidth="80.0" text=" ACTOR" />
+      <Button layoutX="165.0" layoutY="233.0" mnemonicParsing="false" onAction="#producer" text=" PRODUCER" />
+      <Button layoutX="165.0" layoutY="330.0" mnemonicParsing="false" onAction="#user" prefHeight="25.0" prefWidth="80.0" text=" USER" />
+   </children>
+</AnchorPane>
