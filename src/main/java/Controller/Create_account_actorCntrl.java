@@ -35,7 +35,7 @@ public class Create_account_actorCntrl implements Initializable {
 	    	LocalDate d1=date.getValue();
 	    	String nom=name.getText();
 	    	String Email=email.getText();
-	    	String date=d1.toString();
+	    	//String date=d1.toString();
 	        String mot_de_passe=password.getText();
 	    	
 	    	Actors e=new Actors();

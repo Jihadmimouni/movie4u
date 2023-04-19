@@ -5,8 +5,7 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane fx:id="ap" prefHeight="500.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="Controller.Home_producerCntrl">
+<AnchorPane fx:id="ap" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Home_producerCntrl">
    <children>
       <MenuBar layoutX="37.0" layoutY="28.0" prefHeight="25.0" prefWidth="526.0">
         <menus>
@@ -20,7 +19,7 @@
               <MenuItem mnemonicParsing="false" onAction="#add_media" text="Add" />
             </items>
           </Menu>
-            <Menu mnemonicParsing="false" text="Consult Opinion">
+            <Menu mnemonicParsing="false" text="Comments">
                <items>
                   <MenuItem mnemonicParsing="false" onAction="#consult_serie_opinion" text="Serie" />
                   <MenuItem mnemonicParsing="false" onAction="#consult_season_opinion" text="Season" />

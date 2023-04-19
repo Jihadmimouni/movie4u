@@ -13,7 +13,7 @@ public class test extends Application {
 		// TODO Auto-generated method stub
 		try {
     	    // Parent root = (  Parent)FXMLLoader.load(Main.class.getResource("/Vue/MEDIA.fxml"));
-    	 Parent root = (  Parent)FXMLLoader.load(test.class.getResource("/Vue/Welcome.fxml"));
+    	 Parent root = (  Parent)FXMLLoader.load(test.class.getResource("/Vue/Home_producer.fxml"));
     			
     			
     			Scene scene = new Scene(root );
