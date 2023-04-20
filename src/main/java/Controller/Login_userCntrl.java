@@ -11,8 +11,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
 public class Login_userCntrl implements Initializable {
@@ -36,9 +38,29 @@ public class Login_userCntrl implements Initializable {
 	    }
 
 	    @FXML
-	    void log_in(ActionEvent event) {
-
-	    }
+	    void log_in(ActionEvent event) throws IOException {
+	    	System.out.println("Logging in ... ");
+	    	name.getText().toString();
+	    	password.getText().toString();
+	    	//if (UserDao.exists(name,password)) {
+	    		Stage s=new Stage();
+		        Parent root = (  Parent)FXMLLoader.load(test.class.getResource("/Vue/Home_User.fxml"));
+				 
+				Scene scene = new Scene(root );
+				s.setScene(scene);
+				s.setTitle("CREATE ACCOUNT");
+				s.show();       
+	    		
+	    //	}
+	    	
+	  //  	else {
+	    		Alert al=new Alert(AlertType.ERROR);
+	    		al.setTitle("Erreur 404");
+	    		al.setContentText("incorrect password or username");
+	    		al.showAndWait();
+	    	}
+	    	
+	//    }
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
