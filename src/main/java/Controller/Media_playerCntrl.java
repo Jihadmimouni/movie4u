@@ -81,38 +81,38 @@ public class Media_playerCntrl implements Initializable {
 		mvVideo.setMediaPlayer(mpVideo);*/
 		
 		
-		Image ImagePlay = new Image(new File("/src/main/resources/buttons/play.png").toURI().toString());
+		Image ImagePlay = new Image(new File("/movie4u/src/main/resources/buttons/play.jpg").toURI().toString());
 		ivPlay=new ImageView(ImagePlay);
 		ivPlay.setFitHeight(IV_SIZE);
 		ivPlay.setFitWidth(IV_SIZE);
 		
-		Image ImagePause = new Image(new File("/src/main/resources/buttons/pause.png").toURI().toString());
+		Image ImagePause = new Image(new File("/movie4u/src/main/resources/buttons/pause.png").toURI().toString());
 		ivPause=new ImageView(ImagePause);
 		ivPause.setFitHeight(IV_SIZE);
 		ivPause.setFitWidth(IV_SIZE);
 		
-		Image ImageRestart = new Image(new File("/src/main/resources/buttons/restart.png").toURI().toString());
+		Image ImageRestart = new Image(new File("/movie4u/src/main/resources/buttons/restart.jpg").toURI().toString());
 		ivRestart=new ImageView(ImageRestart);
 		ivRestart.setFitHeight(IV_SIZE);
 		ivRestart.setFitWidth(IV_SIZE);
 		
 		
-		Image ImageVolume = new Image(new File("/src/main/resources/buttons/volume.png").toURI().toString());
+		Image ImageVolume = new Image(new File("/movie4u/src/main/resources/buttons/volume.png").toURI().toString());
 		ivVolume=new ImageView(ImageVolume);
 		ivVolume.setFitHeight(IV_SIZE);
 		ivVolume.setFitWidth(IV_SIZE);
 		
-		Image ImageFullScreen = new Image(new File("/src/main/resources/buttons/fullscreen.png").toURI().toString());
+		Image ImageFullScreen = new Image(new File("/movie4u/src/main/resources/buttons/fullscreen.png").toURI().toString());
 		ivFullScreen=new ImageView(ImageFullScreen);
 		ivFullScreen.setFitHeight(IV_SIZE);
 		ivFullScreen.setFitWidth(IV_SIZE);
 		
-		Image ImageMute = new Image(new File("/src/main/resources/buttons/mute.png").toURI().toString());
+		Image ImageMute = new Image(new File("/movie4u/src/main/resources/buttons/mute.png").toURI().toString());
 		ivMute=new ImageView(ImageMute);
 		ivMute.setFitHeight(IV_SIZE);
 		ivMute.setFitWidth(IV_SIZE);
 		
-		Image ImageExit = new Image(new File("/src/main/resources/buttons/exit.png").toURI().toString());
+		Image ImageExit = new Image(new File("/movie4u/src/main/resources/buttons/exitsreen.png").toURI().toString());
 		ivExit=new ImageView(ImageExit);
 		ivExit.setFitHeight(IV_SIZE);
 		ivExit.setFitWidth(IV_SIZE);
