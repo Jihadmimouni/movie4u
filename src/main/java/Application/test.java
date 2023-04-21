@@ -13,18 +13,18 @@ public class test extends Application {
 		// TODO Auto-generated method stub
 		try {
     	    // Parent root = (  Parent)FXMLLoader.load(Main.class.getResource("/Vue/MEDIA.fxml"));
-    	 Parent root = (  Parent)FXMLLoader.load(test.class.getResource("/Vue/Home_producer.fxml"));
+    	 Parent root = (  Parent)FXMLLoader.load(test.class.getResource("/Vue/Media_player.fxml"));
     			
     			
     			Scene scene = new Scene(root );
     			stage.setScene(scene); 
     		//	scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
     			//primaryStage.setTitle( "home11111");
-    			stage.setTitle( "media  salah");
+    			stage.setTitle( "Movie4u");
     		
     			stage.show();
     		} catch(Exception e) {
-    			System.out.println("dcgbjkkvhfughkbj");
+    			System.out.println("running...");
     			e.printStackTrace();
     		}
 

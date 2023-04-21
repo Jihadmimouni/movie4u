@@ -1,8 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1">
-	<!-- TODO Add Nodes -->
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Home_UserCntrl">
+   <children>
+      <MenuBar layoutX="-1.0" layoutY="14.0" prefHeight="31.0" prefWidth="900.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="Account">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#edit" text="Profile Settings" />
+                  <MenuItem mnemonicParsing="false" onAction="#log_out" text="Log out" />
+            </items>
+          </Menu>
+            <Menu mnemonicParsing="false" text="quit" />
+        </menus>
+      </MenuBar>
+      <ListView layoutX="161.0" layoutY="140.0" prefHeight="493.0" prefWidth="487.0" />
+   </children>
 </AnchorPane>
-
