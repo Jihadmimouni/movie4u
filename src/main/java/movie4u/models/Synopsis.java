@@ -1,29 +1,26 @@
 package movie4u.models;
 
+import java.io.File;
+
 public class Synopsis {
-	int id , video_id ;
-	String text, synopsis_title ;
-	public Synopsis(int id, int video_id, String text, String synopsis_title) {
-		super();
-		this.id = id;
-		this.video_id = video_id;
+	File video;
+	String text;
+	boolean istext;
+	public Synopsis(String text,boolean istext) {
+		this.istext = istext;
 		this.text = text;
-		this.synopsis_title = synopsis_title;
+		this.video = null;
 	}
-	public Synopsis() {
-		super();
+	public Synopsis(File video,boolean istext) {
+		this.istext = istext;
+		this.video = video;
+		this.text = null;
 	}
-	public int getId() {
-		return id;
+	public File getVideo() {
+		return video;
 	}
-	public void setId(int id) {
-		this.id = id;
-	}
-	public int getVideo_id() {
-		return video_id;
-	}
-	public void setVideo_id(int video_id) {
-		this.video_id = video_id;
+	public void setVideo(File video) {
+		this.video = video;
 	}
 	public String getText() {
 		return text;
@@ -31,17 +28,13 @@ public class Synopsis {
 	public void setText(String text) {
 		this.text = text;
 	}
-	public String getSynopsis_title() {
-		return synopsis_title;
+	public boolean Istext() {
+		return istext;
 	}
-	public void setSynopsis_title(String synopsis_title) {
-		this.synopsis_title = synopsis_title;
+	public void setIstext(boolean istext) {
+		this.istext = istext;
 	}
-	@Override
-	public String toString() {
-		return "Synopsis [id=" + id + ", video_id=" + video_id + ", text=" + text + ", synopsis_title=" + synopsis_title
-				+ "]";
-	}
+	
 	
 
 }

@@ -1,27 +1,25 @@
 package movie4u.models;
 
+import java.io.File;
+
 public class Media {
          private int ID ;
          private String name ;
          private int year ;
          private String language ;
          private String country ;
-         private int producer_id ;
-         private int image_id ;
+         private int producer_id;
+         private File image;
+
          
-         
-         public Media() {
-        	 super();
-         }
-         
-         public Media(int ID , String name ,int year, String language, String country, int producer_id, int image_id) {
+         public Media(String name ,int year, String language, String country, int producer_id, File image) {
         	 this.country=country;
-        	 this.ID=ID ;
-        	 this.image_id= image_id;
+        	 this.image= image;
         	 this.language=language;
         	 this.name=name;
         	 this.producer_id=producer_id;
         	 this.year=year;
+
          }
 
 		public int getID() {
@@ -72,19 +70,14 @@ public class Media {
 			this.producer_id = producer_id;
 		}
 
-		public int getImage_id() {
-			return image_id;
+		public File getImage() {
+			return image;
 		}
 
-		public void setImage_id(int image_id) {
-			this.image_id = image_id;
+		public void setImage_id(File image_id) {
+			this.image = image_id;
 		}
 
-		@Override
-		public String toString() {
-			return "Media [ID=" + ID + ", name=" + name + ", year=" + year + ", language=" + language + ", country="
-					+ country + ", producer_id=" + producer_id + ", image_id=" + image_id + "]";
-		}
          
          
 }

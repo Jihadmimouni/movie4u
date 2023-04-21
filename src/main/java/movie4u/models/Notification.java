@@ -1,34 +1,16 @@
 package movie4u.models;
 
 public class Notification {
-        private int ID ;
         private String message ;
-        private int users_id;
-        private int media_id ;
-        
-        
-        public Notification() {
-        	super();
-        }
-        
-        
-        public Notification(int ID, String message, int users_id, int media_id) {
-        	this.ID=ID;
-        	this.media_id=media_id ;
-        	this.message=message ;
-        	this.users_id=users_id;
-        }
-
-
-		public int getID() {
-			return ID;
+        private String media_name ;
+    
+		public Notification(String message, String media_name) {
+			this.message = message;
+			this.setMedia_name(media_name);
 		}
 
 
-		public void setID(int iD) {
-			ID = iD;
-		}
-
+	
 
 		public String getMessage() {
 			return message;
@@ -40,31 +22,17 @@ public class Notification {
 		}
 
 
-		public int getUsers_id() {
-			return users_id;
+
+
+		public String getMedia_name() {
+			return media_name;
 		}
 
 
-		public void setUsers_id(int users_id) {
-			this.users_id = users_id;
+
+
+		public void setMedia_name(String media_name) {
+			this.media_name = media_name;
 		}
 
-
-		public int getMedia_id() {
-			return media_id;
-		}
-
-
-		public void setMedia_id(int media_id) {
-			this.media_id = media_id;
-		}
-
-
-		@Override
-		public String toString() {
-			return "Notification [ID=" + ID + ", message=" + message + ", users_id=" + users_id + ", media_id="
-					+ media_id + "]";
-		}
-        
-        
 }

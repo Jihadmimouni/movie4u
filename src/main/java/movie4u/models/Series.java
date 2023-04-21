@@ -1,59 +1,49 @@
 package movie4u.models;
 
-public class Series {
-   private int ID ;
-   private int media_id ;
-  private int synopsis_id ;
-  private int genre_id ;
-  
-  public Series() {
-	  super();
-  }
-  
-  public Series (int ID,int media_id,int synopsis_id,int genre_id) {
-	  this.ID=ID ;
-	  this.media_id=media_id;
-	  this.synopsis_id=synopsis_id;
-	  this.genre_id=genre_id;
-  }
+import java.io.File;
 
+public class Series extends Media{
+	private int ID ;
+	private Synopsis Synopsis;
+	private Genre Genre;
+	
+
+
+
+	//you don't need an id when you first create the media it will be automatically assigned by the data base
+	public Series(String name, int year, String language, String country, int producer_id, File image, int iD,
+			movie4u.models.Synopsis synopsis, movie4u.models.Genre genre) {
+		super(name, year, language, country, producer_id, image);
+		ID = iD;
+		Synopsis = synopsis;
+		Genre = genre;
+	}
+@Override
 public int getID() {
 	return ID;
 }
-
+@Override
 public void setID(int iD) {
 	ID = iD;
 }
 
-public int getMedia_id() {
-	return media_id;
+public Synopsis getSynopsis() {
+	return Synopsis;
 }
 
-public void setMedia_id(int media_id) {
-	this.media_id = media_id;
+public void setSynopsis(Synopsis synopsis) {
+	Synopsis = synopsis;
 }
 
-public int getSynopsis_id() {
-	return synopsis_id;
+public Genre getGenre() {
+	return Genre;
 }
 
-public void setSynopsis_id(int synopsis_id) {
-	this.synopsis_id = synopsis_id;
+public void setGenre(Genre genre) {
+	Genre = genre;
 }
 
-public int getGenre_id() {
-	return genre_id;
-}
 
-public void setGenre_id(int genre_id) {
-	this.genre_id = genre_id;
-}
 
-@Override
-public String toString() {
-	return "Series [ID=" + ID + ", media_id=" + media_id + ", synopsis_id=" + synopsis_id + ", genre_id=" + genre_id
-			+ "]";
-}
-  
   
 }

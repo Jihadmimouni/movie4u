@@ -1,17 +1,13 @@
 package movie4u.models;
 
+import java.io.File;
 import java.time.LocalDate;
 
 public class Actors extends Users {
 	
-	
-	public Actors() {
-		super();
-	}
-	
-	
-	 public Actors(int ID,String name,String Email,String password,LocalDate birthdate) {
-		 super(ID,name,Email,password,birthdate);
+
+	 public Actors(int ID,String name,String Email,String password,LocalDate birthdate,File image) {
+		 super(ID,name,Email,password,birthdate,image);
 	 }
 
 

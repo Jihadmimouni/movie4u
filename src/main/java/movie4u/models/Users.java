@@ -1,5 +1,6 @@
 package movie4u.models; 
 
+import java.io.File;
 import java.time.LocalDate;
 
 public class Users {
@@ -8,18 +9,24 @@ public class Users {
         private String Email ;
         private String password ;
         private LocalDate birthdate ;
+        private File image;
         
+        public File getImage() {
+			return image;
+		}
+
+		public void setImage(File image) {
+			this.image = image;
+		}
+
         
-        public Users() {
-        	super();
-        }
-        
-        public Users(int ID,String name,String Email,String password,LocalDate birthdate) {
+        public Users(int ID,String name,String Email,String password,LocalDate birthdate,File image) {
         	this.ID=ID;
         	this.name =name ;
         	this.birthdate=birthdate ;
         	this.Email=Email ;
         	this.password=password ;
+        	this.image=image;
         	}
 
 		public int getID() {

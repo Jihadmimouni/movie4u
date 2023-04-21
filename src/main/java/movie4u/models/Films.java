@@ -1,80 +1,47 @@
 package movie4u.models;
 
-public class Films {
-      private int ID ;
-      private int media_id ;
-      private int duration ;
-      private int genre_id ;
-      private int video_id ;
-      private int synopsis_id ;
-      
-      
-      public Films(){
-    	  super();
-      }
-      
-      public Films(int ID,int media_id,int duration,int genre_id,int video_id,int synopsis_id) {
-    	  this.ID=ID ;
-    	  this.duration=duration;
-    	  this.genre_id=genre_id;
-    	  this.media_id=media_id;
-    	  this.synopsis_id=synopsis_id;
-    	  this.video_id=video_id;
-      }
+import java.io.File;
 
-	public int getID() {
-		return ID;
+public class Films extends Media{
+
+    private Synopsis Synoposis;
+    private Genre genre;
+    private File video;
+    private int duration;
+    
+
+    //you don't need an id when you first create the media it will be automatically assigned by the data base
+	public Films(String name, int year, String language, String country, int producer_id, File image,
+			Synopsis synoposis, Genre genre, File video, int duration) {
+		super(name, year, language, country, producer_id, image);
+		Synoposis = synoposis;
+		this.genre = genre;
+		this.video = video;
+		this.duration = duration;
 	}
-
-	public void setID(int iD) {
-		ID = iD;
+	public Synopsis getSynoposis() {
+		return Synoposis;
 	}
-
-	public int getMedia_id() {
-		return media_id;
+	public void setSynoposis(Synopsis synoposis) {
+		Synoposis = synoposis;
 	}
-
-	public void setMedia_id(int media_id) {
-		this.media_id = media_id;
+	public Genre getGenre() {
+		return genre;
 	}
-
+	public void setGenre(Genre genre) {
+		this.genre = genre;
+	}
 	public int getDuration() {
 		return duration;
 	}
-
 	public void setDuration(int duration) {
 		this.duration = duration;
 	}
-
-	public int getGenre_id() {
-		return genre_id;
+	public File getVideo() {
+		return video;
 	}
-
-	public void setGenre_id(int genre_id) {
-		this.genre_id = genre_id;
+	public void setVideo(File video) {
+		this.video = video;
 	}
-
-	public int getVideo_id() {
-		return video_id;
-	}
-
-	public void setVideo_id(int video_id) {
-		this.video_id = video_id;
-	}
-
-	public int getSynopsis_id() {
-		return synopsis_id;
-	}
-
-	public void setSynopsis_id(int synopsis_id) {
-		this.synopsis_id = synopsis_id;
-	}
-
-	@Override
-	public String toString() {
-		return "Films [ID=" + ID + ", media_id=" + media_id + ", duration=" + duration + ", genre_id=" + genre_id
-				+ ", video_id=" + video_id + ", synopsis_id=" + synopsis_id + "]";
-	}
-      
-      
+  
 }

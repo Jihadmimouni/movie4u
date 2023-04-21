@@ -1,41 +1,20 @@
 package movie4u.models;
 
-public class Admin {
-       private int users_id ;
-       private int ID ;
-       
-       
-       
-       public Admin() {
-    	   super();
-       }
-       
-       public Admin(int users_id ,int ID ) {
-    	   this.ID =ID; 
-    		this.users_id=users_id;	   
-       
-       }
+import java.io.File;
+import java.time.LocalDate;
 
-	public int getUsers_id() {
-		return users_id;
+public class Admin extends Users {
+
+	public Admin(int ID, String name, String Email, String password, LocalDate birthdate, File image) {
+		super(ID, name, Email, password, birthdate, image);
+		// TODO Auto-generated constructor stub
 	}
 
-	public void setUsers_id(int users_id) {
-		this.users_id = users_id;
-	}
 
-	public int getID() {
-		return ID;
-	}
-
-	public void setID(int iD) {
-		ID = iD;
-	}
-
-	@Override
-	public String toString() {
-		return "Admin [users_id=" + users_id + ", ID=" + ID + "]";
-	}
+	
        
+
+
+
        
 }
