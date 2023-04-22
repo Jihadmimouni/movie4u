@@ -6,15 +6,23 @@ public class Synopsis {
 	File video;
 	String text;
 	boolean istext;
-	public Synopsis(String text,boolean istext) {
-		this.istext = istext;
+	public Synopsis(String text) {
+		this.istext = true;
 		this.text = text;
 		this.video = null;
 	}
-	public Synopsis(File video,boolean istext) {
-		this.istext = istext;
+	public Synopsis(File video) {
+		this.istext = false;
 		this.video = video;
 		this.text = null;
+	}
+	
+//leave this one don't use it its created for the data base 
+	public Synopsis(File video, String text, boolean istext) {
+		super();
+		this.video = video;
+		this.text = text;
+		this.istext = istext;
 	}
 	public File getVideo() {
 		return video;
