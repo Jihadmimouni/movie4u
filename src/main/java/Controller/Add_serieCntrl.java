@@ -24,6 +24,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import movie4u.models.Media;
 import movie4u.models.Series;
 import movie4u.models.Synopsis;
 
@@ -59,6 +60,9 @@ public class Add_serieCntrl implements Initializable {
 
 	@FXML
 	private Label L2;
+	
+	
+	public static Media media ;
 
 	public ObservableList<String> l = FXCollections.observableArrayList("Comedy", "Romantic", "Action", "Historic",
 			"Dramatic", "Science-fiction");
@@ -245,6 +249,10 @@ public class Add_serieCntrl implements Initializable {
 
 	}
 
+	public void m(String v) {
+		name_media.setText(v);
+		
+	}
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub

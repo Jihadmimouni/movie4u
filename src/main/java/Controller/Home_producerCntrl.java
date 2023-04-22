@@ -27,13 +27,32 @@ public class Home_producerCntrl implements Initializable {
 	    @FXML
 	    void add_media(ActionEvent event) throws IOException {
 	    	 System.out.println("erdtfgh");
-			 Stage s=new Stage();
+	    	 Stage stage=new Stage();
+    		 FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vue/Add_media.fxml"));
+    		 Parent root=(Parent) loader.load();
+    		 Add_mediaCntrl controller=loader.getController();
+    		 controller.getName_producer(username.getText().toString());
+    		 
+    		Scene scene=new Scene(root);
+    		stage.setScene(scene);
+    		stage.setTitle("home 1.1");
+    		stage.show();
+	    	 
+	    	 
+	    	 
+	    	 
+	    	 
+	    	 
+	    	 
+	    	 
+	    	 
+			/* Stage s=new Stage();
 	         Parent root = (  Parent)FXMLLoader.load(test.class.getResource("/Vue/Add_media.fxml"));
 				 
 				Scene scene = new Scene(root );
 				s.setScene(scene);
 				//s.setTitle(" PROD");
-				s.show();
+				s.show();*/
 	    }
 
 	    @FXML
