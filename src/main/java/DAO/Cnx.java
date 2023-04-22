@@ -9,8 +9,8 @@ public class Cnx {
 		private static Connection connexion;
 
 	    private final String DB_URL = "jdbc:oracle:thin:@localhost:1521:xe";
-	    private static String USER = "system";
-		private static String PASS = "123";
+	    private static String USER = "newuser";
+		private static String PASS = "1234";
 	   
 		public static void setUSER(String uSER) {
 			USER = uSER;
