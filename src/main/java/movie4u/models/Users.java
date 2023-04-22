@@ -20,8 +20,7 @@ public class Users {
 		}
 
         
-        public Users(int ID,String name,String Email,String password,LocalDate birthdate,File image) {
-        	this.ID=ID;
+        public Users(String name,String Email,String password,LocalDate birthdate,File image) {
         	this.name =name ;
         	this.birthdate=birthdate ;
         	this.Email=Email ;

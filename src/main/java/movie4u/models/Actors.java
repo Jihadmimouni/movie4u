@@ -6,8 +6,8 @@ import java.time.LocalDate;
 public class Actors extends Users {
 	
 
-	 public Actors(int ID,String name,String Email,String password,LocalDate birthdate,File image) {
-		 super(ID,name,Email,password,birthdate,image);
+	 public Actors(String name,String Email,String password,LocalDate birthdate,File image) {
+		 super(name,Email,password,birthdate,image);
 	 }
 
 
