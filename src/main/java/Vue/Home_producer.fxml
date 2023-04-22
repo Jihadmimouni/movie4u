@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="ap" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Home_producerCntrl">
+<AnchorPane fx:id="ap" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Home_producerCntrl">
    <children>
-      <MenuBar layoutX="37.0" layoutY="28.0" prefHeight="25.0" prefWidth="526.0">
+      <MenuBar layoutX="37.0" layoutY="69.0" prefHeight="25.0" prefWidth="526.0">
         <menus>
           <Menu mnemonicParsing="false" text="Account">
             <items>
@@ -34,5 +35,7 @@
             </Menu>
         </menus>
       </MenuBar>
+      <Label fx:id="L1" layoutX="388.0" layoutY="5.0" prefHeight="54.0" prefWidth="162.0" text=":" />
+      <Label fx:id="username" layoutX="437.0" layoutY="32.0" prefHeight="17.0" prefWidth="47.0" text=" " />
    </children>
 </AnchorPane>
