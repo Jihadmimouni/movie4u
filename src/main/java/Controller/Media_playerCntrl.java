@@ -1,128 +1,136 @@
 package Controller;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.URL;
+import java.sql.Blob;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import Connect.CnxDB;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.Slider;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer ;
-import javafx.scene.media.MediaView ;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
+import javafx.util.Duration;
 
-public class Media_playerCntrl implements Initializable {
-
-    @FXML
-    private Label Labelvolume;
+public class Media_playerCntrl implements Initializable  {
 
     @FXML
-    private Button buttonppr;
+    private MediaView mediaView;
 
     @FXML
-    private HBox hboxcontrols;
+    private Button pauseButton;
 
     @FXML
-    private HBox hboxvolume;
+    private Button playButton;
 
     @FXML
-    private Label labelcurrentTime;
-
-    @FXML
-    private Label labelfullscreen;
-
-    @FXML
-    private Label labelspeed;
-
-    @FXML
-    private Label labelturtltime;
-
-    @FXML
-   private MediaView mvVideo ;
-    private MediaPlayer mpVideo ;
-    private Media mediaVideo;
-
-    @FXML
-    private Slider sliderTime;
-
-    @FXML
-    private Slider slidervolume;
-
-    @FXML
-    private VBox vboxparent;
+    private Button resretButton;
     
-   @FXML 
-   private boolean atEndOfVideo = false ;
-   private boolean isPlaying = true ;
-   private boolean isMuted = true ;
-   
-   private ImageView ivPlay ;
-   private ImageView ivPause;
-   private ImageView ivRestart;
-   private ImageView ivVolume;
-   private ImageView ivFullScreen;
-   private ImageView ivMute;
-   private ImageView ivExit;
+    private File file ;
+    private MediaPlayer mediaPlayer;
+    private Media media ;
+
    
 
 	@Override
-	public void initialize(URL location, ResourceBundle resources) {
+	public void initialize(URL location, ResourceBundle resources) {	
+		// Establish a database connection using JDBC
+		Connection conn;
+		try {
+			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "c##projet", "projet1");
+			// Create a statement to execute a SELECT query
+			PreparedStatement stmt;
+			
+				stmt = conn.prepareStatement("SELECT video FROM video WHERE id = ? ");
+			
+
+			int id = 1;
+			
+			stmt.setInt(1, id );
+			ResultSet rs = stmt.executeQuery();
+			if (rs.next()) {
+			    Blob blob = rs.getBlob("video");
+			    InputStream is = blob.getBinaryStream();
+			   
+			   // OutputStream os = new FileOutputStream("video.mp4");
+			   // byte[] buffer = new byte[4096];
+			    //int bytesRead = -1;
+			   // file.write(os.getBytes());
+			 //   String s = fonction(blob);
+			   // FileOutputStream os = new FileOutputStream("movie.mp4");
+			 //   os.read(s.getBytes());
+			    file = fonction(blob);
+			//    file.deleteOnExit();
+				media=new Media(file.toURI().toString());
+				mediaPlayer = new MediaPlayer(media);
+				mediaView.setMediaPlayer(mediaPlayer);
+			   //while ((bytesRead = is.read(buffer)) != -1) {
+			    //   os.write(buffer, 0, bytesRead);
+			   // }
+			    
+			    /*os.close();
+			    is.close();
+			    os.flush();
+			    os.close();*/
+			}
+
+			// Close the database connection
+			conn.close();
+
+			
+			
+		} catch (SQLException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 		
-		final int IV_SIZE =25 ;
-		
-		/*mediaVideo = new Media(new File("/movie4u/src/main/resources/buttons/valooo.mp4").toURI().toString());
-		mpVideo = new MediaPlayer(mediaVideo);
-		mvVideo.setMediaPlayer(mpVideo);*/
 		
 		
-		Image ImagePlay = new Image(new File("/src/main/resources/buttons/play.png").toURI().toString());
-		ivPlay=new ImageView(ImagePlay);
-		ivPlay.setFitHeight(IV_SIZE);
-		ivPlay.setFitWidth(IV_SIZE);
-		
-		Image ImagePause = new Image(new File("/src/main/resources/buttons/pause.png").toURI().toString());
-		ivPause=new ImageView(ImagePause);
-		ivPause.setFitHeight(IV_SIZE);
-		ivPause.setFitWidth(IV_SIZE);
-		
-		Image ImageRestart = new Image(new File("/src/main/resources/buttons/restart.png").toURI().toString());
-		ivRestart=new ImageView(ImageRestart);
-		ivRestart.setFitHeight(IV_SIZE);
-		ivRestart.setFitWidth(IV_SIZE);
-		
-		
-		Image ImageVolume = new Image(new File("/src/main/resources/buttons/volume.png").toURI().toString());
-		ivVolume=new ImageView(ImageVolume);
-		ivVolume.setFitHeight(IV_SIZE);
-		ivVolume.setFitWidth(IV_SIZE);
-		
-		Image ImageFullScreen = new Image(new File("/src/main/resources/buttons/fullscreen.png").toURI().toString());
-		ivFullScreen=new ImageView(ImageFullScreen);
-		ivFullScreen.setFitHeight(IV_SIZE);
-		ivFullScreen.setFitWidth(IV_SIZE);
-		
-		Image ImageMute = new Image(new File("/src/main/resources/buttons/mute.png").toURI().toString());
-		ivMute=new ImageView(ImageMute);
-		ivMute.setFitHeight(IV_SIZE);
-		ivMute.setFitWidth(IV_SIZE);
-		
-		Image ImageExit = new Image(new File("/src/main/resources/buttons/exit.png").toURI().toString());
-		ivExit=new ImageView(ImageExit);
-		ivExit.setFitHeight(IV_SIZE);
-		ivExit.setFitWidth(IV_SIZE);
-		
-		
-		buttonppr.setGraphic(ivPause);
-		Labelvolume.setGraphic(ivMute);
-		labelspeed.setText("1X");
-		labelfullscreen.setGraphic(ivFullScreen);	
-		
+	}
+	
+	 @FXML
+	    void pauseMedia(ActionEvent event) {
+                mediaPlayer.pause();
+	    }
+
+	    @FXML
+	    void playMedia(ActionEvent event) {
+                mediaPlayer.play();
+	    }
+
+	    @FXML
+	    void resetMedia(ActionEvent event) {
+	    	
+	    	if(mediaPlayer.getStatus() != MediaPlayer.Status.READY) {
+	    		 mediaPlayer.seek(Duration.seconds(0.0));
+	    	}
+             
+	    }
+	    
+	    public static File fonction(Blob blob) throws SQLException, IOException {
+		    System.out.println("Read "+ blob.length() + " bytes ");
+		    byte [] array = blob.getBytes( 1, ( int ) blob.length() );
+		    File file = File.createTempFile("video", ".mp4", new File("."));
+		    FileOutputStream out = new FileOutputStream( file );
+		    out.write( array );
+		    out.close();
+		    file.deleteOnExit();
+		    return file;
 	}
 
 }
