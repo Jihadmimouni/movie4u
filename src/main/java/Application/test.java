@@ -12,8 +12,8 @@ public class test extends Application {
 	public void start(Stage stage) throws Exception {
 		// TODO Auto-generated method stub
 		try {
-    	    // Parent root = (  Parent)FXMLLoader.load(Main.class.getResource("/Vue/MEDIA.fxml"));
-    	 Parent root = (  Parent)FXMLLoader.load(test.class.getResource("/Vue/Media_player.fxml"));
+    	     Parent root = (  Parent)FXMLLoader.load(test.class.getResource("/Vue/Login_producer.fxml"));
+    	// Parent root = (  Parent)FXMLLoader.load(test.class.getResource("/Vue/Media_player.fxml"));
     			
     			
     			Scene scene = new Scene(root );

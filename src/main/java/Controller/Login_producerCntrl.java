@@ -60,13 +60,25 @@ public class Login_producerCntrl implements Initializable {
     	s.setString(2,password.getText().toString());
     	ResultSet rs=s.executeQuery();
     	if(rs.next()) {
-    		//l.setText("Connecte");
+    		
     		Stage stage=new Stage();
-    		Parent root = (  Parent)FXMLLoader.load(test.class.getResource("/Vue/Home_producer.fxml"));
+    		 FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vue/Home_producer.fxml"));
+    		 Parent root=(Parent) loader.load();
+    		 Home_producerCntrl controller=loader.getController();
+    		 controller.MyFunction(name.getText().toString());
+    		 
     		Scene scene=new Scene(root);
     		stage.setScene(scene);
     		stage.setTitle("home 1.1");
     		stage.show();
+    		
+    		//l.setText("Connecte");
+    		/*Stage stage=new Stage();
+    		Parent root = (  Parent)FXMLLoader.load(test.class.getResource("/Vue/Home_producer.fxml"));
+    		Scene scene=new Scene(root);
+    		stage.setScene(scene);
+    		stage.setTitle("home 1.1");
+    		stage.show();*/
     		
     		
     	}

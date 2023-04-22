@@ -11,10 +11,16 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class Home_producerCntrl implements Initializable {
+	 @FXML
+	    private Label L1;
+
+	    @FXML
+	    private Label username;
 	  @FXML
 	    private AnchorPane ap;
 
@@ -59,6 +65,10 @@ public class Home_producerCntrl implements Initializable {
 	    void update(ActionEvent event) {
 
 	    }
+	    
+		public void MyFunction(String a) {
+			username.setText(a);
+		}
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
