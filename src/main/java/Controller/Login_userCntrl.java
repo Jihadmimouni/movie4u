@@ -49,12 +49,11 @@ public class Login_userCntrl implements Initializable {
 //Parent root = (  Parent)FXMLLoader.load(test.class.getResource("/Vue/Home_User.fxml"));
 				Scene scene = new Scene(root );
 				
-				User_profileCntrl Profilecntrl = loader.getController();
 				
 				Users user = new Users(UserDao.getuser(name,password));
 				
-				 
-				
+				 Home_UserCntrl userCntrl = loader.getController();
+				userCntrl.user = user ;
 				
 				Stage s=new Stage();
 				s.setScene(scene);

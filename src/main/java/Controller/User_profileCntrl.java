@@ -11,8 +11,11 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import movie4u.models.Users;
 
 public class User_profileCntrl implements Initializable {
+	
+	//public static Users profile ;
 
     @FXML
     private TableColumn<?, ?> BdateColomn;
@@ -57,11 +60,11 @@ public class User_profileCntrl implements Initializable {
 	}
 	
 	
-	void displayINFO(String name , String email ,String pswrd , String date) {
-		nameColomn.setText(name);
-		emailColomn.setText(email);
-		pswrdColomn.setText(pswrd);
-		BdateColomn.setText(date);
+	void displayINFO(Users profile) {
+		nameColomn.setText(profile.getName());
+		emailColomn.setText(profile.getEmail());
+		pswrdColomn.setText(profile.getPassword());
+		BdateColomn.setText(profile.getBirthdate().toString());
 		
 	}
 	

@@ -16,17 +16,11 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import movie4u.models.Users;
 
-public class Home_UserCntrl implements Initializable {
 
-    @FXML
-    void edit(ActionEvent event) throws IOException {
-    	System.out.println("profile");
-		 Stage s=new Stage();
-        Parent root = (  Parent)FXMLLoader.load(test.class.getResource("/Vue/User_profile.fxml"));
-			Scene scene = new Scene(root );
-			s.setScene(scene);
-			s.show();
-    }
+public class Home_UserCntrl implements Initializable {
+	
+	public static Users user ;
+
 
     @FXML
     void log_out(ActionEvent event) throws IOException {
@@ -39,8 +33,11 @@ public class Home_UserCntrl implements Initializable {
     }
 
     @FXML
-    void profile(ActionEvent event) {
-              
+    void profile(ActionEvent event) throws IOException {
+    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vue/User_profile.fxml"));
+    	Parent root = loader.load();
+    	User_profileCntrl Userprofile = loader.getController();
+    	Userprofile.displayINFO(user) ;
     }
 
     @FXML
@@ -64,9 +61,6 @@ public class Home_UserCntrl implements Initializable {
 		
 	}
 	
-	void  getUser(String name , String email ,String pswrd , LocalDate date , File img) {
-
-	}
     
     
 }

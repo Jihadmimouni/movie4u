@@ -10,9 +10,9 @@
    <children>
       <MenuBar layoutX="-1.0" layoutY="14.0" AnchorPane.bottomAnchor="660.4" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="15.0">
         <menus>
-          <Menu mnemonicParsing="false" onAction="#profile" text="Account">
+          <Menu mnemonicParsing="false" text="Account">
             <items>
-              <MenuItem mnemonicParsing="false" onAction="#edit" text="Profile Settings" />
+              <MenuItem mnemonicParsing="false" onAction="#profile" text="Profile Settings" />
                   <MenuItem mnemonicParsing="false" onAction="#log_out" text="Log out" />
             </items>
           </Menu>
