@@ -40,7 +40,7 @@ public class Home_UserCntrl implements Initializable {
 
     @FXML
     void profile(ActionEvent event) {
-
+              
     }
 
     @FXML
@@ -64,8 +64,8 @@ public class Home_UserCntrl implements Initializable {
 		
 	}
 	
-	Users  getUser(String name , String email ,String pswrd , LocalDate date , File img) {
-		return new Users(name,email,pswrd,date,img);
+	void  getUser(String name , String email ,String pswrd , LocalDate date , File img) {
+
 	}
     
     
