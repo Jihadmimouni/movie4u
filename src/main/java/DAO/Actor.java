@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import movie4u.models.Actors;
-import movie4u.models.Users;
 
 public class Actor {
 	public static boolean check(String username, String password) throws SQLException {
