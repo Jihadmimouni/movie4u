@@ -1,6 +1,7 @@
 package movie4u.models; 
 
 import java.io.File;
+import java.sql.Date;
 import java.time.LocalDate;
 
 public class Users {
@@ -8,7 +9,7 @@ public class Users {
         private String name ;
         private String Email ;
         private String password ;
-        private LocalDate birthdate ;
+        private Date birthdate ;
         private File image;
         
         public File getImage() {
@@ -20,7 +21,7 @@ public class Users {
 		}
 
         
-        public Users(String name,String Email,String password,LocalDate birthdate,File image) {
+        public Users(String name,String Email,String password,Date birthdate,File image) {
         	this.name =name ;
         	this.birthdate=birthdate ;
         	this.Email=Email ;
@@ -60,11 +61,11 @@ public class Users {
 			this.password = password;
 		}
 
-		public LocalDate getBirthdate() {
+		public Date getBirthdate() {
 			return birthdate;
 		}
 
-		public void setBirthdate(LocalDate birthdate) {
+		public void setBirthdate(Date birthdate) {
 			this.birthdate = birthdate;
 		}
 
