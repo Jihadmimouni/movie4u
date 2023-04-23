@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import movie4u.models.Users;
 
 public class User {
-	public static boolean check_user(String username, String password) throws SQLException {
+	public static boolean check(String username, String password) throws SQLException {
 		Connection con = Cnx.getInstance();
 		java.sql.Statement cstmt = con.createStatement();
 		ResultSet rs = cstmt.executeQuery("select movie4u.check_user('" + username + "','" + password + "') from dual");
@@ -16,7 +16,7 @@ public class User {
 		return true;
 	}
 
-	public static Users get_user(String username, String password) throws SQLException, IOException {
+	public static Users get(String username, String password) throws SQLException, IOException {
 		Connection con = Cnx.getInstance();
 		java.sql.Statement cstmt = con.createStatement();
 		ResultSet rs = cstmt.executeQuery("select movie4u.check_user( '"+username+"' , '"+password+"' ) from dual");
@@ -28,7 +28,7 @@ public class User {
 			k = rs.getInt(1);
 			if (k == 1) {
 				cstmt = con.createStatement();
-				ls = cstmt.executeQuery("select movie4u.get_user_log('test12','test') from dual");
+				ls = cstmt.executeQuery("select movie4u.get_user_log( '"+username+"' , '"+password+"' ) from dual");
 				ls.next();
 				ks = (ResultSet) ls.getObject(1);
 				while (ks.next()) {
@@ -41,7 +41,18 @@ public class User {
 		}
 		return user;
 	}
-	
+	/**<h1>after delete the App automatically close</h1>
+	 * 
+	 * @param name
+	 * @throws SQLException
+	 */
+	public static void delete(String name) throws SQLException {
+		Connection con = Cnx.getInstance();
+		java.sql.Statement cstmt = con.createStatement();
+		cstmt.executeQuery("select movie4u.DELETE_USER('"+name+"') from dual");
+		System.exit(0);
+		
+	}
 	
 	
 	
