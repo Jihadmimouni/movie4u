@@ -1,0 +1,19 @@
+package DAO;
+
+import java.io.File;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class image {
+	public static File get_image(int id) throws SQLException, IOException {
+		Connection con = Cnx.getInstance();
+		java.sql.Statement cstmt = con.createStatement();
+		ResultSet rs = cstmt.executeQuery("select movie4u.get_image( '"+id+"' ) from dual");
+		rs.next();
+		ResultSet ls =(ResultSet) rs.getObject(1);
+		ls.next();
+		return Convert.toFile(ls.getBlob("IMAGE"));
+	}
+}

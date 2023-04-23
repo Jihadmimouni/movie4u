@@ -1,14 +1,15 @@
 package movie4u.models; 
 
 import java.io.File;
-import java.time.LocalDate;
+import java.sql.Date;
+import java.sql.SQLException;
 
 public class Users {
         private int ID ;
         private String name ;
         private String Email ;
         private String password ;
-        private LocalDate birthdate ;
+        private Date birthdate ;
         private File image;
         
         public File getImage() {
@@ -20,7 +21,7 @@ public class Users {
 		}
 
         
-        public Users(String name,String Email,String password,LocalDate birthdate,File image) {
+        public Users(String name,String Email,String password,Date birthdate,File image) {
         	this.name =name ;
         	this.birthdate=birthdate ;
         	this.Email=Email ;
@@ -60,18 +61,23 @@ public class Users {
 			this.password = password;
 		}
 
-		public LocalDate getBirthdate() {
+		public Date getBirthdate() {
 			return birthdate;
 		}
 
-		public void setBirthdate(LocalDate birthdate) {
+		public void setBirthdate(Date birthdate) {
 			this.birthdate = birthdate;
 		}
 
 		@Override
 		public String toString() {
-			return "Users [ID=" + ID + ", name=" + name + ", Email=" + Email + ", password=" + password + ", birthdate="
-					+ birthdate + "]";
+			try {
+				return "'"+this.name+"','"+this.Email+"','"+this.password+"','"+this.birthdate+"','"+DAO.Convert.FileToBlob(this.image)+"'";
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				return "";
+			}
+			
 		}
         
 }
