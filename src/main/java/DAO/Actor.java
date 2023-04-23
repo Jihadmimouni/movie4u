@@ -42,7 +42,11 @@ public class Actor {
 		}
 		return user;
 	}
-	
+	/**<h1>after deleting the user the App automatically close</h1>
+	 * 
+	 * @param name
+	 * @throws SQLException
+	 */
 	public static void delete(String name) throws SQLException {
 		Connection con = Cnx.getInstance();
 		java.sql.Statement cstmt = con.createStatement();
