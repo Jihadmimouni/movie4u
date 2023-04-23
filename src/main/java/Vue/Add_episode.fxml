@@ -6,24 +6,46 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Add_episodeCntrl">
+<AnchorPane prefHeight="600.0" prefWidth="500.0" styleClass="bleu" stylesheets="@../Application/Styles.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Add_episodeCntrl">
    <children>
-      <AnchorPane fx:id="title" layoutX="11.0" layoutY="14.0" prefHeight="572.0" prefWidth="478.0">
+      <AnchorPane fx:id="title" layoutX="11.0" layoutY="10.0" prefHeight="579.0" prefWidth="478.0" styleClass="gris" stylesheets="@../Application/Styles.css">
          <children>
-            <Label layoutX="225.0" layoutY="45.0" text=" ADD EPISODE" />
-            <Label layoutX="41.0" layoutY="97.0" text="Title:" />
-            <Label layoutX="41.0" layoutY="186.0" prefHeight="17.0" prefWidth="109.0" text="Broadcasting Date:" />
-            <Label layoutX="40.0" layoutY="242.0" text="Path video" />
-            <Label layoutX="44.0" layoutY="321.0" text="Synopsis" />
-            <Label layoutX="43.0" layoutY="475.0" text="path synopsis video" />
-            <TextField fx:id="title" layoutX="215.0" layoutY="93.0" prefHeight="25.0" prefWidth="160.0" />
-            <TextField fx:id="path_video" layoutX="212.0" layoutY="238.0" prefHeight="25.0" prefWidth="160.0" />
-            <TextField fx:id="path_synopsis_video" layoutX="212.0" layoutY="471.0" prefHeight="25.0" prefWidth="160.0" />
-            <TextArea fx:id="text" layoutX="212.0" layoutY="321.0" prefHeight="136.0" prefWidth="160.0" />
-            <Button layoutX="330.0" layoutY="514.0" mnemonicParsing="false" onAction="#save_episode" prefHeight="25.0" prefWidth="94.0" text=" save Episode" />
-            <DatePicker fx:id="broadcast_date" layoutX="212.0" layoutY="182.0" prefHeight="25.0" prefWidth="167.0" />
-            <Label layoutX="40.0" layoutY="381.0" text="Label" />
+            <Label layoutX="32.0" layoutY="92.0" text="Title:" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font></Label>
+            <Label layoutX="15.0" layoutY="138.0" prefHeight="28.0" prefWidth="181.0" text="Broadcasting Date:" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font></Label>
+            <Label layoutX="27.0" layoutY="193.0" text="Path video:" textFill="#fffafa">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font></Label>
+            <Label layoutX="15.0" layoutY="258.0" text="Synopsis Text:" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font></Label>
+            <Label layoutX="15.0" layoutY="418.0" text="path synopsis video:" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font></Label>
+            <TextField fx:id="title" layoutX="215.0" layoutY="93.0" prefHeight="25.0" prefWidth="212.0" styleClass="gris3" stylesheets="@../Application/Styles.css" />
+            <TextField fx:id="path_video" layoutX="216.0" layoutY="195.0" prefHeight="25.0" prefWidth="212.0" styleClass="gris3" stylesheets="@../Application/Styles.css" />
+            <TextField fx:id="path_synopsis_video" layoutX="216.0" layoutY="419.0" prefHeight="25.0" prefWidth="212.0" styleClass="gris3" stylesheets="@../Application/Styles.css" />
+            <TextArea fx:id="text" layoutX="216.0" layoutY="258.0" prefHeight="136.0" prefWidth="212.0" styleClass="bleu" stylesheets="@../Application/Styles.css" />
+            <Button layoutX="280.0" layoutY="492.0" mnemonicParsing="false" onAction="#save_episode" prefHeight="36.0" prefWidth="144.0" text=" SAVE EPISODE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Button>
+            <DatePicker fx:id="broadcast_date" layoutX="216.0" layoutY="140.0" prefHeight="25.0" prefWidth="212.0" styleClass="gris3" stylesheets="@../Application/Styles.css" />
+            <Label layoutX="167.0" layoutY="44.0" stylesheets="@../Application/Styles.css" text="Add Episode" textFill="#2ac7ea">
+               <font>
+                  <Font name="System Bold Italic" size="25.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>

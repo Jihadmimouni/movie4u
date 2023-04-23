@@ -16,6 +16,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
+import movie4u.models.Users;
 
 public class Login_userCntrl implements Initializable {
 	 @FXML
@@ -43,10 +44,19 @@ public class Login_userCntrl implements Initializable {
 	    	name.getText().toString();
 	    	password.getText().toString();
 	    	//if (UserDao.exists(name,password)) {
-	    		Stage s=new Stage();
-		        Parent root = (  Parent)FXMLLoader.load(test.class.getResource("/Vue/Home_User.fxml"));
-				 
+	    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vue/Home_User.fxml"));
+	    	Parent root = loader.load();
+//Parent root = (  Parent)FXMLLoader.load(test.class.getResource("/Vue/Home_User.fxml"));
 				Scene scene = new Scene(root );
+				
+				
+				Users user = new Users(UserDao.getuser(name,password));
+				
+				 Home_UserCntrl userCntrl = loader.getController();
+				userCntrl.user = user ;
+				
+				userCntrl.welcome(user.getName(), user.getImage());
+				Stage s=new Stage();
 				s.setScene(scene);
 				s.setTitle("CREATE ACCOUNT");
 				s.show();       

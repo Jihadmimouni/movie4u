@@ -22,10 +22,15 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 
 public class Login_producerCntrl implements Initializable {
+	 @FXML
+	    private ImageView m;
+
 	  @FXML
 	    private TextField name;
 
@@ -95,11 +100,12 @@ public class Login_producerCntrl implements Initializable {
     	 
 
   }
-
+//Image a=new Image(getClass().getResourceAsStream("user.png"));
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
-
+		
+	//	m.setImage(a);
 	}
 
 }
