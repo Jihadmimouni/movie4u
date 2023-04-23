@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import movie4u.models.Users;
 
 public class User {
-	public static boolean login(String username, String password) throws SQLException {
+	public static boolean check_user(String username, String password) throws SQLException {
 		Connection con = Cnx.getInstance();
 		java.sql.Statement cstmt = con.createStatement();
 		ResultSet rs = cstmt.executeQuery("select movie4u.check_user('" + username + "','" + password + "') from dual");
