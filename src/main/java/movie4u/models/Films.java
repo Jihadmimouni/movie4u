@@ -8,7 +8,6 @@ public class Films extends Media{
     private Genre genre;
     private File video;
     private int duration;
-    private int video_id;
     
 
     //you don't need an id when you first create the media it will be automatically assigned by the data base
@@ -43,12 +42,6 @@ public class Films extends Media{
 	}
 	public void setVideo(File video) {
 		this.video = video;
-	}
-	public int getVideo_id() {
-		return video_id;
-	}
-	public void setVideo_id(int video_id) {
-		this.video_id = video_id;
 	}
   
 }

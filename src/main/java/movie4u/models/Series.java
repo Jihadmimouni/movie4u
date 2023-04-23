@@ -11,10 +11,10 @@ public class Series extends Media{
 
 
 	//you don't need an id when you first create the media it will be automatically assigned by the data base
-	public Series(String name, int year, String language, String country, int producer_id, File image, int iD,
+	public Series(String name, int year, String language, String country, int producer_id, File image, 
 			movie4u.models.Synopsis synopsis, movie4u.models.Genre genre) {
 		super(name, year, language, country, producer_id, image);
-		ID = iD;
+		//ID = iD;
 		Synopsis = synopsis;
 		Genre = genre;
 	}

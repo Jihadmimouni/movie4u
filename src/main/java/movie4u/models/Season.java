@@ -19,10 +19,10 @@ public class Season extends Media{
 	 * @param start_date
 	 * @param synopsis
 	 */
-	public Season(String name, int year, String language, String country, int producer_id, File image, int id,
+	public Season(String name, int year, String language, String country, int producer_id, File image,
 			int numero, Date start_date, movie4u.models.Synopsis synopsis) {
 		super(name, year, language, country, producer_id, image);
-		this.setID(id);
+		//this.setID(id);
 		this.setNumero(numero);
 		this.setStart_date(start_date);
 		setSynopsis(synopsis);

@@ -1,21 +1,31 @@
 package Controller;
 
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
-import Connect.DAOProducer;
+import Connect.CnxDB;
+//import Connect.DAOProducer;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import movie4u.models.Producers;
 
 public class Create_account_producerCntrl implements Initializable {
+	 @FXML
+	    private Label L1;
 	@FXML
     private TextField name;
 
@@ -27,26 +37,47 @@ public class Create_account_producerCntrl implements Initializable {
 
     @FXML
     private PasswordField password;
+    @FXML
+    private Label L2;
+    
+    static public ObservableList<String> list3 =FXCollections.observableArrayList();
 
     @FXML
-    void create(ActionEvent event) {
+    void create(ActionEvent event) throws SQLException {
+    	Connection con=CnxDB.getInstance();
+    	
+    	String sql ="select * from producer";
+    	PreparedStatement ps=null;
+    	ResultSet o=null ;
+    	ps=con.prepareStatement(sql);
+    	o=ps.executeQuery();
+    	
+    	while(o.next()) {
+    		list3.add(o.getString(2));
+    		 
+    	}
+    	long count=list3.stream().filter(x->x==name.getText()).count();
+    	
+    	int length =password.getText().length();
+    	
+    	if((count>0) && (length>=8)) {
     	 
-     
-    	int s;
+    		//System.out.println("pssstt");
+    	int s = 0;
     	LocalDate d1=date.getValue();
     	String nom=name.getText();
     	String Email=email.getText();
     	String date=d1.toString();
         String mot_de_passe=password.getText();
     	
-    	Producers e=new Producers();
-    	e.setName(nom);
+    //*	Producers e=new Producers();
+    /*	e.setName(nom);
     	e.setEmail(Email);
     	e.setBirthdate(d1);
     	e.setPassword(mot_de_passe);
     	 
     	
-    	s=DAOProducer.save(e);
+    	s=DAOProducer.save(e);*/
     	if(s>0) {
     		Alert al=new Alert(AlertType.INFORMATION);
     		al.setTitle("add producer !!");
@@ -67,7 +98,18 @@ public class Create_account_producerCntrl implements Initializable {
     		al.showAndWait();
     		
     	}
-    	
+    	}
+    	else {
+    		if(count==0) {
+    		L1.setText("Name already existed");
+    		name.clear();
+    		}
+    		
+    	}
+    	if(length<8) {
+    		L2.setText("Length password must be more than 8 characters ");
+    		password.clear();
+    	}
 
     }
 

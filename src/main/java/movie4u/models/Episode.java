@@ -9,7 +9,7 @@ public class Episode extends Media{
 	private Date Date;
 	private Synopsis Synopsis;
 	private File video;
-	private int video_id;
+	
 	
 	
 	@Override
@@ -21,10 +21,10 @@ public class Episode extends Media{
 	public void setID(int iD) {
 		ID = iD;
 	}
-	public Episode(String name, int year, String language, String country, int producer_id, File image, int iD,
+	public Episode(String name, int year, String language, String country, int producer_id, File image, 
 			String title, java.sql.Date date, movie4u.models.Synopsis synopsis, File video) {
 		super(name, year, language, country, producer_id, image);
-		ID = iD;
+	//	ID = iD;
 		this.title = title;
 		Date = date;
 		Synopsis = synopsis;
@@ -53,14 +53,6 @@ public class Episode extends Media{
 	}
 	public void setVideo(File video) {
 		this.video = video;
-	}
-
-	public int getVideo_id() {
-		return video_id;
-	}
-
-	public void setVideo_id(int video_id) {
-		this.video_id = video_id;
 	}
 	
 	
