@@ -1,5 +1,6 @@
 package Controller;
 
+import java.awt.Button;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -13,6 +14,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import movie4u.models.Users;
 
@@ -20,6 +24,15 @@ import movie4u.models.Users;
 public class Home_UserCntrl implements Initializable {
 	
 	public static Users user ;
+	  @FXML
+	    private ImageView imageuser;
+
+	    @FXML
+	    private Button searchbtn;
+
+	    @FXML
+	    private Label wlcmtxt;
+
 
 
     @FXML
@@ -46,13 +59,15 @@ public class Home_UserCntrl implements Initializable {
     }
 
     @FXML
-    void searchFilm(ActionEvent event) {
-
-    }
-
-    @FXML
-    void searchSerie(ActionEvent event) {
-
+    void search(ActionEvent event) throws IOException {
+    	System.out.println("search ..");
+    	Stage s=new Stage();
+        Parent root = (  Parent)FXMLLoader.load(test.class.getResource("/Vue/SearchView.fxml"));
+		 
+		Scene scene = new Scene(root );
+		s.setScene(scene);
+		s.setTitle("CREATE ACCOUNT");
+		s.show();
     }
 
 	@Override
@@ -61,6 +76,11 @@ public class Home_UserCntrl implements Initializable {
 		
 	}
 	
-    
-    
+    void welcome(String usename , File image) {
+    	wlcmtxt.setText("Welcome "+"username ");
+    	Image img = new Image(image.toString());
+    	imageuser = new ImageView(img);
+    	
+    }
 }
+

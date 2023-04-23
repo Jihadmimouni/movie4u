@@ -55,6 +55,7 @@ public class Login_userCntrl implements Initializable {
 				 Home_UserCntrl userCntrl = loader.getController();
 				userCntrl.user = user ;
 				
+				userCntrl.welcome(user.getName(), user.getImage());
 				Stage s=new Stage();
 				s.setScene(scene);
 				s.setTitle("CREATE ACCOUNT");
