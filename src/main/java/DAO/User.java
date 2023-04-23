@@ -41,7 +41,7 @@ public class User {
 		}
 		return user;
 	}
-	/**<h1>after delete the App automatically close</h1>
+	/**<h1>after deleting the user the App automatically close</h1>
 	 * 
 	 * @param name
 	 * @throws SQLException
