@@ -6,65 +6,21 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="610.0" prefWidth="725.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Add_serieCntrl">
+<AnchorPane prefHeight="610.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Add_serieCntrl">
    <children>
-      <AnchorPane layoutX="12.0" layoutY="12.0" prefHeight="586.0" prefWidth="702.0">
+      <AnchorPane layoutX="13.0" layoutY="17.0" prefHeight="572.0" prefWidth="475.0">
          <children>
-            <Label layoutX="6.0" layoutY="82.0" prefHeight="17.0" prefWidth="85.0" text="Name Media:" />
-            <Label layoutX="10.0" layoutY="146.0" prefHeight="17.0" prefWidth="76.0" text="Promo:" />
-            <Label layoutX="13.0" layoutY="289.0" text="Synopsis:" />
-            <TextField fx:id="name_media" layoutX="95.0" layoutY="78.0" prefHeight="25.0" prefWidth="162.0" />
-            <TextField fx:id="id_media" layoutX="412.0" layoutY="78.0" />
-            <TextField fx:id="path_video" layoutX="95.0" layoutY="173.0" prefHeight="25.0" prefWidth="162.0" />
-            <TextField fx:id="title_video" layoutX="95.0" layoutY="218.0" prefHeight="25.0" prefWidth="162.0" />
-            <TextField fx:id="id_video" layoutX="95.0" layoutY="314.0" prefHeight="25.0" prefWidth="162.0" />
-            <TextArea fx:id="text" layoutX="95.0" layoutY="388.0" prefHeight="151.0" prefWidth="162.0" />
-            <TextField fx:id="tiltle_synopsis" layoutX="95.0" layoutY="348.0" prefHeight="25.0" prefWidth="162.0" />
-            <TextField fx:id="id_synopsis" layoutX="412.0" layoutY="173.0" />
-            <ComboBox fx:id="genre" layoutX="412.0" layoutY="314.0" prefWidth="150.0" />
-            <Button layoutX="237.0" layoutY="115.0" mnemonicParsing="false" onAction="#save_media" text="Save Media" />
-            <Button layoutX="237.0" layoutY="247.0" mnemonicParsing="false" onAction="#save_promo" text=" Save Promo" />
-            <Button layoutX="244.0" layoutY="547.0" mnemonicParsing="false" onAction="#save_synopsis" text="Save Synopsis" />
-            <Label layoutX="323.0" layoutY="22.0" text="ADD SERIE" />
-            <Label layoutX="10.0" layoutY="177.0" prefHeight="17.0" prefWidth="60.0" text="Path:" />
-            <Label layoutX="10.0" layoutY="222.0" />
-            <Label layoutX="11.0" layoutY="222.0" text="Tilte:" />
-            <Label layoutX="10.0" layoutY="318.0" text="ID_Video:" />
-            <Label layoutX="10.0" layoutY="352.0" text="Title Synopsis:" />
-            <Label layoutX="10.0" layoutY="388.0" text="Text:" />
-            <Label layoutX="339.0" layoutY="82.0" text="ID_Media:" />
-            <Label layoutX="365.0" layoutY="177.0" />
-            <Label layoutX="345.0" layoutY="318.0" prefHeight="17.0" prefWidth="41.0" text="Genre:" />
-            <Label layoutX="337.0" layoutY="177.0" text="ID_Synopsis:" />
-            <Label layoutX="9.0" layoutY="54.0" prefHeight="17.0" prefWidth="184.0" text="fill the fields (1),(2),(3) at first" textFill="#ff0707">
-               <font>
-                  <Font name="System Bold Italic" size="12.0" />
-               </font>
-            </Label>
-            <Label layoutX="264.0" layoutY="82.0" text="(1)" textFill="#f80202">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Label>
-            <Label layoutX="71.0" layoutY="146.0" text=" (2)" textFill="#ff2c2c">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Label>
-            <Label layoutX="87.0" layoutY="289.0" text="(3)" textFill="#f51010">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Label>
-            <Button layoutX="562.0" layoutY="473.0" mnemonicParsing="false" onAction="#save_serie" prefHeight="25.0" prefWidth="117.0" text=" Save Serie" />
-            <Label fx:id="L1" layoutX="21.0" layoutY="251.0" prefHeight="17.0" prefWidth="194.0" text=" " textFill="#ff1616">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Label>
-            <Label fx:id="L2" layoutX="21.0" layoutY="551.0" prefHeight="17.0" prefWidth="206.0" text=" " textFill="#ff1b1b" />
+            <TextArea fx:id="text" layoutX="163.0" layoutY="167.0" prefHeight="128.0" prefWidth="194.0" />
+            <Label layoutX="209.0" layoutY="14.0" text="ADD SERIE" />
+            <Button layoutX="330.0" layoutY="463.0" mnemonicParsing="false" onAction="#save_serie" prefHeight="25.0" prefWidth="117.0" text=" Save Serie" />
+            <Label layoutX="7.0" layoutY="93.0" prefHeight="17.0" prefWidth="138.0" text="Path of Synopsis Video:" />
+            <Label layoutX="17.0" layoutY="169.0" prefHeight="17.0" prefWidth="87.0" text="Synopsis Text:" />
+            <TextField fx:id="path_video" layoutX="163.0" layoutY="89.0" />
+            <ComboBox fx:id="genre" layoutX="168.0" layoutY="367.0" prefHeight="25.0" prefWidth="194.0" promptText="              Film    Genre" />
+            <Button layoutX="336.0" layoutY="513.0" mnemonicParsing="false" onAction="#add_season" prefHeight="25.0" prefWidth="108.0" text="Add season" />
+            <Label layoutX="33.0" layoutY="278.0" text="Label" />
+            <Label layoutX="19.0" layoutY="223.0" text="Label" />
          </children>
       </AnchorPane>
    </children>

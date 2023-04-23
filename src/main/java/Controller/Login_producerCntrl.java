@@ -22,10 +22,15 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 
 public class Login_producerCntrl implements Initializable {
+	 @FXML
+	    private ImageView m;
+
 	  @FXML
 	    private TextField name;
 
@@ -71,7 +76,7 @@ public class Login_producerCntrl implements Initializable {
     		stage.setScene(scene);
     		stage.setTitle("home 1.1");
     		stage.show();
-    		
+    		System.out.println("pssstt");
     		//l.setText("Connecte");
     		/*Stage stage=new Stage();
     		Parent root = (  Parent)FXMLLoader.load(test.class.getResource("/Vue/Home_producer.fxml"));
@@ -88,6 +93,7 @@ public class Login_producerCntrl implements Initializable {
     		al.setTitle("erreur !!!");
     		al.setContentText("password or username ERROR!!");
     		al.showAndWait();
+    		System.out.println("rrrrr"); 
     		
     	}
     	
@@ -95,11 +101,12 @@ public class Login_producerCntrl implements Initializable {
     	 
 
   }
-
+//Image a=new Image(getClass().getResourceAsStream("user.png"));
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
-
+		
+	//	m.setImage(a);
 	}
 
 }
