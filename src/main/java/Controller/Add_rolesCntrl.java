@@ -18,6 +18,7 @@ public class Add_rolesCntrl implements Initializable {
 
 	    @FXML
 	    void save_role(ActionEvent event) {
+	    	System.out.println("rrrrr"); 
 
 	    }
 

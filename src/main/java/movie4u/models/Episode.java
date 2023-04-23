@@ -9,7 +9,7 @@ public class Episode extends Media{
 	private Date Date;
 	private Synopsis Synopsis;
 	private File video;
-	
+	private int video_id;
 	
 	
 	@Override
@@ -53,6 +53,14 @@ public class Episode extends Media{
 	}
 	public void setVideo(File video) {
 		this.video = video;
+	}
+
+	public int getVideo_id() {
+		return video_id;
+	}
+
+	public void setVideo_id(int video_id) {
+		this.video_id = video_id;
 	}
 	
 	
