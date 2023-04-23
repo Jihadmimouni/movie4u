@@ -45,6 +45,7 @@ public class Update_producerCntrl implements Initializable {
     
     public void password(String v) {
     	password.setText(v);
+    	System.out.println("pssstt");
     }
     
     

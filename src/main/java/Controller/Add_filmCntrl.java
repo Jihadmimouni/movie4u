@@ -63,6 +63,7 @@ public class Add_filmCntrl implements Initializable {
 
 	    @FXML
 	    void save_film(ActionEvent event) {
+	    	System.out.println("pssstt");
 	    	int s =17;
 	    	Synopsis syn=new Synopsis(text.getText().toString());
 	    	Genre type=new Genre(genre.getValue());

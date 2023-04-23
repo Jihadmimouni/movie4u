@@ -37,6 +37,7 @@ public class Add_episodeCntrl implements Initializable {
 
 	    @FXML
 	    void save_episode(ActionEvent event) {
+	    	System.out.println("pssstt");
 	    	int s =16;
 	    	LocalDate l=broadcast_date.getValue();
 	    	Date date_broadcast=Date.valueOf(l);

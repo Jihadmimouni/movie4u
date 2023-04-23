@@ -39,6 +39,7 @@ public class Add_seasonCntrl implements Initializable {
 	    @FXML
 	    void save_season(ActionEvent event) {
 	    int s=18 ;
+	    System.out.println("pssstt");
 	    	
 	    Synopsis syn=new Synopsis(text.getText());
 	    LocalDate a= date_start.getValue();

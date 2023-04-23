@@ -71,7 +71,7 @@ public class Login_producerCntrl implements Initializable {
     		stage.setScene(scene);
     		stage.setTitle("home 1.1");
     		stage.show();
-    		
+    		System.out.println("pssstt");
     		//l.setText("Connecte");
     		/*Stage stage=new Stage();
     		Parent root = (  Parent)FXMLLoader.load(test.class.getResource("/Vue/Home_producer.fxml"));

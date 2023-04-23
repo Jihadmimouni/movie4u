@@ -22,6 +22,7 @@
             <TextArea fx:id="text" layoutX="182.0" layoutY="349.0" prefHeight="125.0" prefWidth="174.0" />
             <Button layoutX="356.0" layoutY="484.0" mnemonicParsing="false" onAction="#save_season" prefHeight="25.0" prefWidth="98.0" text=" save season" />
             <Button layoutX="354.0" layoutY="521.0" mnemonicParsing="false" onAction="#add_episode" prefHeight="25.0" prefWidth="98.0" text=" Add Episode" />
+            <Label layoutX="80.0" layoutY="395.0" text="Label" />
          </children>
       </AnchorPane>
    </children>

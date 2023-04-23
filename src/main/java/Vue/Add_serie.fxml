@@ -19,6 +19,7 @@
             <TextField fx:id="path_video" layoutX="163.0" layoutY="89.0" />
             <ComboBox fx:id="genre" layoutX="168.0" layoutY="367.0" prefHeight="25.0" prefWidth="194.0" promptText="              Film    Genre" />
             <Button layoutX="336.0" layoutY="513.0" mnemonicParsing="false" onAction="#add_season" prefHeight="25.0" prefWidth="108.0" text="Add season" />
+            <Label layoutX="33.0" layoutY="278.0" text="Label" />
          </children>
       </AnchorPane>
    </children>
