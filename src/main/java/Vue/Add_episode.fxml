@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="600.0" prefWidth="500.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="Controller.Add_episodeCntrl">
+   <children>
+      <AnchorPane fx:id="title" layoutX="11.0" layoutY="14.0" prefHeight="572.0" prefWidth="478.0">
+         <children>
+            <Label layoutX="225.0" layoutY="45.0" text=" ADD EPISODE" />
+            <Label layoutX="41.0" layoutY="97.0" text="Title:" />
+            <Label layoutX="41.0" layoutY="186.0" prefHeight="17.0" prefWidth="109.0" text="Broadcasting Date:" />
+            <Label layoutX="40.0" layoutY="242.0" text="Path video" />
+            <Label layoutX="44.0" layoutY="321.0" text="Synopsis" />
+            <Label layoutX="43.0" layoutY="475.0" text="path synopsis video" />
+            <TextField fx:id="title" layoutX="215.0" layoutY="93.0" prefHeight="25.0" prefWidth="160.0" />
+            <TextField fx:id="path_video" layoutX="212.0" layoutY="238.0" prefHeight="25.0" prefWidth="160.0" />
+            <TextField fx:id="path_synopsis_video" layoutX="212.0" layoutY="471.0" prefHeight="25.0" prefWidth="160.0" />
+            <TextArea fx:id="text" layoutX="212.0" layoutY="321.0" prefHeight="136.0" prefWidth="160.0" />
+            <Button layoutX="330.0" layoutY="514.0" mnemonicParsing="false" onAction="#save_episode" prefHeight="25.0" prefWidth="94.0" text=" save Episode" />
+            <DatePicker fx:id="broadcast_date" layoutX="212.0" layoutY="182.0" prefHeight="25.0" prefWidth="167.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

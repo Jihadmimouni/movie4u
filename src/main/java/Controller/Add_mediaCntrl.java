@@ -114,9 +114,21 @@ public class Add_mediaCntrl implements Initializable {
 
 	    }
 	    
-	    /*****************************************************/
+	    /**
+	     * @throws IOException ***************************************************/
 	    @FXML
-	    void Film(ActionEvent event) {
+	    void Film(ActionEvent event) throws IOException {
+	    	Stage stage=new Stage();
+   		 FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vue/Add_film.fxml"));
+   		 Parent root=(Parent) loader.load();
+   		 Add_filmCntrl controller=loader.getController();
+   		 controller.media3=e1;
+   		 
+   		 
+   		Scene scene=new Scene(root);
+   		stage.setScene(scene);
+   		stage.setTitle("home 1.1");
+   		stage.show();
 	    	 
 	    	
 
@@ -130,23 +142,13 @@ public class Add_mediaCntrl implements Initializable {
     		 Parent root=(Parent) loader.load();
     		 Add_serieCntrl controller=loader.getController();
     		 controller.media=e1;
-    		 controller.m(e1.getName());
+    		 
     		 
     		Scene scene=new Scene(root);
     		stage.setScene(scene);
     		stage.setTitle("home 1.1");
     		stage.show();
-	    	
-	    	
-	    	
 	    	 
-			/* Stage s=new Stage();
-	         Parent root = (  Parent)FXMLLoader.load(test.class.getResource("/Vue/Add_serie.fxml"));
-				 
-				Scene scene = new Scene(root );
-				s.setScene(scene);
-				 
-				s.show();*/
 
 	    }
 	    
