@@ -10,6 +10,7 @@ public class Media {
          private String country ;
          private int producer_id;
          private File image;
+         private String Type;
 
          
          public Media(String name ,int year, String language, String country, int producer_id, File image) {
@@ -76,6 +77,14 @@ public class Media {
 
 		public void setImage_id(File image_id) {
 			this.image = image_id;
+		}
+
+		public String getType() {
+			return Type;
+		}
+
+		public void setType(String type) {
+			Type = type;
 		}
 
          
