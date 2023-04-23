@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import movie4u.models.Actors;
+import movie4u.models.Users;
 
 public class Actor {
 	public static boolean check(String username, String password) throws SQLException {
@@ -48,5 +49,10 @@ public class Actor {
 		cstmt.executeQuery("select movie4u.DELETE_actor('"+name+"') from dual");
 		System.exit(0);
 		
+	}
+	public static void insert(Actors user) throws SQLException {
+		Connection con = Cnx.getInstance();
+		java.sql.Statement cstmt = con.createStatement();
+		cstmt.executeQuery("select movie4u.add_actor("+user.toString()+") from dual");
 	}
 }

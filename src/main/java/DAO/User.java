@@ -54,7 +54,11 @@ public class User {
 		
 	}
 	
-	
+	public static void insert(Users user) throws SQLException {
+		Connection con = Cnx.getInstance();
+		java.sql.Statement cstmt = con.createStatement();
+		cstmt.executeQuery("select movie4u.insert_user("+user.toString()+") from dual");
+	}
 	
 	
 	
