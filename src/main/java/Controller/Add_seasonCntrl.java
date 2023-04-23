@@ -40,6 +40,7 @@ public class Add_seasonCntrl implements Initializable {
 	    void save_season(ActionEvent event) {
 	    int s=18 ;
 	    System.out.println("pssstt");
+	    System.out.println("rrrrr"); 
 	    	
 	    Synopsis syn=new Synopsis(text.getText());
 	    LocalDate a= date_start.getValue();

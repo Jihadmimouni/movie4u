@@ -13,7 +13,7 @@ import javafx.scene.control.TextField;
 public class Update_producerCntrl implements Initializable {
 
     @FXML
-    private TextField name;
+    private TextField name;  
 
     @FXML
     private TextField email;

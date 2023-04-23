@@ -29,6 +29,7 @@
             <ComboBox fx:id="role_actor" layoutX="182.0" layoutY="433.0" prefHeight="25.0" prefWidth="164.0" />
             <Button layoutX="348.0" layoutY="465.0" mnemonicParsing="false" onAction="#save_role" prefHeight="25.0" prefWidth="75.0" text="Save Role" />
             <Label layoutX="62.0" layoutY="203.0" text="Label" />
+            <Label layoutX="59.0" layoutY="159.0" text="Label" />
          </children>
       </AnchorPane>
    </children>

@@ -93,6 +93,7 @@ public class Login_producerCntrl implements Initializable {
     		al.setTitle("erreur !!!");
     		al.setContentText("password or username ERROR!!");
     		al.showAndWait();
+    		System.out.println("rrrrr"); 
     		
     	}
     	

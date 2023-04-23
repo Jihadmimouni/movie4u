@@ -46,6 +46,7 @@
                   <Font name="System Bold Italic" size="25.0" />
                </font>
             </Label>
+            <Label layoutX="77.0" layoutY="326.0" text="Label" />
          </children>
       </AnchorPane>
    </children>

@@ -88,6 +88,7 @@ public class Home_producerCntrl implements Initializable {
 	    @FXML
 	    void update(ActionEvent event) throws SQLException, IOException {
 	    	/// System.out.println("erdtfgh");
+	    	System.out.println("rrrrr"); 
 	    	 Stage stage=new Stage();
     		 FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vue/Update_producer.fxml"));
     		 Parent root=(Parent) loader.load();

@@ -62,7 +62,7 @@ public class Create_account_producerCntrl implements Initializable {
     	
     	if((count>0) && (length>=8)) {
     	 
-    		System.out.println("pssstt");
+    		//System.out.println("pssstt");
     	int s = 0;
     	LocalDate d1=date.getValue();
     	String nom=name.getText();

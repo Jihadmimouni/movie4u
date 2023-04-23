@@ -123,7 +123,7 @@ public class Add_mediaCntrl implements Initializable {
    		 Parent root=(Parent) loader.load();
    		 Add_filmCntrl controller=loader.getController();
    		 controller.media3=e1;
-   		 
+   		System.out.println("rrrrr"); 
    		 
    		Scene scene=new Scene(root);
    		stage.setScene(scene);

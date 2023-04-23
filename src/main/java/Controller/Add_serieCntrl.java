@@ -97,7 +97,7 @@ public class Add_serieCntrl implements Initializable {
  
  @FXML
  void add_season(ActionEvent event) throws IOException {
-	 System.out.println("erdtfgh");
+	// System.out.println("erdtfgh");
 	 System.out.println("pssstt");
 	 Stage stage=new Stage();
 	 FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vue/Add_season.fxml"));
