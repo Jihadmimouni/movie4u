@@ -43,6 +43,7 @@ public class Actor {
 		}
 		return user;
 	}
+	
 	public static void delete(String name) throws SQLException {
 		Connection con = Cnx.getInstance();
 		java.sql.Statement cstmt = con.createStatement();
@@ -50,9 +51,22 @@ public class Actor {
 		System.exit(0);
 		
 	}
+	
 	public static void insert(Actors user) throws SQLException {
 		Connection con = Cnx.getInstance();
 		java.sql.Statement cstmt = con.createStatement();
 		cstmt.executeQuery("select movie4u.add_actor("+user.toString()+") from dual");
 	}
+	
+	public static void update(Actors user) throws SQLException {
+		Connection con = Cnx.getInstance();
+		java.sql.Statement cstmt = con.createStatement();
+		cstmt.executeQuery("select movie4u.update_actor('"+user.getID()+"'"+user.toString()+") from dual");
+	}
+	
+	
 }
+
+
+
+

@@ -60,7 +60,11 @@ public class User {
 		cstmt.executeQuery("select movie4u.insert_user("+user.toString()+") from dual");
 	}
 	
-	
+	public static void update(Users user) throws SQLException {
+		Connection con = Cnx.getInstance();
+		java.sql.Statement cstmt = con.createStatement();
+		cstmt.executeQuery("select movie4u.update_user('"+user.getID()+"'"+user.toString()+") from dual");
+	}
 	
 	
 	

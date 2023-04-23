@@ -46,7 +46,7 @@ public class Producer {
 	public static void delete(String name) throws SQLException {
 		Connection con = Cnx.getInstance();
 		java.sql.Statement cstmt = con.createStatement();
-		cstmt.executeQuery("select movie4u.DELETE_p('"+name+"') from dual");
+		cstmt.executeQuery("select movie4u.DELETE_producer('"+name+"') from dual");
 		System.exit(0);
 		
 	}
@@ -55,7 +55,11 @@ public class Producer {
 		java.sql.Statement cstmt = con.createStatement();
 		cstmt.executeQuery("select movie4u.add_producer("+user.toString()+") from dual");
 	}
-	
+	public static void update(Producers user) throws SQLException {
+		Connection con = Cnx.getInstance();
+		java.sql.Statement cstmt = con.createStatement();
+		cstmt.executeQuery("select movie4u.update_producer('"+user.getID()+"'"+user.toString()+") from dual");
+	}	
 	
 	
 }
