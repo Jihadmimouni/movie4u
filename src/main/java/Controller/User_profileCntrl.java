@@ -61,6 +61,7 @@ public class User_profileCntrl implements Initializable {
 	
 	
 	void displayINFO(Users profile) {
+		System.out.println("xdcfvgbhnj");
 		nameColomn.setText(profile.getName());
 		emailColomn.setText(profile.getEmail());
 		pswrdColomn.setText(profile.getPassword());
