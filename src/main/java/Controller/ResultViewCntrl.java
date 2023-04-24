@@ -1,58 +1,65 @@
 package Controller;
 
+
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 
-public class ResultViewCntrl {
 
-    @FXML
-    private TextField Datetxt;
 
-    @FXML
-    private TextField Genretxt;
+	public class ResultViewCntrl implements Initializable {
 
-    @FXML
-    private TableColumn<?, ?> actorFilmColomn;
+	    @FXML
+	    private TextField Datetxt;
 
-    @FXML
-    private TableColumn<?, ?> actorSerieColomn;
+	    @FXML
+	    private TextField Genretxt;
 
-    @FXML
-    private TextField durationtxt;
+	    @FXML
+	    private TableColumn<?, ?> actorFilmColomn;
 
-    @FXML
-    private TableColumn<?, ?> filmColomn;
+	    @FXML
+	    private TableColumn<?, ?> actorSerieColomn;
 
-    @FXML
-    private TableColumn<?, ?> fimGenreColomn;
+	    @FXML
+	    private TextField durationtxt;
 
-    @FXML
-    private ImageView mediaImage;
+	    @FXML
+	    private TableColumn<?, ?> filmColomn;
 
-    @FXML
-    private TextField mediaNametxt;
+	    @FXML
+	    private TableColumn<?, ?> fimGenreColomn;
 
-    @FXML
-    private TableColumn<?, ?> serieColomn;
+	    @FXML
+	    private ImageView mediaImage;
 
-    @FXML
-    private TableColumn<?, ?> serieGenreColomn;
+	    @FXML
+	    private TextField mediaNametxt;
 
-    @FXML
-    void watch(ActionEvent event) {
-             
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-    }
+	    @FXML
+	    private TableColumn<?, ?> serieColomn;
+
+	    @FXML
+	    private TableColumn<?, ?> serieGenreColomn;
+
+	    @FXML
+	    void watch(ActionEvent event) {
+
+	    }
+
+		@Override
+		public void initialize(URL location, ResourceBundle resources) {
+			// TODO Auto-generated method stub
+			
+		}
+
+	}
 
     
     
@@ -73,4 +80,3 @@ public class ResultViewCntrl {
     
     
     
-}

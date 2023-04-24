@@ -1,7 +1,9 @@
 package movie4u.models;
 
 import java.io.File;
+import java.io.IOException;
 import java.sql.Date;
+import java.sql.SQLException;
 
 public class Episode extends Media{
 	private int ID;
@@ -48,9 +50,12 @@ public class Episode extends Media{
 	public void setSynopsis(Synopsis synopsis) {
 		Synopsis = synopsis;
 	}
-	public File getVideo() {
-		return video;
-	}
+	public File getVideo() throws SQLException, IOException {
+		if(this.video==null) {
+			this.setVideo(DAO.video.get(this.video_id));
+		}
+		return this.video;
+		}
 	public void setVideo(File video) {
 		this.video = video;
 	}
