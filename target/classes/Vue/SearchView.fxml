@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="574.0" prefWidth="776.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.SearchViewCntrl">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="499.0" prefWidth="694.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.SearchViewCntrl">
    <children>
       <Pane prefHeight="499.0" prefWidth="314.0">
          <children>
@@ -21,15 +21,15 @@
             </Label>
          </children>
       </Pane>
-      <TabPane layoutX="355.0" layoutY="46.0" prefHeight="485.0" prefWidth="390.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane layoutX="355.0" layoutY="46.0" prefHeight="356.0" prefWidth="314.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab text="Name">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="402.0" prefWidth="314.0">
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <FontAwesomeIconView glyphName="SEARCH" layoutX="72.0" layoutY="166.0" size="18" text="" wrappingWidth="16.0" />
-                        <TextField fx:id="searchname" layoutX="116.0" layoutY="145.0" prefHeight="30.0" prefWidth="204.0" />
-                        <Button layoutX="156.0" layoutY="208.0" mnemonicParsing="false" onAction="#SearchbyName" text="Search">
+                        <FontAwesomeIconView glyphName="SEARCH" layoutX="140.0" layoutY="102.0" size="18" text="" wrappingWidth="16.0" />
+                        <TextField fx:id="searchname" layoutX="65.0" layoutY="144.0" prefHeight="30.0" prefWidth="204.0" />
+                        <Button layoutX="109.0" layoutY="216.0" mnemonicParsing="false" onAction="#SearchbyName" text="Search">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -42,9 +42,9 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <FontAwesomeIconView glyphName="SEARCH" layoutX="84.0" layoutY="162.0" size="18" text="" wrappingWidth="16.0" />
-                        <TextField fx:id="searchActor" layoutX="132.0" layoutY="140.0" prefHeight="30.0" prefWidth="204.0" />
-                        <Button layoutX="156.0" layoutY="208.0" mnemonicParsing="false" onAction="#SearchbyActor" text="Search">
+                        <FontAwesomeIconView glyphName="SEARCH" layoutX="151.0" layoutY="95.0" size="18" text="" wrappingWidth="16.0" />
+                        <TextField fx:id="searchActor" layoutX="64.0" layoutY="138.0" prefHeight="30.0" prefWidth="204.0" />
+                        <Button layoutX="119.0" layoutY="206.0" mnemonicParsing="false" onAction="#SearchbyActor" text="Search">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -57,13 +57,13 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <FontAwesomeIconView glyphName="SEARCH" layoutX="81.0" layoutY="170.0" size="18" text="" wrappingWidth="16.0" />
-                        <Button layoutX="170.0" layoutY="218.0" mnemonicParsing="false" onAction="#SearchbyProducer" text="Search">
+                        <FontAwesomeIconView glyphName="SEARCH" layoutX="146.0" layoutY="98.0" size="18" text="" wrappingWidth="16.0" />
+                        <Button layoutX="131.0" layoutY="223.0" mnemonicParsing="false" onAction="#SearchbyProducer" text="Search">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <TextField fx:id="searchProducer" layoutX="146.0" layoutY="148.0" prefHeight="30.0" prefWidth="204.0" />
+                        <TextField fx:id="searchProducer" layoutX="43.0" layoutY="150.0" prefHeight="30.0" prefWidth="204.0" />
                      </children>
                   </AnchorPane>
                </content>
@@ -72,9 +72,9 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TextField fx:id="searchGenre" layoutX="152.0" layoutY="147.0" prefHeight="30.0" prefWidth="204.0" />
-                        <FontAwesomeIconView glyphName="SEARCH" layoutX="86.0" layoutY="164.0" size="18" text="" wrappingWidth="16.0" />
-                        <Button layoutX="186.0" layoutY="221.0" mnemonicParsing="false" onAction="#SearchbyGenre" text="Search">
+                        <TextField fx:id="searchGenre" layoutX="56.0" layoutY="109.0" prefHeight="30.0" prefWidth="204.0" />
+                        <FontAwesomeIconView glyphName="SEARCH" layoutX="152.0" layoutY="84.0" size="18" text="" wrappingWidth="16.0" />
+                        <Button layoutX="129.0" layoutY="178.0" mnemonicParsing="false" onAction="#SearchbyGenre" text="Search">
                            <font>
                               <Font size="18.0" />
                            </font>
