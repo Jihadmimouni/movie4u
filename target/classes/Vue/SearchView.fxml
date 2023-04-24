@@ -3,34 +3,87 @@
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="499.0" prefWidth="694.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.SearchViewCntrl">
    <children>
       <Pane prefHeight="499.0" prefWidth="314.0">
          <children>
-            <Label layoutX="65.0" layoutY="71.0" prefHeight="30.0" prefWidth="184.0" text="What u looking for ?">
+            <Label layoutX="56.0" layoutY="158.0" text="Search By ?">
                <font>
-                  <Font name="Bell MT Bold" size="20.0" />
-               </font>
-            </Label>
-            <Label layoutX="15.0" layoutY="165.0" text=" write actor or film or serie or ur genre">
-               <font>
-                  <Font name="Calibri" size="18.0" />
+                  <Font name="Bell MT Bold" size="40.0" />
                </font>
             </Label>
          </children>
       </Pane>
-      <TextField fx:id="searchbar" layoutX="434.0" layoutY="155.0" prefHeight="30.0" prefWidth="204.0" />
-      <FontAwesomeIconView glyphName="SEARCH" layoutX="377.0" layoutY="176.0" size="18" wrappingWidth="16.0" />
-      <Button layoutX="482.0" layoutY="250.0" mnemonicParsing="false" onAction="#Search" text="Search">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Button>
+      <TabPane layoutX="355.0" layoutY="46.0" prefHeight="356.0" prefWidth="314.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Name">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <FontAwesomeIconView glyphName="SEARCH" layoutX="140.0" layoutY="102.0" size="18" text="" wrappingWidth="16.0" />
+                        <TextField fx:id="searchname" layoutX="65.0" layoutY="144.0" prefHeight="30.0" prefWidth="204.0" />
+                        <Button layoutX="109.0" layoutY="216.0" mnemonicParsing="false" onAction="#SearchbyName" text="Search">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Actor">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <FontAwesomeIconView glyphName="SEARCH" layoutX="151.0" layoutY="95.0" size="18" text="" wrappingWidth="16.0" />
+                        <TextField fx:id="searchActor" layoutX="64.0" layoutY="138.0" prefHeight="30.0" prefWidth="204.0" />
+                        <Button layoutX="119.0" layoutY="206.0" mnemonicParsing="false" onAction="#SearchbyActor" text="Search">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+            <Tab text="Producer">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <FontAwesomeIconView glyphName="SEARCH" layoutX="146.0" layoutY="98.0" size="18" text="" wrappingWidth="16.0" />
+                        <Button layoutX="131.0" layoutY="223.0" mnemonicParsing="false" onAction="#SearchbyProducer" text="Search">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                        <TextField fx:id="searchProducer" layoutX="43.0" layoutY="150.0" prefHeight="30.0" prefWidth="204.0" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="Genre">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextField fx:id="searchGenre" layoutX="56.0" layoutY="109.0" prefHeight="30.0" prefWidth="204.0" />
+                        <FontAwesomeIconView glyphName="SEARCH" layoutX="152.0" layoutY="84.0" size="18" text="" wrappingWidth="16.0" />
+                        <Button layoutX="129.0" layoutY="178.0" mnemonicParsing="false" onAction="#SearchbyGenre" text="Search">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
    </children>
 </AnchorPane>

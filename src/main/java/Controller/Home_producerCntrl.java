@@ -87,6 +87,7 @@ public class Home_producerCntrl implements Initializable {
 
 	    @FXML
 	    void quit(ActionEvent event) {
+	    	System.exit(0);
 
 	    }
 
