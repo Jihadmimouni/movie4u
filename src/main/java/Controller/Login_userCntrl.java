@@ -59,7 +59,7 @@ public class Login_userCntrl implements Initializable {
 				userCntrl.welcome(user.getName(), user.getImage());
 				Stage s=new Stage();
 				s.setScene(scene);
-				s.setTitle("CREATE ACCOUNT");
+				s.setTitle("HOME");
 				s.show();       
 	    		
 	    	}
