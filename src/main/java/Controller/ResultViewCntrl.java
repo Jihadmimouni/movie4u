@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 
@@ -47,6 +48,12 @@ import javafx.scene.image.ImageView;
 
 	    @FXML
 	    private TableColumn<?, ?> serieGenreColomn;
+	    
+	    @FXML
+	    private TableView<?> tableFilm;
+
+	    @FXML
+	    private TableView<?> tableSerie;
 
 	    @FXML
 	    void watch(ActionEvent event) {
@@ -56,6 +63,12 @@ import javafx.scene.image.ImageView;
 		@Override
 		public void initialize(URL location, ResourceBundle resources) {
 			// TODO Auto-generated method stub
+			
+		}
+		void DisplayINFO_film(){
+			
+		}
+		void DisplayINFO_Serie() {
 			
 		}
 

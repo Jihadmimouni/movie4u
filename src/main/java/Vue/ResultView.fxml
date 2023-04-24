@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="510.0" prefWidth="758.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ResultViewCntrl">
    <children>
       <Label layoutX="144.0" layoutY="14.0" text="Result Search" textFill="#a43b3b">
@@ -18,14 +17,14 @@
             <Font name="System Bold" size="22.0" />
          </font>
       </Label>
-      <TableView layoutX="14.0" layoutY="55.0" prefHeight="200.0" prefWidth="400.0">
+      <TableView fx:id="tableFilm" layoutX="14.0" layoutY="55.0" prefHeight="200.0" prefWidth="400.0">
         <columns>
           <TableColumn fx:id="filmColomn" prefWidth="140.80002117156982" text="Film" />
           <TableColumn fx:id="actorFilmColomn" prefWidth="159.9999542236328" text="Actors" />
             <TableColumn fx:id="fimGenreColomn" prefWidth="99.199951171875" text="Genre" />
         </columns>
       </TableView>
-      <TableView layoutX="14.0" layoutY="279.0" prefHeight="200.0" prefWidth="400.0">
+      <TableView fx:id="tableSerie" layoutX="14.0" layoutY="279.0" prefHeight="200.0" prefWidth="400.0">
         <columns>
           <TableColumn fx:id="serieColomn" prefWidth="141.6000394821167" text="Serie" />
           <TableColumn fx:id="actorSerieColomn" prefWidth="160.7999725341797" text="Actors" />

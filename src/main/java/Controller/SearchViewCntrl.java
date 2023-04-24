@@ -20,7 +20,7 @@ public class SearchViewCntrl {
 
     @FXML
     void SearchbyActor(ActionEvent event) {
-
+            
     }
 
     @FXML
