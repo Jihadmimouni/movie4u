@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="563.0" prefWidth="698.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Home_actorCntrl">
+   <children>
+      <AnchorPane layoutX="12.0" layoutY="11.0" prefHeight="540.0" prefWidth="673.0">
+         <children>
+            <MenuBar layoutX="27.0" layoutY="56.0" prefHeight="25.0" prefWidth="519.0">
+              <menus>
+                <Menu mnemonicParsing="false" text="Account">
+                  <items>
+                    <MenuItem mnemonicParsing="false" onAction="#update" text="Update" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Comments">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Serie" />
+                        <MenuItem mnemonicParsing="false" text="Season" />
+                        <MenuItem mnemonicParsing="false" text="Episode" />
+                        <MenuItem mnemonicParsing="false" text="Film" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Quit">
+                  <items>
+                    <MenuItem mnemonicParsing="false" onAction="#quit" text="Quit" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+            <Label fx:id="username" layoutX="543.0" layoutY="22.0" prefHeight="17.0" prefWidth="61.0" />
+            <Label fx:id="L1" layoutX="265.0" layoutY="384.0" prefHeight="17.0" prefWidth="45.0" text=" " />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

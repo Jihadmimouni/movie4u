@@ -67,9 +67,7 @@ public class Update_producerCntrl implements Initializable {
     	email.setText(v);
     	
     }
-    public void path_image(String v) {
-    	path_image.setText(v);
-    }
+   
     
     public void password(String v) {
     	password.setText(v);
