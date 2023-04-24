@@ -28,8 +28,7 @@ import javafx.stage.Stage;
 
 
 public class Login_producerCntrl implements Initializable {
-	 @FXML
-	    private ImageView m;
+	 
 
 	  @FXML
 	    private TextField name;
@@ -103,12 +102,10 @@ public class Login_producerCntrl implements Initializable {
     	 
 
   }
-//Image a=new Image(getClass().getResourceAsStream("user.png"));
+ 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
-		
-	//	m.setImage(a);
+	 
 	}
 
 }
