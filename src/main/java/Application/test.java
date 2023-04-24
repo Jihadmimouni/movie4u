@@ -12,9 +12,9 @@ public class test extends Application {
 	public void start(Stage stage) throws Exception {
 		// TODO Auto-generated method stub
 		try {
-    	    Parent root = (  Parent)FXMLLoader.load(test.class.getResource("/Vue/User_profile.fxml"));
+    	     Parent root = (  Parent)FXMLLoader.load(test.class.getResource("/Vue/Home_User.fxml"));
     	// Parent root = (  Parent)FXMLLoader.load(test.class.getResource("/Vue/Media_player.fxml"));
-		 // Parent root = (  Parent)FXMLLoader.load(test.class.getResource("/Vue/Login_actor.fxml"));
+    			
     			
     			Scene scene = new Scene(root );
     			stage.setScene(scene); 

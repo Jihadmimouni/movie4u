@@ -69,6 +69,12 @@ public class Home_UserCntrl implements Initializable {
 		s.setTitle("CREATE ACCOUNT");
 		s.show();
     }
+    
+    @FXML
+    void news(ActionEvent event) {
+
+    }
+
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {

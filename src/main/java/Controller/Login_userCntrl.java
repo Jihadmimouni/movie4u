@@ -2,6 +2,7 @@ package Controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import Application.test;
@@ -39,18 +40,18 @@ public class Login_userCntrl implements Initializable {
 	    }
 
 	    @FXML
-	    void log_in(ActionEvent event) throws IOException {
+	    void log_in(ActionEvent event) throws IOException, SQLException {
 	    	System.out.println("Logging in ... ");
-	    	name.getText().toString();
-	    	password.getText().toString();
-	    	//if (UserDao.exists(name,password)) {
+	    	
+	    	
+	    if (DAO.User.check(name.getText().toString(),password.getText().toString())) {
 	    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vue/Home_User.fxml"));
 	    	Parent root = loader.load();
-//Parent root = (  Parent)FXMLLoader.load(test.class.getResource("/Vue/Home_User.fxml"));
+           //Parent root = (  Parent)FXMLLoader.load(test.class.getResource("/Vue/Home_User.fxml"));
 				Scene scene = new Scene(root );
 				
 				
-				Users user = new Users(UserDao.getuser(name,password));
+				Users user = DAO.User.get(name.getText().toString(),password.getText().toString());
 				
 				 Home_UserCntrl userCntrl = loader.getController();
 				userCntrl.user = user ;
@@ -61,16 +62,16 @@ public class Login_userCntrl implements Initializable {
 				s.setTitle("CREATE ACCOUNT");
 				s.show();       
 	    		
-	    //	}
+	    	}
 	    	
-	  //  	else {
+	   	else {
 	    		Alert al=new Alert(AlertType.ERROR);
 	    		al.setTitle("Erreur 404");
 	    		al.setContentText("incorrect password or username");
 	    		al.showAndWait();
 	    	}
 	    	
-	//    }
+	    }
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
