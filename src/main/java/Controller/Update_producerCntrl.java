@@ -1,17 +1,26 @@
 package Controller;
 
+import java.io.File;
 import java.net.URL;
+import java.sql.Date;
+import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
+import DAO.Producer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import movie4u.models.Producers;
 
 public class Update_producerCntrl implements Initializable {
-
+	@FXML
+ private TextField password;
+ public static	LocalDate date ;
+ public static File f ;
     @FXML
     private TextField name;  
 
@@ -21,13 +30,32 @@ public class Update_producerCntrl implements Initializable {
     @FXML
     private TextField path_image;
 
+    
     @FXML
-    private PasswordField password;
+    private DatePicker birthdate;
+
 
     
 
     @FXML
-    void update(ActionEvent event) {
+    void update(ActionEvent event) throws SQLException {
+    	
+    	
+    	if((path_image.getText().isEmpty()==true) || (birthdate.getValue().equals(date))) {
+    		Date bithdate=Date.valueOf(date);
+    		 Producers o =new Producers(name.getText(),email.getText(),password.getText(),bithdate,f);
+    		 Producer.update(o);
+    	 
+    	}
+    	else {
+    		 File f1=new File(path_image.getText());
+    		 Date bithdate=Date.valueOf(birthdate.getValue());
+    		 Producers o =new Producers(name.getText(),email.getText(),password.getText(),bithdate,f1);
+    		 Producer.update(o);
+    		
+    	}
+    	
+    	
 
     }
     public void name(String v) {
@@ -45,8 +73,9 @@ public class Update_producerCntrl implements Initializable {
     
     public void password(String v) {
     	password.setText(v);
-    	System.out.println("pssstt");
+    	 
     }
+     
     
     
 	@Override
