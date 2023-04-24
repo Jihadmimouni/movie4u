@@ -1,11 +1,12 @@
 package DAO;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Synopsis {
-	public static movie4u.models.Synopsis get(int id) throws SQLException {
+	public static movie4u.models.Synopsis get(int id) throws SQLException, IOException {
 		 Connection con = Cnx.getInstance();
 		java.sql.Statement cstmt = con.createStatement();
 		ResultSet rs = cstmt.executeQuery("select movie4u.get_synopsis('"+id+"') from dual");
@@ -14,4 +15,4 @@ public class Synopsis {
 		}
 
 	}
-}
+
