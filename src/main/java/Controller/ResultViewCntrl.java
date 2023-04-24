@@ -50,7 +50,7 @@ import javafx.scene.image.ImageView;
 
 	    @FXML
 	    void watch(ActionEvent event) {
-
+                  
 	    }
 
 		@Override
@@ -58,6 +58,19 @@ import javafx.scene.image.ImageView;
 			// TODO Auto-generated method stub
 			
 		}
+		
+	void	displayResultName(String name){
+			
+		}
+	void	displayResultActor(String Actor){
+		
+	}
+	void	displayResultProducer(String Producer){
+		
+	}
+	void	displayResultGenre(String Genre){
+		
+	}
 
 	}
 

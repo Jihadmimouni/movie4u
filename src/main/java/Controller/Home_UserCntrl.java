@@ -1,6 +1,6 @@
 package Controller;
 
-import java.awt.Button;
+
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -14,6 +14,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -66,7 +67,7 @@ public class Home_UserCntrl implements Initializable {
 		 
 		Scene scene = new Scene(root );
 		s.setScene(scene);
-		s.setTitle("CREATE ACCOUNT");
+		s.setTitle("SEARCH");
 		s.show();
     }
     
