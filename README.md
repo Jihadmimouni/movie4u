@@ -20,12 +20,13 @@ As a user, you can rate and comment on series, seasons, and episodes, and receiv
 
 ## Installation
 
-To run the application, you need a Java IDE such as Eclipse or IntelliJ. You can download the source code of the database from the following [link](https://github.com/Jihadmimouni/data-base-movie4u).
+To run the application, you need a Java IDE such as Eclipse or IntelliJ. You can download the source code from the following [link](https://github.com/Jihadmimouni/data-base-movie4u).
 
 After downloading the source code, import the project into your IDE and run the `movie4u/src/main/java/Application/test.java` file to launch the application.
 
-For more information, please refer to the [documentation](doc) and the [UML diagram](uml) (generated using UML Lab Modeling IDE 1.32.0 extension on Eclipse).
+Remember to change the database link in the file at `movie4u/src/main/java/DAO/Cnx.java`.
 
+For more information, please refer to the [documentation](doc) and the [UML diagram](uml) (generated using UML Lab Modeling IDE 1.32.0 extension on Eclipse).
 ## Usage
 
 After launching the application, you can start adding new series, seasons, episodes, and actors to the database. You can also rate and comment on series, seasons, and episodes, and receive notifications when a new episode is released.
