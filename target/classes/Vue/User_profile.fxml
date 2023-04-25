@@ -16,7 +16,7 @@
    <children>
       <ImageView fx:id="image" fitHeight="150.0" fitWidth="200.0" layoutX="142.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
       <Button fx:id="editBtn" layoutX="155.0" layoutY="516.0" mnemonicParsing="false" onAction="#Edit" prefHeight="26.0" prefWidth="174.0" text="Edit" />
-      <TableView layoutX="12.0" layoutY="184.0" prefHeight="44.0" prefWidth="477.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
+      <TableView fx:id="tableinfo" layoutX="12.0" layoutY="184.0" prefHeight="44.0" prefWidth="477.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
         <columns>
           <TableColumn fx:id="nameColomn" prefWidth="99.99999809265137" text="name" />
           <TableColumn fx:id="emailColomn" prefWidth="120.79999542236328" text="email" />

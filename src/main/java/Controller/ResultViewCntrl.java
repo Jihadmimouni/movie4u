@@ -1,6 +1,7 @@
 package Controller;
 
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -14,6 +15,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import movie4u.models.Films;
@@ -62,18 +64,16 @@ import movie4u.models.Series;
 	    @FXML
 	    private TableView<Media> tableSerie;
 	    
-	    private ObservableList<Media> MediaList ;
+	    
 
 	    @FXML
 	    void watch(ActionEvent event) {
-
+                      
 	    }
 	  
 
 		
-		void DisplayINFO_film(String categorie) throws SQLException{
-			MediaList = (ObservableList<Media>) DAO.Media.get(1);
-			
+		void DisplayINFO_film(ObservableList<Media> MediaList) throws SQLException, IOException{		
 			MediaList.stream()
 	                 .filter(Films.class::isInstance)
 	                 .forEach(film -> {
@@ -84,34 +84,48 @@ import movie4u.models.Series;
 	         });
 			
 		}
-		void DisplayINFO_Serie(String categorie) throws SQLException {
-			MediaList = (ObservableList<Media>) DAO.Media.get(1);
+		void DisplayINFO_Serie(ObservableList<Media> MediaList) throws SQLException, IOException {
 			MediaList.stream()
-            .filter(Series.class::isInstance)
-            .forEach(serie -> {
-            	serieColomn.setCellValueFactory(new PropertyValueFactory<>("Serie"));
-            	actorSerieColomn.setCellValueFactory(new PropertyValueFactory<>("Actors"));
-            	serieGenreColomn.setCellValueFactory(new PropertyValueFactory<>("Genre"));
-            	tableSerie.getItems().add(serie);
+                    .filter(Series.class::isInstance)
+                     .forEach(serie -> {
+            	         serieColomn.setCellValueFactory(new PropertyValueFactory<>("Serie"));
+                       	actorSerieColomn.setCellValueFactory(new PropertyValueFactory<>("Actors"));
+            	      serieGenreColomn.setCellValueFactory(new PropertyValueFactory<>("Genre"));
+            	      tableSerie.getItems().add(serie);
     });
 			
 		}
 		//belehi choufou hedhiiiiiiii !!!!!!!!
 		 @FXML
 		    void selectFilm(MouseEvent event) {
-                   Media mediaDATA = (Films) tableFilm.getSelectionModel().getSelectedItem(); 
+                  Films mediaDATA = (Films) tableFilm.getSelectionModel().getSelectedItem(); 
                    
                    int num = tableFilm.getSelectionModel().getSelectedIndex();
                    if(num<0) return ;
                    
                    mediaNametxt.setText(mediaDATA.getName());
-                   Datetxt.setText(mediaDATA.get);
+                   Genretxt.setText(mediaDATA.getGenre().toString());
                    
+                   Image img = new Image(mediaDATA.getImage().toString());
+                   mediaImage.setImage(img);
+                   durationtxt.setText(String.valueOf(mediaDATA.getCountry()));
+                   Datetxt.setText(String.valueOf(mediaDATA.getYear()));
 		    }
 
 		    @FXML
 		    void selectSerie(MouseEvent event) {
-
+		    	 Series mediaDATA = (Series) tableSerie.getSelectionModel().getSelectedItem(); 
+                 
+                 int num = tableFilm.getSelectionModel().getSelectedIndex();
+                 if(num<0) return ;
+                 
+                 mediaNametxt.setText(mediaDATA.getName());
+                 Genretxt.setText(mediaDATA.getGenre().toString());
+                 
+                 Image img = new Image(mediaDATA.getImage().toString());
+                 mediaImage.setImage(img);
+                 durationtxt.setText(String.valueOf(mediaDATA.getCountry()));
+                 Datetxt.setText(String.valueOf(mediaDATA.getYear()));
 		    }
 		    @Override
 			public void initialize(URL location, ResourceBundle resources) {
