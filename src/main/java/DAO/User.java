@@ -4,6 +4,10 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import movie4u.models.Comments;
 import movie4u.models.Users;
 
 public class User {
@@ -67,8 +71,27 @@ public class User {
 	}
 	
 	
+	public static void add_comment(int user_id,int media_id,Comments comments) throws SQLException {
+		Connection con = Cnx.getInstance();
+		java.sql.Statement cstmt = con.createStatement();
+		for(String comment :comments.getComments()) 	
+			cstmt.executeQuery("select movie4u.update_user('"+user_id+"','"+media_id+"','"+comment+"') from dual");
 	
-	
+	}
+	public static Comments get_comments(int user_id,int media_id) throws SQLException {
+		Connection con = Cnx.getInstance();
+		java.sql.Statement cstmt = con.createStatement();
+		List<String> l=new ArrayList<String>();
+		ResultSet rs = cstmt.executeQuery("select movie4u.get_comment( '"+user_id+"','"+media_id+"' ) from dual");
+		rs.next();
+		rs = (ResultSet) rs.getObject(1);
+		while (rs.next())
+			l.add(rs.getString("COMMENTS"));
+		cstmt = con.createStatement();
+		rs = cstmt.executeQuery("select movie4u.get_media_name_id ('"+media_id+"' ) from dual");
+		rs.next();
+		return new Comments(l,rs.getString("NAME"));
+	}
 	
 	
 	

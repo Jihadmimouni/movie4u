@@ -22,6 +22,10 @@ public class Comments {
 		public void setMediaName(String mediaName) {
 			this.mediaName = mediaName;
 		}
+
+		public List<String> getComments() {
+			return comments;
+		}
 		
 		
 		
