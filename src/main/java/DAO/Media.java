@@ -105,6 +105,23 @@ public class Media {
 		return l;
 	}
 	
+	public static List<movie4u.models.Media> get_bygenre(String genre) throws SQLException, IOException{
+		List<movie4u.models.Media> l= new ArrayList<movie4u.models.Media>();
+		Connection con=Cnx.getInstance();
+		java.sql.Statement cstmt = con.createStatement();
+		ResultSet ls = cstmt.executeQuery("select movie4u.get_serie_genre('"+Genre.get_id(new movie4u.models.Genre(genre))+"') from dual");
+		ls =(ResultSet) ls.getObject(1);
+		while(ls.next())
+			l.add(Serie.convert(ls));
+		cstmt = con.createStatement();
+		ls = cstmt.executeQuery("select movie4u.get_film_genre('"+Genre.get_id(new movie4u.models.Genre(genre))+"') from dual");
+		ls =(ResultSet) ls.getObject(1);
+		while(ls.next())	
+			l.add(Film.convert(ls));
+		
+		
+		return l;
+	}
 	
 	
 	
