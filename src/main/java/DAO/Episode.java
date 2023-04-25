@@ -2,6 +2,7 @@ package DAO;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -16,9 +17,16 @@ public class Episode {
 		return f;
 	}
 	public static void add(int season_id,movie4u.models.Episode f) throws SQLException {
-		Connection con = Cnx.getInstance();
-		java.sql.Statement cstmt = con.createStatement();
-		cstmt.executeQuery("select movie4u.add_episode('"+season_id+"'"+f.toString()+") from dual");
+		String sql="{call movie4u.add_episode('"+season_id+"'"+f.toString()+"')}";
+		Connection conn=Cnx.getInstance();
+	     
+    	PreparedStatement ps ;
+    	try {
+			ps=conn.prepareCall(sql);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("error here");
+		}
 	}
 	
 	

@@ -10,6 +10,7 @@ public class Synopsis {
 		 Connection con = Cnx.getInstance();
 		java.sql.Statement cstmt = con.createStatement();
 		ResultSet rs = cstmt.executeQuery("select movie4u.get_synopsis('"+id+"') from dual");
+		rs.next();
 		rs = (ResultSet) rs.getObject(1);
 		return new movie4u.models.Synopsis(video.get(rs.getInt("VIDEO_ID")), rs.getString("TEXT"), rs.getString("isText")=="TRUE");
 		}

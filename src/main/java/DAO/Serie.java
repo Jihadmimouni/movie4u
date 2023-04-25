@@ -2,6 +2,7 @@ package DAO;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -20,15 +21,23 @@ public class Serie {
 		return f;
 	}
 	public static void add(Series f) throws SQLException {
-		Connection con = Cnx.getInstance();
-		java.sql.Statement cstmt = con.createStatement();
-		cstmt.executeQuery("select movie4u.add_serie("+f.toString()+") from dual");
+		String sql="{call movie4u.add_serie("+f.toString()+"')}";
+		Connection conn=Cnx.getInstance();
+	     
+    	PreparedStatement ps ;
+    	try {
+			ps=conn.prepareCall(sql);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("error here");
+		}
 	}
 	public static List<movie4u.models.Season> get_seasons(int id_serie) throws SQLException, IOException{
 		List<movie4u.models.Season> l=new ArrayList<movie4u.models.Season>();
 		Connection con = Cnx.getInstance();
 		java.sql.Statement cstmt = con.createStatement();
 		ResultSet rs = cstmt.executeQuery("select movie4u.get_season('"+id_serie+"') from dual");
+		rs.next();
 		rs = (ResultSet) rs.getObject(1);
 		while (rs.next())
 			l.add(Season.convert(rs));

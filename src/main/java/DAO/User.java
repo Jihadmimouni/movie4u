@@ -2,12 +2,14 @@ package DAO;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 import movie4u.models.Comments;
+import movie4u.models.Rating;
 import movie4u.models.Users;
 
 public class User {
@@ -15,6 +17,7 @@ public class User {
 		Connection con = Cnx.getInstance();
 		java.sql.Statement cstmt = con.createStatement();
 		ResultSet rs = cstmt.executeQuery("select movie4u.check_user('" + username + "','" + password + "') from dual");
+		rs.next();
 		if (rs.getInt(1) != 1)
 			return false;
 		return true;
@@ -51,32 +54,58 @@ public class User {
 	 * @throws SQLException
 	 */
 	public static void delete(String name) throws SQLException {
-		Connection con = Cnx.getInstance();
-		java.sql.Statement cstmt = con.createStatement();
-		cstmt.executeQuery("select movie4u.DELETE_USER('"+name+"') from dual");
+		Connection conn=Cnx.getInstance();
+    	String sql="{call movie4u.select movie4u.DELETE_USER('"+name+"')}";
+    	PreparedStatement ps ;
+    	try {
+			ps=conn.prepareCall(sql);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("error here");
+		}
 		System.exit(0);
 		
 	}
 	
 	public static void insert(Users user) throws SQLException {
-		Connection con = Cnx.getInstance();
-		java.sql.Statement cstmt = con.createStatement();
-		cstmt.executeQuery("select movie4u.insert_user("+user.toString()+") from dual");
+		Connection conn=Cnx.getInstance();
+	     
+    	String sql="{call movie4u.insert_user("+user.toString()+")}";
+    	PreparedStatement ps ;
+    	try {
+			ps=conn.prepareCall(sql);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("error here");
+		}
 	}
 	
 	public static void update(Users user) throws SQLException {
-		Connection con = Cnx.getInstance();
-		java.sql.Statement cstmt = con.createStatement();
-		cstmt.executeQuery("select movie4u.update_user('"+user.getID()+"'"+user.toString()+") from dual");
+		Connection conn=Cnx.getInstance();
+	     
+    	String sql="{call movie4u.update_user('"+user.getID()+"'"+user.toString()+")}";
+    	PreparedStatement ps ;
+    	try {
+			ps=conn.prepareCall(sql);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("error here");
+		}
 	}
 	
 	
 	public static void add_comment(int user_id,int media_id,Comments comments) throws SQLException {
-		Connection con = Cnx.getInstance();
-		java.sql.Statement cstmt = con.createStatement();
-		for(String comment :comments.getComments()) 	
-			cstmt.executeQuery("select movie4u.update_user('"+user_id+"','"+media_id+"','"+comment+"') from dual");
-	
+		Connection conn=Cnx.getInstance();
+		for(String comment :comments.getComments()) {
+    	String sql="{call movie4u.update_user('"+user_id+"','"+media_id+"','"+comment+"')}";
+    	PreparedStatement ps ;
+    	try {
+			ps=conn.prepareCall(sql);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("error here");
+		}
+		}
 	}
 	public static Comments get_comments(int user_id,int media_id) throws SQLException {
 		Connection con = Cnx.getInstance();
@@ -93,7 +122,18 @@ public class User {
 		return new Comments(l,rs.getString("NAME"));
 	}
 	
-	
+	public static void add_rating(int user_id,int media_id,Rating rate) throws SQLException {
+		Connection conn=Cnx.getInstance();
+	     
+    	String sql="{call movie4u.add_rating('"+user_id+"','"+media_id+"','"+rate.getScore()+"')}";
+    	PreparedStatement ps ;
+    	try {
+			ps=conn.prepareCall(sql);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("error here");
+		}
+	}
 	
 	
 }

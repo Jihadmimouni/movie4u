@@ -13,6 +13,7 @@ public class Media {
 	Connection con = Cnx.getInstance();
 	java.sql.Statement cstmt = con.createStatement();
 	ResultSet rs = cstmt.executeQuery("select movie4u.get_media_id('"+id+"') from dual");
+	rs.next();
 	rs = (ResultSet) rs.getObject(1);
 	return rs;
 	}
@@ -21,17 +22,20 @@ public class Media {
 		Connection con = Cnx.getInstance();
 		java.sql.Statement cstmt = con.createStatement();
 		ResultSet rs = cstmt.executeQuery("select movie4u.get_media_name('"+name+"') from dual");
+		rs.next();
 		rs = (ResultSet) rs.getObject(1);
 		while (rs.next()) {
 			if (rs.getString("TYPE")=="SERIE") {
 				cstmt = con.createStatement();
 				ResultSet ls = cstmt.executeQuery("select movie4u.get_serie('"+rs.getInt("id")+"') from dual");
+				ls.next();
 				ls =(ResultSet) ls.getObject(1);
 				l.add(Serie.convert(ls));
 			}
 			else if (rs.getString("TYPE")=="FILM") {
 				cstmt = con.createStatement();
 				ResultSet ls = cstmt.executeQuery("select movie4u.get_FILM('"+rs.getInt("id")+"') from dual");
+				ls.next();
 				ls =(ResultSet) ls.getObject(1);
 				l.add(Film.convert(ls));
 			}
@@ -49,22 +53,26 @@ public class Media {
 		Connection con = Cnx.getInstance();
 		java.sql.Statement cstmt = con.createStatement();
 		ResultSet ks = cstmt.executeQuery("select movie4u.get_media_actor('"+name+"') from dual");
+		ks.next();
 		ks = (ResultSet) ks.getObject(1);
 		
 		while (ks.next()){
 			cstmt = con.createStatement();
 			ResultSet rs = cstmt.executeQuery("select movie4u.get_media_id('"+ks.getInt("MEDIA_ID")+"') from dual");
+			rs.next();
 			rs = (ResultSet) ks.getObject(1);
 		while (rs.next()) {
 			if (rs.getString("TYPE")=="SERIE") {
 				cstmt = con.createStatement();
 				ResultSet ls = cstmt.executeQuery("select movie4u.get_serie('"+rs.getInt("ID")+"') from dual");
+				ls.next();
 				ls =(ResultSet) ls.getObject(1);
 				l.add(Serie.convert(ls));
 			}
 			else if (rs.getString("TYPE")=="FILM") {
 				cstmt = con.createStatement();
 				ResultSet ls = cstmt.executeQuery("select movie4u.get_FILM('"+rs.getInt("id")+"') from dual");
+				ls.next();
 				ls =(ResultSet) ls.getObject(1);
 				l.add(Film.convert(ls));
 			}
@@ -82,17 +90,20 @@ public class Media {
 		Connection con = Cnx.getInstance();
 		java.sql.Statement cstmt = con.createStatement();
 		ResultSet rs = cstmt.executeQuery("select movie4u.get_media_producer('"+name+"') from dual");
+		rs.next();
 		rs = (ResultSet) rs.getObject(1);
 		while (rs.next()) {
 			if (rs.getString("TYPE")=="SERIE") {
 				cstmt = con.createStatement();
 				ResultSet ls = cstmt.executeQuery("select movie4u.get_serie('"+rs.getInt("id")+"') from dual");
+				ls.next();
 				ls =(ResultSet) ls.getObject(1);
 				l.add(Serie.convert(ls));
 			}
 			else if (rs.getString("TYPE")=="FILM") {
 				cstmt = con.createStatement();
 				ResultSet ls = cstmt.executeQuery("select movie4u.get_FILM('"+rs.getInt("id")+"') from dual");
+				ls.next();
 				ls =(ResultSet) ls.getObject(1);
 				l.add(Film.convert(ls));
 			}
@@ -110,11 +121,13 @@ public class Media {
 		Connection con=Cnx.getInstance();
 		java.sql.Statement cstmt = con.createStatement();
 		ResultSet ls = cstmt.executeQuery("select movie4u.get_serie_genre('"+Genre.get_id(new movie4u.models.Genre(genre))+"') from dual");
+		ls.next();
 		ls =(ResultSet) ls.getObject(1);
 		while(ls.next())
 			l.add(Serie.convert(ls));
 		cstmt = con.createStatement();
 		ls = cstmt.executeQuery("select movie4u.get_film_genre('"+Genre.get_id(new movie4u.models.Genre(genre))+"') from dual");
+		ls.next();
 		ls =(ResultSet) ls.getObject(1);
 		while(ls.next())	
 			l.add(Film.convert(ls));

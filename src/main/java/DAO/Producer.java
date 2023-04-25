@@ -2,6 +2,7 @@ package DAO;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -12,6 +13,7 @@ public class Producer {
 		Connection con = Cnx.getInstance();
 		java.sql.Statement cstmt = con.createStatement();
 		ResultSet rs = cstmt.executeQuery("select movie4u.check_producer('" + username + "','" + password + "') from dual");
+		rs.next();
 		if (rs.getInt(1) != 1)
 			return false;
 		return true;
@@ -48,21 +50,43 @@ public class Producer {
 	 * @throws SQLException
 	 */
 	public static void delete(String name) throws SQLException {
-		Connection con = Cnx.getInstance();
-		java.sql.Statement cstmt = con.createStatement();
-		cstmt.executeQuery("select movie4u.DELETE_producer('"+name+"') from dual");
+		String sql="{call movie4u.DELETE_producer('"+name+"')}";
+		Connection conn=Cnx.getInstance();
+	     
+    	PreparedStatement ps ;
+    	try {
+			ps=conn.prepareCall(sql);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("error here");
+		}
 		System.exit(0);
 		
 	}
 	public static void insert(Producers user) throws SQLException {
-		Connection con = Cnx.getInstance();
-		java.sql.Statement cstmt = con.createStatement();
-		cstmt.executeQuery("select movie4u.add_producer("+user.toString()+") from dual");
+		String sql="{call movie4u.add_producer('"+user.toString()+"')}";
+		Connection conn=Cnx.getInstance();
+	     
+    	PreparedStatement ps ;
+    	try {
+			ps=conn.prepareCall(sql);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("error here");
+		}
+	
 	}
 	public static void update(Producers user) throws SQLException {
-		Connection con = Cnx.getInstance();
-		java.sql.Statement cstmt = con.createStatement();
-		cstmt.executeQuery("select movie4u.update_producer('"+user.getID()+"'"+user.toString()+") from dual");
+		String sql="{call movie4u.update_producer('"+user.getID()+"'"+user.toString()+"')}";
+		Connection conn=Cnx.getInstance();
+	     
+    	PreparedStatement ps ;
+    	try {
+			ps=conn.prepareCall(sql);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("error here");
+		}
 	}	
 	
 	

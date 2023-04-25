@@ -9,6 +9,7 @@ public class Admin {
 	 Connection con = Cnx.getInstance();
 		java.sql.Statement cstmt = con.createStatement();
 		ResultSet rs = cstmt.executeQuery("select movie4u.check_admin('"+id+"') from dual");
+		rs.next();
 		if (rs.getInt(1) != 1)
 			return false;
 		return true;

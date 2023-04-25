@@ -11,6 +11,7 @@ public class video {
 		 Connection con = Cnx.getInstance();
 		 java.sql.Statement cstmt = con.createStatement();
 		 ResultSet rs = cstmt.executeQuery("select movie4u.get_video('"+id+"') from dual");
+		 rs.next();
 		 rs = (ResultSet) rs.getObject(1);
 		 return Convert.toFile(rs.getBlob("video"));
 	}
