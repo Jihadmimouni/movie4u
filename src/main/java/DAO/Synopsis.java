@@ -11,7 +11,7 @@ public class Synopsis {
 		java.sql.Statement cstmt = con.createStatement();
 		ResultSet rs = cstmt.executeQuery("select movie4u.get_synopsis('"+id+"') from dual");
 		rs = (ResultSet) rs.getObject(1);
-		return new movie4u.models.Synopsis(video.get(rs.getInt("VIDEO_ID")), rs.getString("TEXT"), rs.getBoolean("isText"));
+		return new movie4u.models.Synopsis(video.get(rs.getInt("VIDEO_ID")), rs.getString("TEXT"), rs.getString("isText")=="TRUE");
 		}
 
 	}
