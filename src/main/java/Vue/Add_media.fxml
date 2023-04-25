@@ -32,7 +32,7 @@
                <font>
                   <Font name="System Bold" size="19.0" />
                </font></Label>
-            <MenuButton fx:id="type_media" layoutX="374.0" layoutY="490.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="59.0" styleClass="oranger" stylesheets="@../Application/STYLES2.css" text=" ">
+            <MenuButton fx:id="type_media" layoutX="374.0" layoutY="490.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="38.0" styleClass="oranger" stylesheets="@../Application/STYLES2.css" text=" ">
               <items>
                 <MenuItem mnemonicParsing="false" onAction="#Serie" text="Serie" />
                 <MenuItem mnemonicParsing="false" onAction="#Film" text="Film" />
