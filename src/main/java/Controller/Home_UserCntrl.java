@@ -5,9 +5,12 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import Application.test;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -54,7 +57,9 @@ public class Home_UserCntrl implements Initializable {
     	FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vue/User_profile.fxml"));
     	Parent root = loader.load();
     	User_profileCntrl Userprofile = loader.getController();
-    	Userprofile.displayINFO(user) ;
+    	List<Users> user1 = new ArrayList<Users>();
+    	user1.add(user);
+    	Userprofile.displayINFO((ObservableList<Users>) user1) ;
     }
 
     @FXML
