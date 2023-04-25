@@ -26,7 +26,7 @@ To run the application, you need a Java IDE such as Eclipse or IntelliJ. You can
 
 Once you have downloaded the source code, you can import the project into your IDE and run the `movie4u/src/main/java/Application/Movie4U.java`(if not there it means still on devolopment) file to launch the application.
 
-for the [doc](movie4u/doc/index.html)
+for the [doc](doc/index.html)
 
 ## Usage
 
