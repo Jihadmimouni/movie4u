@@ -1,5 +1,3 @@
-Sure, here's a suggested version of the markdown file:
-
 # Movie4U
 
 Movie4U is a Java application for managing TV series and movies. It allows you to keep track of your favorite TV shows and movies, their seasons, episodes, and actors. You can use the application as a producer, actor, or user.
