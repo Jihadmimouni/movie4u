@@ -34,7 +34,7 @@ After launching the application, you can start adding new series, seasons, episo
 
 This application was developed as a school project. We are open to contributions, suggestions, and feedback. Please feel free to submit a pull request or create an issue on GitHub.
 
-Contributors: [@Jihadmimouni](https://github.com/Jihadmimouni), [@RahmaKhlifi](https://github.com/RahmaKhlifi), [@jiji123stone](https://github.com/jiji123stone)
+Contributors: [@Jihadmimouni](https://github.com/Jihadmimouni), [@RahmaKhlifi](https://github.com/RahmaKhlifi), [@jiji123stone](https://github.com/jiji123stone) , [@mimo1254](https://github.com/mimo1254)
 
 ## Disclaimer
 
