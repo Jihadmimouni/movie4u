@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
 import movie4u.models.Series;
 
 public class Serie {
@@ -21,4 +24,17 @@ public class Serie {
 		java.sql.Statement cstmt = con.createStatement();
 		cstmt.executeQuery("select movie4u.add_serie("+f.toString()+") from dual");
 	}
+	public static List<movie4u.models.Season> get_seasons(int id_serie) throws SQLException, IOException{
+		List<movie4u.models.Season> l=new ArrayList<movie4u.models.Season>();
+		Connection con = Cnx.getInstance();
+		java.sql.Statement cstmt = con.createStatement();
+		ResultSet rs = cstmt.executeQuery("select movie4u.get_season('"+id_serie+"') from dual");
+		rs = (ResultSet) rs.getObject(1);
+		while (rs.next())
+			l.add(Season.convert(rs));
+		return l;
+	}
+	
+	
+	
 }
