@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
@@ -8,27 +9,27 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="563.0" prefWidth="500.0" styleClass="rougebordeaux" stylesheets="@../Application/stylesss.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Add_episodeCntrl">
+<AnchorPane prefHeight="563.0" prefWidth="500.0" styleClass="oranger" stylesheets="@../Application/STYLES2.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Add_episodeCntrl">
    <children>
-      <AnchorPane fx:id="ppps" layoutX="11.0" layoutY="10.0" prefHeight="541.0" prefWidth="478.0" styleClass="blanc" stylesheets="@../Application/stylesss.css">
+      <AnchorPane fx:id="ppps" layoutX="11.0" layoutY="10.0" prefHeight="541.0" prefWidth="478.0" styleClass="vert" stylesheets="@../Application/STYLES2.css">
          <children>
-            <Label layoutX="32.0" layoutY="92.0" text="Title:" textFill="#960b0b">
+            <Label layoutX="32.0" layoutY="92.0" text="Title:" textFill="#fee8b0">
                <font>
                   <Font name="System Bold" size="19.0" />
                </font></Label>
-            <Label layoutX="15.0" layoutY="138.0" prefHeight="28.0" prefWidth="181.0" text="Broadcasting Date:" textFill="#960b0b">
+            <Label layoutX="15.0" layoutY="138.0" prefHeight="28.0" prefWidth="181.0" text="Broadcasting Date:" textFill="#fee8b0">
                <font>
                   <Font name="System Bold" size="19.0" />
                </font></Label>
-            <Label layoutX="27.0" layoutY="193.0" text="Path video:" textFill="#900f0f">
+            <Label layoutX="27.0" layoutY="193.0" text="Path video:" textFill="#fee8b0">
                <font>
                   <Font name="System Bold" size="19.0" />
                </font></Label>
-            <Label layoutX="13.0" layoutY="243.0" text="Synopsis Text:" textFill="#971b1b">
+            <Label layoutX="13.0" layoutY="243.0" text="Synopsis Text:" textFill="#fee8b0">
                <font>
                   <Font name="System Bold" size="19.0" />
                </font></Label>
-            <Label layoutX="15.0" layoutY="392.0" text="path synopsis video:" textFill="#9a1515">
+            <Label layoutX="15.0" layoutY="392.0" text="path synopsis video:" textFill="#fee8b0">
                <font>
                   <Font name="System Bold" size="19.0" />
                </font></Label>
@@ -36,12 +37,16 @@
             <TextField fx:id="path_video" layoutX="216.0" layoutY="195.0" prefHeight="25.0" prefWidth="212.0" />
             <TextField fx:id="path_synopsis_video" layoutX="216.0" layoutY="393.0" prefHeight="25.0" prefWidth="212.0" />
             <TextArea fx:id="text" layoutX="216.0" layoutY="235.0" prefHeight="136.0" prefWidth="212.0" />
-            <Button layoutX="300.0" layoutY="461.0" mnemonicParsing="false" onAction="#save_episode" prefHeight="36.0" prefWidth="128.0" styleClass="vert" stylesheets="@../Application/stylesss.css" text=" SAVE EPISODE" textFill="WHITE">
+            <Button layoutX="300.0" layoutY="461.0" mnemonicParsing="false" onAction="#save_episode" prefHeight="36.0" prefWidth="128.0" stylesheets="@../Application/STYLES2.css" text=" SAVE EPISODE" textFill="#f97b22">
                <font>
                   <Font name="System Bold" size="15.0" />
-               </font></Button>
+               </font>
+               <styleClass>
+                  <String fx:value="vert" />
+                  <String fx:value="yellow" />
+               </styleClass></Button>
             <DatePicker fx:id="broadcast_date" layoutX="216.0" layoutY="140.0" prefHeight="25.0" prefWidth="212.0" />
-            <Label layoutX="167.0" layoutY="44.0" text="Add Episode" textFill="#720d0d">
+            <Label layoutX="167.0" layoutY="35.0" prefHeight="45.0" prefWidth="172.0" text="Add Episode" textFill="#fee8b0">
                <font>
                   <Font name="System Bold Italic" size="25.0" />
                </font>
