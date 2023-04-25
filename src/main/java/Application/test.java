@@ -12,7 +12,7 @@ public class test extends Application {
 	public void start(Stage stage) throws Exception {
 		// TODO Auto-generated method stub
 		try {
-    Parent root = (  Parent)FXMLLoader.load(test.class.getResource("/Vue/ResultView.fxml"));
+    Parent root = (  Parent)FXMLLoader.load(test.class.getResource("/Vue/Welcome.fxml"));
     	// Parent root = (  Parent)FXMLLoader.load(test.class.getResource("/Vue/Media_player.fxml"));
     			
     			

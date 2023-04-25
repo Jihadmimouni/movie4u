@@ -23,6 +23,8 @@
             <Button layoutX="303.0" layoutY="397.0" mnemonicParsing="false" onAction="#create" text="Create" />
             <PasswordField fx:id="imagefile" layoutX="167.0" layoutY="309.0" prefHeight="25.0" prefWidth="174.0" />
             <Label layoutX="54.0" layoutY="313.0" text="image Path" />
+            <Label fx:id="L1" layoutX="54.0" layoutY="423.0" prefHeight="18.0" prefWidth="60.0" text="Label" />
+            <Label fx:id="L2" layoutX="54.0" layoutY="447.0" prefHeight="18.0" prefWidth="51.0" text="Label" />
          </children>
       </AnchorPane>
    </children>

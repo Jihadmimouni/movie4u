@@ -13,6 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import movie4u.models.Users;
@@ -31,9 +32,20 @@ public class Create_account_userCntrl implements Initializable {
     private PasswordField password;
     @FXML
     private PasswordField imagefile;
+    @FXML
+    private Label L1;
+
+    @FXML
+    private Label L2;
+    
 
     @FXML
     void create(ActionEvent event) {
+   
+    	
+    	int length =password.getText().length();
+    	
+    	if( length>=8) {
     	int s = 0;
     	 LocalDate d1=date.getValue();
     	String nom=name.getText();
@@ -51,26 +63,29 @@ public class Create_account_userCntrl implements Initializable {
 			
 			e1.printStackTrace();
 		}
-    	if(s>0) {
+     	if(s>0) {
     		Alert al=new Alert(AlertType.INFORMATION);
-    		al.setTitle("add user !!");
+    		al.setTitle("add producer !!");
     		al.setHeaderText("Information !");
-    		al.setContentText("BIEN AJOUTE !!!!!");
+    		al.setContentText("Well Added !!!!!");
     		al.showAndWait();
-    		/*i.clear();
-    		n.clear();
-        	p.clear();
-        	d.setValue(null);
-        	niv.setValue(null);*/
+    		 
     		
     	}else {
     		Alert al=new Alert(AlertType.ERROR);
-    		al.setTitle("add user !!");
+    		al.setTitle("add producer !!");
     		al.setHeaderText("Information !");
-    		al.setContentText("NON  AJOUTE !!!!!");
+    		al.setContentText("NOT Added !!!!!");
     		al.showAndWait();
     		
     	}
+    		
+    	}
+    	if(length<8) {
+    		L2.setText("Length password must be more than 8 characters ");
+    		password.clear();
+    	}
+
 
     }
 	@Override
