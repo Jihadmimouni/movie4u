@@ -26,6 +26,8 @@ To run the application, you need a Java IDE such as Eclipse or IntelliJ. You can
 
 Once you have downloaded the source code, you can import the project into your IDE and run the `movie4u/src/main/java/Application/Movie4U.java`(if not there it means still on devolopment) file to launch the application.
 
+for the [doc](movie4u/doc/index.html)
+
 ## Usage
 
 After launching the application, you can start adding new series, seasons, episodes, and actors to the database. You can also rate and comment on series, seasons, and episodes, and receive notifications when a new episode is released.
