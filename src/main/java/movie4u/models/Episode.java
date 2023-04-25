@@ -36,6 +36,16 @@ public class Episode extends Media{
 		this.video =video;
 		this.numero = number;
 	}
+	
+	
+	public Episode(String name, int year, String language, String country, int producer_id, File image, String title, java.sql.Date date, Synopsis synoposis, File video) {
+		super(name, year, language, country, producer_id, image,new Genre(""));
+		this.title = title;
+		Date = date;
+		Synoposis = synoposis;
+		this.video = video;
+	}
+
 	public String getTitle() {
 		return title;
 	}

@@ -25,6 +25,21 @@ public class Media {
 
          }
 
+		
+
+
+		public Media(String name, int year, String language, String country, int producer_id, File image) {
+			super();
+			this.name = name;
+			this.year = year;
+			this.language = language;
+			this.country = country;
+			this.producer_id = producer_id;
+			this.image = image;
+		}
+
+
+
 		public Genre getGenre() {
 			return genre;
 		}
