@@ -18,6 +18,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import movie4u.models.Users;
 
@@ -33,6 +34,8 @@ public class Home_UserCntrl implements Initializable {
 
 	    @FXML
 	    private Label wlcmtxt;
+	    @FXML
+	    private AnchorPane homeuserform;
 
 
 
@@ -62,13 +65,18 @@ public class Home_UserCntrl implements Initializable {
     @FXML
     void search(ActionEvent event) throws IOException {
     	System.out.println("search ..");
-    	Stage s=new Stage();
-        Parent root = (  Parent)FXMLLoader.load(test.class.getResource("/Vue/SearchView.fxml"));
-		 
-		Scene scene = new Scene(root );
-		s.setScene(scene);
-		s.setTitle("SEARCH");
-		s.show();
+    	
+    	if(event.getSource()==searchbtn) {
+    	//	homeuserform.setVisible(false);
+    		Stage s=new Stage();
+            Parent root = (  Parent)FXMLLoader.load(test.class.getResource("/Vue/SearchView.fxml"));
+    		 
+    		Scene scene = new Scene(root );
+    		s.setScene(scene);
+    		s.setTitle("SEARCH");
+    		s.show();
+    	}
+    	
     }
     
     @FXML

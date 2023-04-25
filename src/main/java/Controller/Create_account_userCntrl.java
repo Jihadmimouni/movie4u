@@ -1,10 +1,12 @@
 package Controller;
 
+
+import java.io.File;
 import java.net.URL;
+import java.sql.Date;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
-
-import Connect.DAOUser;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -27,24 +29,28 @@ public class Create_account_userCntrl implements Initializable {
 
     @FXML
     private PasswordField password;
+    @FXML
+    private PasswordField imagefile;
 
     @FXML
     void create(ActionEvent event) {
-    	int s;
-    	LocalDate d1=date.getValue();
+    	int s = 0;
+    	 LocalDate d1=date.getValue();
     	String nom=name.getText();
     	String Email=email.getText();
-    	String date=d1.toString();
+    	Date d=Date.valueOf(d1);
         String mot_de_passe=password.getText();
+        File imageFile = new File(imagefile.getText().toString());
+    	Users e=new Users(nom,Email, mot_de_passe,d,imageFile);
     	
-    	Users e=new Users();
-    	e.setName(nom);
-    	e.setEmail(Email);
-    	e.setBirthdate(d1);
-    	e.setPassword(mot_de_passe);
     	 
     	
-     	s=DAOUser.save(e);
+     	try {
+			DAO.User.insert(e);
+		} catch (SQLException e1) {
+			
+			e1.printStackTrace();
+		}
     	if(s>0) {
     		Alert al=new Alert(AlertType.INFORMATION);
     		al.setTitle("add user !!");
