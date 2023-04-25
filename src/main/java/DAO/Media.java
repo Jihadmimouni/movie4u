@@ -16,7 +16,7 @@ public class Media {
 	rs = (ResultSet) rs.getObject(1);
 	return rs;
 	}
-	public static List<movie4u.models.Media> get_name(String name) throws SQLException, IOException{
+	public static List<movie4u.models.Media> get_byname(String name) throws SQLException, IOException{
 		List<movie4u.models.Media> l= new ArrayList<movie4u.models.Media>();
 		Connection con = Cnx.getInstance();
 		java.sql.Statement cstmt = con.createStatement();
@@ -44,7 +44,7 @@ public class Media {
 		return l;
 	}
 	
-	public static List<movie4u.models.Media> get_actor_name(String name) throws SQLException, IOException{
+	public static List<movie4u.models.Media> get_BYactor_name(String name) throws SQLException, IOException{
 		List<movie4u.models.Media> l= new ArrayList<movie4u.models.Media>();
 		Connection con = Cnx.getInstance();
 		java.sql.Statement cstmt = con.createStatement();
