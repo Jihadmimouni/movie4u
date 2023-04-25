@@ -70,8 +70,9 @@ public class User_profileCntrl implements Initializable {
 	}
 	
 	
-	void displayINFO( ObservableList<Users> Userinfo) {
-		 
+	  void displayINFO( Users user) {
+		 ObservableList<Users> Userinfo = null ;
+		   Userinfo.add(user);
 		   Userinfo.stream()
 		           .forEach(info ->{
 		        	   nameColomn.setCellValueFactory(new PropertyValueFactory<>("name"));

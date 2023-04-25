@@ -43,12 +43,13 @@ public class Media_playerCntrl implements Initializable  {
     private File file ;
     private MediaPlayer mediaPlayer;
     private Media media ;
+    
 
    
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {	
-		// Establish a database connection using JDBC
+	/*	// Establish a database connection using JDBC
 		Connection conn;
 		try {
 			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "c##projet", "projet1");
@@ -74,7 +75,8 @@ public class Media_playerCntrl implements Initializable  {
 			   // FileOutputStream os = new FileOutputStream("movie.mp4");
 			 //   os.read(s.getBytes());
 			    file = fonction(blob);
-			//    file.deleteOnExit();
+			//    file.deleteOnExit();*/
+		      //  file = 
 				media=new Media(file.toURI().toString());
 				mediaPlayer = new MediaPlayer(media);
 				mediaView.setMediaPlayer(mediaPlayer);
@@ -86,17 +88,17 @@ public class Media_playerCntrl implements Initializable  {
 			    is.close();
 			    os.flush();
 			    os.close();*/
-			}
+		//	}
 
 			// Close the database connection
-			conn.close();
+		//	conn.close();
 
 			
 			
-		} catch (SQLException | IOException e) {
+	/*	} catch (SQLException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
 
 		
 		
@@ -122,7 +124,11 @@ public class Media_playerCntrl implements Initializable  {
              
 	    }
 	    
-	    public static File fonction(Blob blob) throws SQLException, IOException {
+	 void   Setmedia() {
+		 
+	 }
+	    
+	/*    public static File fonction(Blob blob) throws SQLException, IOException {
 		    System.out.println("Read "+ blob.length() + " bytes ");
 		    byte [] array = blob.getBytes( 1, ( int ) blob.length() );
 		    File file = File.createTempFile("video", ".mp4", new File("."));
@@ -131,6 +137,6 @@ public class Media_playerCntrl implements Initializable  {
 		    out.close();
 		    file.deleteOnExit();
 		    return file;
-	}
+	}*/
 
 }

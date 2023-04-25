@@ -57,9 +57,9 @@ public class Home_UserCntrl implements Initializable {
     	FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vue/User_profile.fxml"));
     	Parent root = loader.load();
     	User_profileCntrl Userprofile = loader.getController();
-    	List<Users> user1 = new ArrayList<Users>();
-    	user1.add(user);
-    	Userprofile.displayINFO((ObservableList<Users>) user1) ;
+    	//List<Users> userprofile = new ArrayList<Users>();
+    	//userprofile.add(user);
+    	Userprofile.displayINFO(user) ;
     }
 
     @FXML
