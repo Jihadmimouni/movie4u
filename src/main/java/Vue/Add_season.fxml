@@ -6,24 +6,44 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Add_seasonCntrl">
+<AnchorPane prefHeight="579.0" prefWidth="500.0" styleClass="oranger" stylesheets="@../Application/STYLES2.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Add_seasonCntrl">
    <children>
-      <AnchorPane layoutX="14.0" layoutY="11.0" prefHeight="579.0" prefWidth="472.0">
+      <AnchorPane layoutX="14.0" layoutY="11.0" prefHeight="554.0" prefWidth="472.0" styleClass="vert">
          <children>
-            <Label layoutX="208.0" layoutY="42.0" text="ADD SEASON " />
-            <Label layoutX="56.0" layoutY="117.0" text="Numero:" />
-            <Label layoutX="57.0" layoutY="209.0" text="Start date:" />
-            <Label layoutX="56.0" layoutY="299.0" text="Path Synopsis:" />
-            <Label layoutX="56.0" layoutY="349.0" text="Synopsis Text :" />
-            <DatePicker fx:id="date_start" layoutX="182.0" layoutY="205.0" />
-            <TextField fx:id="numero" layoutX="182.0" layoutY="113.0" prefHeight="25.0" prefWidth="174.0" />
-            <TextField fx:id="path_video" layoutX="180.0" layoutY="295.0" prefHeight="25.0" prefWidth="174.0" />
-            <TextArea fx:id="text" layoutX="182.0" layoutY="349.0" prefHeight="125.0" prefWidth="174.0" />
-            <Button layoutX="356.0" layoutY="484.0" mnemonicParsing="false" onAction="#save_season" prefHeight="25.0" prefWidth="98.0" text=" save season" />
-            <Button layoutX="354.0" layoutY="521.0" mnemonicParsing="false" onAction="#add_episode" prefHeight="25.0" prefWidth="98.0" text=" Add Episode" />
-            <Label layoutX="80.0" layoutY="395.0" text="Label" />
-            <Label layoutX="42.0" layoutY="159.0" text="Label" />
+            <Label layoutX="162.0" layoutY="39.0" text="ADD SEASON " textFill="#fee8b0">
+               <font>
+                  <Font name="System Bold Italic" size="25.0" />
+               </font></Label>
+            <Label layoutX="56.0" layoutY="104.0" text="Numero:" textFill="#fee8b0">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font></Label>
+            <Label layoutX="56.0" layoutY="168.0" text="Start date:" textFill="#fee8b0">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font></Label>
+            <Label layoutX="57.0" layoutY="228.0" text="Path Synopsis:" textFill="#fee8b0">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font></Label>
+            <Label layoutX="56.0" layoutY="301.0" text="Synopsis Text :" textFill="#fee8b0">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font></Label>
+            <DatePicker fx:id="date_start" layoutX="201.0" layoutY="170.0" />
+            <TextField fx:id="numero" layoutX="201.0" layoutY="106.0" prefHeight="25.0" prefWidth="174.0" />
+            <TextField fx:id="path_video" layoutX="201.0" layoutY="230.0" prefHeight="25.0" prefWidth="174.0" />
+            <TextArea fx:id="text" layoutX="201.0" layoutY="290.0" prefHeight="125.0" prefWidth="174.0" />
+            <Button layoutX="328.0" layoutY="437.0" mnemonicParsing="false" onAction="#save_season" prefHeight="37.0" prefWidth="130.0" styleClass="yellow" text=" Save Season" textFill="#f97b22">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font></Button>
+            <Button layoutX="328.0" layoutY="482.0" mnemonicParsing="false" onAction="#add_episode" prefHeight="37.0" prefWidth="130.0" styleClass="yellow" text=" Add Episode" textFill="#f97b22">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font></Button>
          </children>
       </AnchorPane>
    </children>
