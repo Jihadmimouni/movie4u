@@ -21,8 +21,7 @@ public class Convert {
 	    out.write( array );
 	    out.close();
 		return file;
-	};
-	public static Blob FileToBlob(File file) throws SQLException {
+	}	public static Blob FileToBlob(File file) throws SQLException {
 
 	    byte[] bArray = new byte[1000];
 

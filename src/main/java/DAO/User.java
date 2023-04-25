@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import movie4u.models.Comments;
+import movie4u.models.Notification;
 import movie4u.models.Rating;
 import movie4u.models.Users;
 
@@ -133,6 +134,21 @@ public class User {
 			// TODO Auto-generated catch block
 			System.out.println("error here");
 		}
+	}
+	public static List<Notification> get_notification(int user_id) throws SQLException {
+		Connection con = Cnx.getInstance();
+		java.sql.Statement cstmt = con.createStatement();
+		List<Notification> l=new ArrayList<Notification>();
+		ResultSet rs = cstmt.executeQuery("select movie4u.get_notification( '"+user_id+"' ) from dual");
+		rs.next();
+		rs = (ResultSet) rs.getObject(1);
+		while (rs.next())
+			cstmt = con.createStatement();
+			ResultSet ks= cstmt.executeQuery("select movie4u.get_media_name_id ('"+rs.getString("MEDIA_ID")+"' ) from dual");
+			ks.next();
+			l.add(new Notification(rs.getString("MESSAGE"),ks.getString(1)));
+		
+		return l;
 	}
 	
 	
