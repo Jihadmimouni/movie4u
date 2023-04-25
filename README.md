@@ -14,7 +14,7 @@ Movie4U is a Java application for managing TV series and movies. It allows you t
 
 ## Installation
 
-To run the application, you need a Java IDE such as Eclipse or IntelliJ. You can download the database source code from the following [https://github.com/Jihadmimouni/data-base-movie4u](link)
+To run the application, you need a Java IDE such as Eclipse or IntelliJ. You can download the database source code from the following (link)[https://github.com/Jihadmimouni/data-base-movie4u]
 
 Once you have downloaded the source code, you can import the project into your IDE and run the `movie4u/src/main/java/Application/Movie4U.java`(if not there it means still on devolopment) file to launch the application.
 
