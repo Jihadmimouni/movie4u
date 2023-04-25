@@ -2,16 +2,19 @@ package DAO;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import movie4u.models.Actors;
+import movie4u.models.Producers;
 
 public class Actor {
 	public static boolean check(String username, String password) throws SQLException {
 		Connection con = Cnx.getInstance();
 		java.sql.Statement cstmt = con.createStatement();
 		ResultSet rs = cstmt.executeQuery("select movie4u.check_actor('" + username + "','" + password + "') from dual");
+		rs.next();
 		if (rs.getInt(1) != 1)
 			return false;
 		return true;
@@ -48,24 +51,45 @@ public class Actor {
 	 * @throws SQLException
 	 */
 	public static void delete(String name) throws SQLException {
-		Connection con = Cnx.getInstance();
-		java.sql.Statement cstmt = con.createStatement();
-		cstmt.executeQuery("select movie4u.DELETE_actor('"+name+"') from dual");
+		String sql="{call movie4u.DELETE_actor('"+name+"')}";
+		Connection conn=Cnx.getInstance();
+	     
+    	PreparedStatement ps ;
+    	try {
+			ps=conn.prepareCall(sql);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("error here");
+		}
 		System.exit(0);
 		
 	}
-	
 	public static void insert(Actors user) throws SQLException {
-		Connection con = Cnx.getInstance();
-		java.sql.Statement cstmt = con.createStatement();
-		cstmt.executeQuery("select movie4u.add_actor("+user.toString()+") from dual");
-	}
+		String sql="{call movie4u.add_actor('"+user.toString()+"')}";
+		Connection conn=Cnx.getInstance();
+	     
+    	PreparedStatement ps ;
+    	try {
+			ps=conn.prepareCall(sql);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("error here");
+		}
 	
-	public static void update(Actors user) throws SQLException {
-		Connection con = Cnx.getInstance();
-		java.sql.Statement cstmt = con.createStatement();
-		cstmt.executeQuery("select movie4u.update_actor('"+user.getID()+"'"+user.toString()+") from dual");
 	}
+	public static void update(Actors user) throws SQLException {
+		String sql="{call movie4u.update_actor('"+user.getID()+"'"+user.toString()+"')}";
+		Connection conn=Cnx.getInstance();
+	     
+    	PreparedStatement ps ;
+    	try {
+			ps=conn.prepareCall(sql);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("error here");
+		}
+	}	
+	
 	
 	
 	
