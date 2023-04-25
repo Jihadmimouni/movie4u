@@ -1,19 +1,24 @@
 
 
-Movie4U
+
+# Movie4U
+
 Movie4U is a Java application for managing TV series and movies. It allows you to keep track of your favorite TV shows and movies, their seasons, episodes, and actors. You can use the application as a producer, actor, or user.
 
-Features
-Add new series, seasons, episodes, and actors
-Assign actors to series and their roles
-Rate and comment on series, seasons, and episodes
-Receive notifications when a new episode is released
-Keep track of your preferences
+## Features
+
+- Add new series, seasons, episodes, and actors
+- Assign actors to series and their roles
+- Rate and comment on series, seasons, and episodes
+- Receive notifications when a new episode is released
+- Keep track of your preferences
+
 As a producer, you can add new series and their seasons, episodes, and actors, and keep track of their ratings and comments.
 
-As an actor, you can view ratings.
+As an actor, you can add yourself to the database and assign yourself to a role in a series.
 
 As a user, you can rate and comment on series, seasons, and episodes, and receive notifications when a new episode is released.
+
 
 ## Installation
 
