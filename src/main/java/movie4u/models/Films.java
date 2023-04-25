@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import DAO.Convert;
+
 public class Films extends Media{
 
     private Synopsis Synoposis;
@@ -46,6 +48,16 @@ public class Films extends Media{
 	}
 	public void setVideo_id(int video_id) {
 		this.video_id = video_id;
+	}
+	@Override
+	public String toString() {
+		try {
+			return "'"+this.getName()+"','"+this.getLanguage()+"','"+this.Synoposis.getText()+"','"+Convert.FileToBlob(this.Synoposis.getVideo())+"','"+Convert.FileToBlob(this.getImage())+"','"+this.getProducer_id()+"','"+this.getCountry()+"','"+this.getYear()+"','"+Convert.FileToBlob(this.video)+"','"+DAO.Genre.get_id(this.getGenre())+"','"+this.duration+"','"+this.Synoposis.istext+"'";
+		} catch (SQLException e) {
+			System.out.println("error at film.TOSSTRING() : "+ e );
+			return "";
+		}
+		
 	}
   
 }
