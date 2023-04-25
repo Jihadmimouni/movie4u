@@ -7,17 +7,20 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="573.0" prefWidth="500.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="Controller.Show_commentsCntrl">
+<AnchorPane prefHeight="573.0" prefWidth="500.0" styleClass="oranger" stylesheets="@../Application/STYLES2.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Show_commentsCntrl">
    <children>
-      <AnchorPane layoutX="9.0" layoutY="11.0" prefHeight="543.0" prefWidth="483.0">
+      <AnchorPane layoutX="9.0" layoutY="11.0" prefHeight="552.0" prefWidth="483.0" styleClass="vert" stylesheets="@../Application/STYLES2.css">
          <children>
             <TextField fx:id="name_media" layoutX="167.0" layoutY="38.0" />
-            <Label layoutX="62.0" layoutY="42.0" text="Name Media :" />
-            <Button layoutX="338.0" layoutY="38.0" mnemonicParsing="false" onAction="#search" prefHeight="25.0" prefWidth="36.0" text=" " />
+            <Label layoutX="51.0" layoutY="38.0" text="Name Media :" textFill="#fee8b0">
+               <font>
+                  <Font name="System Bold Italic" size="16.0" />
+               </font></Label>
+            <Button layoutX="338.0" layoutY="38.0" mnemonicParsing="false" onAction="#search" prefHeight="25.0" prefWidth="36.0" styleClass="yellow" text=" " />
             <FontAwesomeIconView glyphName="SEARCH" layoutX="346.0" layoutY="57.0" size="20" wrappingWidth="20.0" />
-            <TableView fx:id="table_comments" layoutX="36.0" layoutY="88.0" prefHeight="345.0" prefWidth="405.0">
+            <TableView fx:id="table_comments" layoutX="36.0" layoutY="88.0" prefHeight="345.0" prefWidth="405.0" styleClass="yellow" stylesheets="@../Application/STYLES2.css">
               <columns>
                 <TableColumn fx:id="comment" prefWidth="404.0" text="  Comments" />
               </columns>
