@@ -98,7 +98,7 @@ import movie4u.models.Series;
 		}
 		 @FXML
 		    void selectFilm(MouseEvent event) {
-                   
+                   Media mediaDATA = tableFilm.getSelectionModel().getSelectedItem(); 
 		    }
 
 		    @FXML

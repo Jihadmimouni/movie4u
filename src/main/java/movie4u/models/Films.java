@@ -7,7 +7,6 @@ import java.sql.SQLException;
 public class Films extends Media{
 
     private Synopsis Synoposis;
-    private Genre genre;
     private File video;
     private int duration;
     private int video_id;
@@ -16,9 +15,8 @@ public class Films extends Media{
     //you don't need an id when you first create the media it will be automatically assigned by the data base
 	public Films(String name, int year, String language, String country, int producer_id, File image,
 			Synopsis synoposis, Genre genre, File video, int duration) {
-		super(name, year, language, country, producer_id, image);
+		super(name, year, language, country, producer_id, image,genre);
 		Synoposis = synoposis;
-		this.genre = genre;
 		this.video = video;
 		this.duration = duration;
 	}
@@ -27,12 +25,6 @@ public class Films extends Media{
 	}
 	public void setSynoposis(Synopsis synoposis) {
 		Synoposis = synoposis;
-	}
-	public Genre getGenre() {
-		return genre;
-	}
-	public void setGenre(Genre genre) {
-		this.genre = genre;
 	}
 	public int getDuration() {
 		return duration;

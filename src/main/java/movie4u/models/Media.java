@@ -5,6 +5,7 @@ import java.io.File;
 public class Media {
          private int ID ;
          private String name ;
+         private Genre genre;
          private int year ;
          private String language ;
          private String country ;
@@ -13,15 +14,24 @@ public class Media {
          private String Type;
 
          
-         public Media(String name ,int year, String language, String country, int producer_id, File image) {
+         public Media(String name ,int year, String language, String country, int producer_id, File image , Genre genre) {
         	 this.country=country;
         	 this.image= image;
         	 this.language=language;
         	 this.name=name;
         	 this.producer_id=producer_id;
         	 this.year=year;
+        	 this.genre=genre ;
 
          }
+
+		public Genre getGenre() {
+			return genre;
+		}
+
+		public void setGenre(Genre genre) {
+			this.genre = genre;
+		}
 
 		public int getID() {
 			return ID;

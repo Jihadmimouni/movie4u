@@ -24,8 +24,8 @@ public class Episode extends Media{
 		ID = iD;
 	}
 	public Episode(String name, int year, String language, String country, int producer_id, File image, 
-			String title, java.sql.Date date, movie4u.models.Synopsis synopsis, File video) {
-		super(name, year, language, country, producer_id, image);
+			String title, java.sql.Date date, movie4u.models.Synopsis synopsis, File video,Genre genre) {
+		super(name, year, language, country, producer_id, image,genre);
 	//	ID = iD;
 		this.title = title;
 		Date = date;
