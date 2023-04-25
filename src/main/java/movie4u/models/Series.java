@@ -1,10 +1,13 @@
 package movie4u.models;
 
 import java.io.File;
+import java.sql.SQLException;
+
+import DAO.Convert;
 
 public class Series extends Media{
 	private int ID ;
-	private Synopsis Synopsis;
+	private Synopsis Synoposis;
 	
 
 
@@ -14,7 +17,7 @@ public class Series extends Media{
 			movie4u.models.Synopsis synopsis, movie4u.models.Genre genre) {
 		super(name, year, language, country, producer_id, image,genre);
 		//ID = iD;
-		Synopsis = synopsis;
+		Synoposis = synopsis;
 	}
 @Override
 public int getID() {
@@ -26,16 +29,27 @@ public void setID(int iD) {
 }
 
 public Synopsis getSynopsis() {
-	return Synopsis;
+	return Synoposis;
 }
 
 public void setSynopsis(Synopsis synopsis) {
-	Synopsis = synopsis;
+	Synoposis = synopsis;
+}
+
+public String toString() {
+	try {
+		return "'"+this.getName()+"','"+this.getYear()+"','"+this.getLanguage()+"','"+this.Synoposis.getText()+"','"+Convert.FileToBlob(this.Synoposis.getVideo())+"','"+Convert.FileToBlob(this.getImage())+"','"+this.getProducer_id()+"','"+this.getCountry()+"','"+DAO.Genre.get_id(this.getGenre())+"','"+this.Synoposis.istext+"'";
+		
+	} catch (SQLException e) {
+		System.out.println("error at Serie.ToString() : "+ e );
+		return "";
+	}
+ 
 }
 
 
 
 
 
-  
+
 }
