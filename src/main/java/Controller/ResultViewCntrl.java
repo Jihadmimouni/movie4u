@@ -96,9 +96,17 @@ import movie4u.models.Series;
     });
 			
 		}
+		//belehi choufou hedhiiiiiiii !!!!!!!!
 		 @FXML
 		    void selectFilm(MouseEvent event) {
-                   Media mediaDATA = tableFilm.getSelectionModel().getSelectedItem(); 
+                   Media mediaDATA = (Films) tableFilm.getSelectionModel().getSelectedItem(); 
+                   
+                   int num = tableFilm.getSelectionModel().getSelectedIndex();
+                   if(num<0) return ;
+                   
+                   mediaNametxt.setText(mediaDATA.getName());
+                   Datetxt.setText(mediaDATA.get);
+                   
 		    }
 
 		    @FXML
