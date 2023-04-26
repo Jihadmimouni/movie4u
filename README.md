@@ -24,7 +24,7 @@ After downloading the source code, import the project into your IDE and run the 
 
 Remember to change the database link in the file at `movie4u/src/main/java/DAO/Cnx.java`.
 
-For more information, please refer to the [documentation](doc) and the [UML diagram](uml) (generated using UML Lab Modeling IDE 1.32.0 extension on Eclipse).
+For more information, please refer to the [documentation](https://jihadmimouni.github.io/movie4u/) and the [UML diagram](uml) (generated using UML Lab Modeling IDE 1.32.0 extension on Eclipse).
 ## Usage
 
 After launching the application, you can start adding new series, seasons, episodes, and actors to the database. You can also rate and comment on series, seasons, and episodes, and receive notifications when a new episode is released.
