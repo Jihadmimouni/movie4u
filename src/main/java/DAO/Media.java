@@ -9,6 +9,11 @@ import java.util.List;
 
 public class Media {
 	
+	/**
+	 * @param id
+	 * @return List<Media>
+	 * @throws SQLException
+	 */
 	public static ResultSet get_dao(int id ) throws SQLException {
 	Connection con = Cnx.getInstance();
 	java.sql.Statement cstmt = con.createStatement();
@@ -17,6 +22,12 @@ public class Media {
 	rs = (ResultSet) rs.getObject(1);
 	return rs;
 	}
+	/**
+	 * @param name
+	 * @return List<Media>
+	 * @throws SQLException
+	 * @throws IOException
+	 */
 	public static List<movie4u.models.Media> get_byname(String name) throws SQLException, IOException{
 		List<movie4u.models.Media> l= new ArrayList<movie4u.models.Media>();
 		Connection con = Cnx.getInstance();
@@ -48,6 +59,12 @@ public class Media {
 		return l;
 	}
 	
+	/**
+	 * @param name
+	 * @return List<Media>	
+	 * @throws SQLException
+	 * @throws IOException
+	 */
 	public static List<movie4u.models.Media> get_BYactor_name(String name) throws SQLException, IOException{
 		List<movie4u.models.Media> l= new ArrayList<movie4u.models.Media>();
 		Connection con = Cnx.getInstance();
@@ -85,6 +102,12 @@ public class Media {
 		return l;
 	}
 
+	/**
+	 * @param name
+	 * @return List<Media>
+	 * @throws SQLException
+	 * @throws IOException
+	 */
 	public static List<movie4u.models.Media> get_byproducer_name(String name) throws SQLException, IOException{
 		List<movie4u.models.Media> l= new ArrayList<movie4u.models.Media>();
 		Connection con = Cnx.getInstance();
@@ -116,6 +139,12 @@ public class Media {
 		return l;
 	}
 	
+	/**
+	 * @param genre
+	 * @return List<Media>
+	 * @throws SQLException
+	 * @throws IOException
+	 */
 	public static List<movie4u.models.Media> get_bygenre(String genre) throws SQLException, IOException{
 		List<movie4u.models.Media> l= new ArrayList<movie4u.models.Media>();
 		Connection con=Cnx.getInstance();

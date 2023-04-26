@@ -8,6 +8,12 @@ import java.sql.SQLException;
 import movie4u.models.Films;
 
 public class Film {
+	/**
+	 * @param result set
+	 * @return	Film
+	 * @throws SQLException
+	 * @throws IOException
+	 */
 	public static Films convert(ResultSet rs) throws SQLException, IOException {
 		Films f=null;
 		while (rs.next()) {
@@ -17,6 +23,10 @@ public class Film {
 		}
 		return f;
 	}
+	/**
+	 * @param film
+	 * @throws SQLException
+	 */
 	public static void add(Films f) throws SQLException {
 		String sql="{call movie4u.add_film('"+f.toString()+"')}";
 		Connection conn=Cnx.getInstance();

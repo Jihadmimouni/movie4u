@@ -12,6 +12,12 @@ import java.util.List;
 import javax.sql.rowset.serial.SerialBlob;
 
 public class Convert {
+	/**
+	 * @param blob
+	 * @return File
+	 * @throws SQLException
+	 * @throws IOException
+	 */
 	public static File toFile(Blob blob) throws SQLException, IOException {
 	    System.out.println("Read "+ blob.length() + " bytes ");
 	    byte [] array = blob.getBytes( 1, ( int ) blob.length() );
@@ -21,7 +27,12 @@ public class Convert {
 	    out.write( array );
 	    out.close();
 		return file;
-	}	public static Blob FileToBlob(File file) throws SQLException {
+	}	/**
+	 * @param file
+	 * @return Blob
+	 * @throws SQLException
+	 */
+	public static Blob FileToBlob(File file) throws SQLException {
 
 	    byte[] bArray = new byte[1000];
 

@@ -11,6 +11,12 @@ import java.util.List;
 import movie4u.models.Series;
 
 public class Serie {
+	/**
+	 * @param rs
+	 * @return
+	 * @throws SQLException
+	 * @throws IOException
+	 */
 	public static Series convert(ResultSet rs) throws SQLException, IOException {
 		Series f=null;
 		while (rs.next()) {
@@ -20,6 +26,10 @@ public class Serie {
 		}
 		return f;
 	}
+	/**
+	 * @param f
+	 * @throws SQLException
+	 */
 	public static void add(Series f) throws SQLException {
 		String sql="{call movie4u.add_serie("+f.toString()+"')}";
 		Connection conn=Cnx.getInstance();
@@ -32,6 +42,12 @@ public class Serie {
 			System.out.println("error here");
 		}
 	}
+	/**
+	 * @param id_serie
+	 * @return
+	 * @throws SQLException
+	 * @throws IOException
+	 */
 	public static List<movie4u.models.Season> get_seasons(int id_serie) throws SQLException, IOException{
 		List<movie4u.models.Season> l=new ArrayList<movie4u.models.Season>();
 		Connection con = Cnx.getInstance();

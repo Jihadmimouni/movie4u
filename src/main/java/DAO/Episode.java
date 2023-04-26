@@ -7,6 +7,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Episode {
+	/**
+	 * @param rs
+	 * @return Episode
+	 * @throws SQLException
+	 * @throws IOException
+	 */
 	public static movie4u.models.Episode convert(ResultSet rs) throws SQLException, IOException {
 		movie4u.models.Episode f=null;
 		while (rs.next()) {
@@ -16,6 +22,11 @@ public class Episode {
 		}
 		return f;
 	}
+	/**
+	 * @param season_id
+	 * @param Episode
+	 * @throws SQLException
+	 */
 	public static void add(int season_id,movie4u.models.Episode f) throws SQLException {
 		String sql="{call movie4u.add_episode('"+season_id+"'"+f.toString()+"')}";
 		Connection conn=Cnx.getInstance();

@@ -14,6 +14,12 @@ import movie4u.models.Rating;
 import movie4u.models.Users;
 
 public class User {
+	/**
+	 * @param username
+	 * @param password
+	 * @return
+	 * @throws SQLException
+	 */
 	public static boolean check(String username, String password) throws SQLException {
 		Connection con = Cnx.getInstance();
 		java.sql.Statement cstmt = con.createStatement();
@@ -24,6 +30,13 @@ public class User {
 		return true;
 	}
 
+	/**
+	 * @param username
+	 * @param password
+	 * @return
+	 * @throws SQLException
+	 * @throws IOException
+	 */
 	public static Users get(String username, String password) throws SQLException, IOException {
 		Connection con = Cnx.getInstance();
 		java.sql.Statement cstmt = con.createStatement();
@@ -54,6 +67,10 @@ public class User {
 	 * @param name
 	 * @throws SQLException
 	 */
+	/**
+	 * @param name
+	 * @throws SQLException
+	 */
 	public static void delete(String name) throws SQLException {
 		Connection conn=Cnx.getInstance();
     	String sql="{call movie4u.select movie4u.DELETE_USER('"+name+"')}";
@@ -68,6 +85,10 @@ public class User {
 		
 	}
 	
+	/**
+	 * @param user
+	 * @throws SQLException
+	 */
 	public static void insert(Users user) throws SQLException {
 		Connection conn=Cnx.getInstance();
 	     
@@ -81,6 +102,10 @@ public class User {
 		}
 	}
 	
+	/**
+	 * @param user
+	 * @throws SQLException
+	 */
 	public static void update(Users user) throws SQLException {
 		Connection conn=Cnx.getInstance();
 	     
@@ -95,6 +120,12 @@ public class User {
 	}
 	
 	
+	/**
+	 * @param user_id
+	 * @param media_id
+	 * @param comments
+	 * @throws SQLException
+	 */
 	public static void add_comment(int user_id,int media_id,Comments comments) throws SQLException {
 		Connection conn=Cnx.getInstance();
 		for(String comment :comments.getComments()) {
@@ -108,6 +139,12 @@ public class User {
 		}
 		}
 	}
+	/**
+	 * @param user_id
+	 * @param media_id
+	 * @return
+	 * @throws SQLException
+	 */
 	public static Comments get_comments(int user_id,int media_id) throws SQLException {
 		Connection con = Cnx.getInstance();
 		java.sql.Statement cstmt = con.createStatement();
@@ -123,6 +160,12 @@ public class User {
 		return new Comments(l,rs.getString("NAME"));
 	}
 	
+	/**
+	 * @param user_id
+	 * @param media_id
+	 * @param rate
+	 * @throws SQLException
+	 */
 	public static void add_rating(int user_id,int media_id,Rating rate) throws SQLException {
 		Connection conn=Cnx.getInstance();
 	     
@@ -135,6 +178,11 @@ public class User {
 			System.out.println("error here");
 		}
 	}
+	/**
+	 * @param user_id
+	 * @return
+	 * @throws SQLException
+	 */
 	public static List<Notification> get_notification(int user_id) throws SQLException {
 		Connection con = Cnx.getInstance();
 		java.sql.Statement cstmt = con.createStatement();

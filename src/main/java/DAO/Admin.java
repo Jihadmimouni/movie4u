@@ -10,7 +10,12 @@ import movie4u.models.Comments;
 import movie4u.models.Rating;
 
 public class Admin {
- public static boolean check(int id) throws SQLException {
+ /**
+ * @param id
+ * @return
+ * @throws SQLException
+ */
+public static boolean check(int id) throws SQLException {
 	 Connection con = Cnx.getInstance();
 		java.sql.Statement cstmt = con.createStatement();
 		ResultSet rs = cstmt.executeQuery("select movie4u.check_admin('"+id+"') from dual");
@@ -19,13 +24,23 @@ public class Admin {
 			return false;
 		return true;
  }
- public static Rating get_rate(int media_id) throws SQLException {
+ /**
+ * @param media_id
+ * @return Rating
+ * @throws SQLException
+ */
+public static Rating get_rate(int media_id) throws SQLException {
 	 Connection con = Cnx.getInstance();
 	 java.sql.Statement cstmt = con.createStatement();
 	 ResultSet rs = cstmt.executeQuery("select movie4u.get_average_rating('"+media_id+"') from dual");
 	 rs.next();
 	 return new Rating(rs.getInt("SCORE"));
 }
+	/**
+	 * @param media_id
+	 * @return	Comments
+	 * @throws SQLException
+	 */
 	public static Comments get_comments(int media_id) throws SQLException {
 		Connection con = Cnx.getInstance();
 		java.sql.Statement cstmt = con.createStatement();

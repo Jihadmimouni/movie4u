@@ -14,6 +14,12 @@ import movie4u.models.Producers;
 import movie4u.models.Rating;
 
 public class Actor {
+	/**
+	 * @param username
+	 * @param password
+	 * @return boolean
+	 * @throws SQLException
+	 */
 	public static boolean check(String username, String password) throws SQLException {
 		Connection con = Cnx.getInstance();
 		java.sql.Statement cstmt = con.createStatement();
@@ -24,6 +30,13 @@ public class Actor {
 		return true;
 	}
 
+	/**
+	 * @param username
+	 * @param password
+	 * @return Actors
+	 * @throws SQLException
+	 * @throws IOException
+	 */
 	public static Actors get(String username, String password) throws SQLException, IOException {
 		Connection con = Cnx.getInstance();
 		java.sql.Statement cstmt = con.createStatement();
@@ -54,6 +67,10 @@ public class Actor {
 	 * @param name
 	 * @throws SQLException
 	 */
+	/**
+	 * @param name
+	 * @throws SQLException
+	 */
 	public static void delete(String name) throws SQLException {
 		String sql="{call movie4u.DELETE_actor('"+name+"')}";
 		Connection conn=Cnx.getInstance();
@@ -68,6 +85,10 @@ public class Actor {
 		System.exit(0);
 		
 	}
+	/**
+	 * @param user
+	 * @throws SQLException
+	 */
 	public static void insert(Actors user) throws SQLException {
 		String sql="{call movie4u.add_actor('"+user.toString()+"')}";
 		Connection conn=Cnx.getInstance();
@@ -81,6 +102,10 @@ public class Actor {
 		}
 	
 	}
+	/**
+	 * @param user
+	 * @throws SQLException
+	 */
 	public static void update(Actors user) throws SQLException {
 		String sql="{call movie4u.update_actor('"+user.getID()+"'"+user.toString()+"')}";
 		Connection conn=Cnx.getInstance();
@@ -94,6 +119,11 @@ public class Actor {
 		}
 	}	
 	
+	/**
+	 * @param media_id
+	 * @return
+	 * @throws SQLException
+	 */
 	public static Rating get_rate(int media_id) throws SQLException {
 		 Connection con = Cnx.getInstance();
 		 java.sql.Statement cstmt = con.createStatement();
@@ -101,6 +131,11 @@ public class Actor {
 		 rs.next();
 		 return new Rating(rs.getInt("SCORE"));
 	}
+	/**
+	 * @param media_id
+	 * @return
+	 * @throws SQLException
+	 */
 	public static Comments get_comments(int media_id) throws SQLException {
 		Connection con = Cnx.getInstance();
 		java.sql.Statement cstmt = con.createStatement();

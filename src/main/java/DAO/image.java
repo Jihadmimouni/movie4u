@@ -7,6 +7,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class image {
+	/**
+	 * @param id
+	 * @return	File
+	 * @throws SQLException
+	 * @throws IOException
+	 */
 	public static File get_image(int id) throws SQLException, IOException {
 		Connection con = Cnx.getInstance();
 		java.sql.Statement cstmt = con.createStatement();

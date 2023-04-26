@@ -12,10 +12,16 @@ public class Cnx {
 	    private static String USER = "movie4u";
 		private static String PASS = "test1234";
 	   
+		/**
+		 * @param uSER
+		 */
 		public static void setUSER(String uSER) {
 			USER = uSER;
 		}
 
+		/**
+		 * @param pASS
+		 */
 		public static void setPASS(String pASS) {
 			PASS = pASS;
 		}
@@ -35,6 +41,9 @@ public class Cnx {
 	    
 	    
 
+	    /**
+	     * @return Connection
+	     */
 	    public static Connection getInstance(){
 	        if (connexion == null)
 	            try {

@@ -13,6 +13,12 @@ import movie4u.models.Producers;
 import movie4u.models.Rating;
 
 public class Producer {
+	/**
+	 * @param username
+	 * @param password
+	 * @return boolean
+	 * @throws SQLException
+	 */
 	public static boolean check(String username, String password) throws SQLException {
 		Connection con = Cnx.getInstance();
 		java.sql.Statement cstmt = con.createStatement();
@@ -23,6 +29,13 @@ public class Producer {
 		return true;
 	}
 
+	/**
+	 * @param username
+	 * @param password
+	 * @return Producer
+	 * @throws SQLException
+	 * @throws IOException
+	 */
 	public static Producers get(String username, String password) throws SQLException, IOException {
 		Connection con = Cnx.getInstance();
 		java.sql.Statement cstmt = con.createStatement();
@@ -48,7 +61,7 @@ public class Producer {
 		}
 		return user;
 	}
-	/**<h1>after deleting the user the App automatically close</h1>
+	/**<h3>after deleting the Producer the App automatically close</h3>
 	 * 
 	 * @param name
 	 * @throws SQLException
@@ -57,9 +70,8 @@ public class Producer {
 		String sql="{call movie4u.DELETE_producer('"+name+"')}";
 		Connection conn=Cnx.getInstance();
 	     
-    	PreparedStatement ps ;
     	try {
-			ps=conn.prepareCall(sql);
+			conn.prepareCall(sql);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			System.out.println("error here");
@@ -67,31 +79,42 @@ public class Producer {
 		System.exit(0);
 		
 	}
+	/**
+	 * @param user
+	 * @throws SQLException
+	 */
 	public static void insert(Producers user) throws SQLException {
 		String sql="{call movie4u.add_producer('"+user.toString()+"')}";
 		Connection conn=Cnx.getInstance();
 	     
-    	PreparedStatement ps ;
     	try {
-			ps=conn.prepareCall(sql);
+			conn.prepareCall(sql);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			System.out.println("error here");
 		}
 	
 	}
+	/**
+	 * @param user
+	 * @throws SQLException
+	 */
 	public static void update(Producers user) throws SQLException {
 		String sql="{call movie4u.update_producer('"+user.getID()+"'"+user.toString()+"')}";
 		Connection conn=Cnx.getInstance();
 	     
-    	PreparedStatement ps ;
     	try {
-			ps=conn.prepareCall(sql);
+			conn.prepareCall(sql);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			System.out.println("error here");
 		}
 	}	
+	/**
+	 * @param media_id
+	 * @return Rating
+	 * @throws SQLException
+	 */
 	public static Rating get_rate(int media_id) throws SQLException {
 		 Connection con = Cnx.getInstance();
 		 java.sql.Statement cstmt = con.createStatement();
@@ -99,6 +122,11 @@ public class Producer {
 		 rs.next();
 		 return new Rating(rs.getInt("SCORE"));
 	}
+	/**
+	 * @param media_id
+	 * @return Comments
+	 * @throws SQLException
+	 */
 	public static Comments get_comments(int media_id) throws SQLException {
 		Connection con = Cnx.getInstance();
 		java.sql.Statement cstmt = con.createStatement();

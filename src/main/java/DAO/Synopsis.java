@@ -6,6 +6,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Synopsis {
+	/**
+	 * @param id
+	 * @return
+	 * @throws SQLException
+	 * @throws IOException
+	 */
 	public static movie4u.models.Synopsis get(int id) throws SQLException, IOException {
 		 Connection con = Cnx.getInstance();
 		java.sql.Statement cstmt = con.createStatement();
