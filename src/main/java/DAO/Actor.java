@@ -25,9 +25,7 @@ public class Actor {
 		java.sql.Statement cstmt = con.createStatement();
 		ResultSet rs = cstmt.executeQuery("select movie4u.check_actor('" + username + "','" + password + "') from dual");
 		rs.next();
-		if (rs.getInt(1) != 1)
-			return false;
-		return true;
+		return rs.getInt(1) == 1;
 	}
 
 	/**
