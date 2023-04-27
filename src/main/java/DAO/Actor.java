@@ -1,13 +1,17 @@
 package DAO;
 
+import java.io.File;
 import java.io.IOException;
+import java.lang.ModuleLayer.Controller;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import Controller.Control;
 import movie4u.models.Actors;
 import movie4u.models.Comments;
 import movie4u.models.Producers;
@@ -51,10 +55,9 @@ public class Actor {
 				ls.next();
 				ks = (ResultSet) ls.getObject(1);
 				while (ks.next()) {
-					user=new Actors(ks.getString("NAME"),ks.getString("EMAIL"),ks.getString("PASSWORD"),ks.getDate("BIRTHDATE"),image.get_image(ks.getInt("IMAGE_ID")));
-					user.setID(ks.getInt("ID"));
+					user=new Actors((String)Control.catchnull(ks.getString("NAME"))  , (String) Control.catchnull(ks.getString("EMAIL")) , (String) Control.catchnull(ks.getString("PASSWORD")), (Date)Control.catchnull(ks.getDate("BIRTHDATE")),(File)Control.catchnull(image.get_image(ks.getInt("IMAGE_ID"))));
+					user.setID((int)Control.catchnull(ks.getInt("ID")));
 				}
-
 			}
 
 		}

@@ -11,12 +11,6 @@ public class Actors extends Users {
 	 }
 
 
-	@Override
-	public String toString() {
-		return "Actors [getID()=" + getID() + ", getName()=" + getName() + ", getEmail()=" + getEmail()
-				+ ", getPassword()=" + getPassword() + ", getBirthdate()=" + getBirthdate() + ", toString()="
-				+ super.toString() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + "]";
-	}
-	 
+
 	 
 }
