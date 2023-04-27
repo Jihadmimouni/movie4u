@@ -1,8 +1,11 @@
 package movie4u.models; 
 
 import java.io.File;
+import java.sql.Blob;
 import java.sql.Date;
 import java.sql.SQLException;
+
+import Controller.Control;
 
 public class Users {
         private int ID ;
@@ -72,7 +75,7 @@ public class Users {
 		@Override
 		public String toString() {
 			try {
-				return "'"+this.name+"','"+this.Email+"','"+this.password+"','"+this.birthdate+"','"+DAO.Convert.FileToBlob(this.image)+"'";
+				return "'"+this.name+"','"+this.Email+"','"+this.password+"','"+this.birthdate+"','"+Control.catchnull(DAO.Convert.FileToBlob(this.image))+"'";
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				return "";

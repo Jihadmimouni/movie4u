@@ -67,7 +67,7 @@ public class Create_account_actorCntrl implements Initializable {
 	    	String Email=email.getText();
 	    	String date=d1.toString();
 	        String mot_de_passe=password.getText();
-	        File f=new File(path_image.getText());
+	        File f=(File) Control.catchnull(new File(path_image.getText()));
 	        Date d=Date.valueOf(d1);
 	        
 	        Actors p=new Actors(nom,Email,mot_de_passe,d,f);
