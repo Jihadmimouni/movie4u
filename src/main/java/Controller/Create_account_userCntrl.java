@@ -7,6 +7,8 @@ import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
+
+import DAO.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -40,7 +42,7 @@ public class Create_account_userCntrl implements Initializable {
     
 
     @FXML
-    void create(ActionEvent event) {
+    void create(ActionEvent event) throws SQLException {
    
     	
     	int length =password.getText().length();
@@ -52,18 +54,21 @@ public class Create_account_userCntrl implements Initializable {
     	String Email=email.getText();
     	Date d=Date.valueOf(d1);
         String mot_de_passe=password.getText();
-        File imageFile = new File(imagefile.getText().toString());
+        File imageFile;
+        try {
+        	imageFile = new File(imagefile.getText().toString());
+        }
+        catch(Exception e){
+        	imageFile = null;
+        }
     	Users e=new Users(nom,Email, mot_de_passe,d,imageFile);
     	
     	 
     	
-     	try {
+
 			DAO.User.insert(e);
-		} catch (SQLException e1) {
-			
-			e1.printStackTrace();
-		}
-     	if(s>0) {
+
+     	if(User.check(nom, mot_de_passe)) {
     		Alert al=new Alert(AlertType.INFORMATION);
     		al.setTitle("add producer !!");
     		al.setHeaderText("Information !");

@@ -2,6 +2,7 @@ package Controller;
 
 import java.io.File;
 import java.net.URL;
+import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -49,39 +50,26 @@ public class Create_account_producerCntrl implements Initializable {
 
     @FXML
     void create(ActionEvent event) throws SQLException {
-    	Connection con=CnxDB.getInstance();
-    	
-    	String sql ="select * from producer";
-    	PreparedStatement ps=null;
-    	ResultSet o=null ;
-    	ps=con.prepareStatement(sql);
-    	o=ps.executeQuery();
-    	
-    	while(o.next()) {
-    		list3.add(o.getString(2));
-    		 
+    	int length = password.getLength();
+    	if(length<8) {
+    		L2.setText("Length password must be more than 8 characters ");
+    		password.clear();
     	}
-    	long count=list3.stream().filter(x->x==name.getText()).count();
-    	
-    	int length =password.getText().length();
-    	
-    	if((count>0) && (length>=8)) {
-    	 
-    		 
-    	int s = 0;
+    	else {
     	LocalDate d1=date.getValue();
     	String nom=name.getText();
     	String Email=email.getText();
     	String date=d1.toString();
         String mot_de_passe=password.getText();
-        File f=new File(path_image.getText());
-        Date d=Date.valueOf(d1);
+        File f=new File(Paths.get(path_image.getText()).toString());
+        System.out.println(date);
+        Date d=Date.valueOf(date);
         
         Producers p=new Producers(nom,Email,mot_de_passe,d,f);
         Producer.insert(p);
     	
     	
-    	if(s>0) {
+    	if(Producer.check(nom, mot_de_passe)) {
     		Alert al=new Alert(AlertType.INFORMATION);
     		al.setTitle("add producer !!");
     		al.setHeaderText("Information !");
@@ -97,18 +85,10 @@ public class Create_account_producerCntrl implements Initializable {
     		al.showAndWait();
     		
     	}
-    	}
-    	else {
-    		if(count==0) {
-    		L1.setText("Name already existed");
-    		name.clear();
-    		}
-    		
-    	}
-    	if(length<8) {
-    		L2.setText("Length password must be more than 8 characters ");
-    		password.clear();
-    	}
+    	
+    	
+    	}	
+
 
     }
 

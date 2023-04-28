@@ -74,12 +74,8 @@ public class Users {
 
 		@Override
 		public String toString() {
-			try {
-				return "'"+this.name+"','"+this.Email+"','"+this.password+"','"+this.birthdate+"','"+Control.catchnull(DAO.Convert.FileToBlob(this.image))+"'";
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				return "";
-			}
+			System.out.println("toString");
+			return "'"+this.name+"','"+this.Email+"','"+this.password+"',TO_DATE('"+this.birthdate+"','YYYY-MM-DD'),?";
 			
 		}
         

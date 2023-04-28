@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Blob;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -35,35 +36,22 @@ public class Convert {
 	 * @return Blob
 	 * @throws SQLException
 	 */
-	public static Blob FileToBlob(File file) throws SQLException {
+	public static InputStream FileToBlob(File file) throws SQLException {
 
-	    byte[] bArray = new byte[1000];
 
-	    List<Byte> byteList = new ArrayList<>();
+	    try  {
 
-	    try (FileInputStream fis = new FileInputStream(file)) {
-
-	        // Converting input file in list of bytes
-	        while (fis.read(bArray) > 0) {
-	            for (byte b : bArray)
-	                byteList.add(b);
-	        }
-
+	    	return new FileInputStream(file);
 	    } catch (IOException e) {
-	        e.printStackTrace();
+	        return null;
 	    }
 
-	    // Converting list of bytes into array of bytes
-	    // as SerialBlob class takes array of bytes
-	    byte[] byteArray = new byte[byteList.size()];
-
-	    for (int i = 0; i < byteList.size(); i++) {
-	        byteArray[i] = (byte) byteList.get(i);
+	 
 	    }
 
-	    return new SerialBlob(byteArray);
+	    
 	}
 	
 	
 	
-}
+

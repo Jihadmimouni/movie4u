@@ -132,14 +132,17 @@ public class Producer {
 	 * @throws SQLException
 	 */
 	public static void insert(Producers user)  {
-		String sql="{call movie4u.add_producer('"+user.toString()+"')}";
+		String sql="{call movie4u.add_producer("+user.toString()+")}";
 		Connection conn=Cnx.getInstance();
 	     
     	try {
-			conn.prepareCall(sql);
+    		CallableStatement statement = conn.prepareCall(sql);    
+    		statement.setBlob(1, DAO.Convert.FileToBlob(user.getImage()));
+    		statement.execute(); 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			System.out.println("error here");
+			System.out.println(e);
+
 		}
 	
 	}

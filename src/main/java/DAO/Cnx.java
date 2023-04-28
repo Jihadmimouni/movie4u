@@ -10,8 +10,8 @@ public class Cnx {
 		private static Connection connexion;
 
 	    private final String DB_URL = "jdbc:oracle:thin:@localhost:1521:xe";
-	    private final String USER = "movie4u";
-		private final String PASS = "test1234";
+	    private final String USER = "newuser";
+		private final String PASS = "1234";
 	   
 
 	    private Cnx() throws SQLException{

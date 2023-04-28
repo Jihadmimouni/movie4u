@@ -98,9 +98,13 @@ public class Home_UserCntrl implements Initializable {
 	
     void welcome(String usename , File image) {
     	wlcmtxt.setText("Welcome "+"username ");
+    	try {
     	Image img = new Image(image.toString());
     	imageuser = new ImageView(img);
-    	
+    	}
+    	catch(Exception e) {
+    		System.out.println("no image :(");
+    	}
     }
 }
 

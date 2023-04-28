@@ -48,7 +48,7 @@ public class Actor {
 			}
 		if (k == 1) {
 			cstmt = con.createStatement();
-			ls = cstmt.executeQuery("select movie4u.get_producer_log( '"+username+"' , '"+password+"' ) from dual");
+			ls = cstmt.executeQuery("select movie4u.get_actor_log( '"+username+"' , '"+password+"' ) from dual");
 			ls.next();
 			try {
 				ks = (ResultSet) ls.getObject(1);
@@ -136,10 +136,10 @@ public class Actor {
 	public static void insert(Actors user) throws SQLException {
 		String sql="{call movie4u.add_actor('"+user.toString()+"')}";
 		Connection conn=Cnx.getInstance();
-	     
-    	PreparedStatement ps ;
     	try {
-			ps=conn.prepareCall(sql);
+    		CallableStatement statement = conn.prepareCall(sql);    
+    		statement.setBlob(1, DAO.Convert.FileToBlob(user.getImage()));
+    		statement.execute(); 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			System.out.println("error here");
