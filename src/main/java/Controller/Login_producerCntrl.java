@@ -12,6 +12,7 @@ import java.util.ResourceBundle;
 
 import Application.test;
 import Connect.CnxDB;
+import DAO.Producer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -51,19 +52,9 @@ public class Login_producerCntrl implements Initializable {
     @FXML
     void connect(ActionEvent event) throws IOException, SQLException {
     	System.out.println("home");
-    	Connection c=CnxDB.getInstance();
-    	 
-    	// s=null;
-    	// rs=null;
-    	
-    	String sql="select producer.id from producer where name like :1 and password like :2" ;
-    	PreparedStatement s=c.prepareStatement(sql);
-    	//int r=Integer.parseInt(name.getText()); 
-    	//s.setInt(1,r);
-    	s.setString(1,name.getText().toString());
-    	s.setString(2,password.getText().toString());
-    	ResultSet rs=s.executeQuery();
-    	if(rs.next()) {
+    	String s = name.getText().toString();
+    	String s2 = password.getText().toString();
+    	if(Producer.check(s, s2)) {
     		
     		Stage stage=new Stage();
     		 FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vue/Home_producer.fxml"));
