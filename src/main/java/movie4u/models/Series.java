@@ -38,7 +38,7 @@ public void setSynopsis(Synopsis synopsis) {
 
 public String toString() {
 	try {
-		return "'"+this.getName()+"','"+this.getYear()+"','"+this.getLanguage()+"','"+this.Synoposis.getText()+"','"+Convert.FileToBlob(this.Synoposis.getVideo())+"','"+Convert.FileToBlob(this.getImage())+"','"+this.getProducer_id()+"','"+this.getCountry()+"','"+DAO.Genre.get_id(this.getGenre())+"','"+this.Synoposis.istext+"'";
+		return "'"+this.getName()+"','"+this.getYear()+"','"+this.getLanguage()+"','"+this.Synoposis.getText()+"',?,? ,'"+this.getProducer_id()+"','"+this.getCountry()+"','"+DAO.Genre.get_id(this.getGenre())+"','"+this.Synoposis.istext+"'";
 		
 	} catch (SQLException e) {
 		System.out.println("error at Serie.ToString() : "+ e );

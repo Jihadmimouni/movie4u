@@ -2,6 +2,7 @@ package DAO;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -105,9 +106,11 @@ public class Serie {
 		String sql="{call movie4u.add_serie("+f.toString()+"')}";
 		Connection conn=Cnx.getInstance();
 	     
-    	PreparedStatement ps ;
     	try {
-			ps=conn.prepareCall(sql);
+    		CallableStatement statement = conn.prepareCall(sql);    
+    		statement.setBlob(1, Convert.FileToBlob(f.getSynopsis().getVideo()));
+    		statement.setBlob(2, Convert.FileToBlob(f.getSynopsis().getVideo()));
+    		statement.execute(); 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			System.out.println("error here");
