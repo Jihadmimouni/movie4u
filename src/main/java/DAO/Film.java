@@ -1,5 +1,6 @@
 package DAO;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -18,8 +19,76 @@ public class Film {
 		Films f=null;
 		while (rs.next()) {
 			ResultSet ls = Media.get_dao(rs.getInt("MEDIA_ID"));
-			f = new Films(ls.getString("NAME"),ls.getInt("year"),ls.getString("LANGUAGE"),ls.getString("COUNTRY"),ls.getInt("PRODUCER_ID"),image.get_image(ls.getInt("IMAGE_ID")),DAO.Synopsis.get(rs.getInt("SYNOPSIS_ID")),Genre.get(rs.getInt("genre_id")),null,rs.getInt("duration") );
+			String name = null;
+			try {
+				name = ls.getString("NAME");
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+			Integer year = null;
+			try {
+				year = ls.getInt("year");
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+			String language = null;
+			try {
+				language = ls.getString("LANGUAGE");
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+			String country = null;
+			try {
+				country = ls.getString("COUNTRY");
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+			Integer producerID = null;
+			try {
+				producerID = ls.getInt("PRODUCER_ID");
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+			File images = null;
+			try {
+				images = image.get_image(ls.getInt("IMAGE_ID"));
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+			movie4u.models.Synopsis synopsis = null;
+			try {
+				synopsis = DAO.Synopsis.get(rs.getInt("SYNOPSIS_ID"));
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+			movie4u.models.Genre genre = null;
+			try {
+				genre = Genre.get(rs.getInt("genre_id"));
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+			Integer duration = null;
+			try {
+				duration = rs.getInt("duration");
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+			 f = new movie4u.models.Films(name, year, language, country, producerID, images, synopsis, genre, null, duration);
+			try {
 			f.setVideo_id(rs.getInt("VIDEO_ID"));
+		}
+		catch (SQLException e) {
+			System.out.println("no video id");
+		}
 		}
 		return f;
 	}

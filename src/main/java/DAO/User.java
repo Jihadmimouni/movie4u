@@ -1,10 +1,8 @@
 package DAO;
 
+import java.io.File;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,20 +44,70 @@ public class User {
 		Users user=null;
 
 		while (rs.next()) {
-			k = rs.getInt(1);
+			try {
+				k = rs.getInt(1);
+			} catch (SQLException e) {
+				k=0;
+			}
 			if (k == 1) {
 				cstmt = con.createStatement();
-				ls = cstmt.executeQuery("select movie4u.get_user_log( '"+username+"' , '"+password+"' ) from dual");
+				ls = cstmt.executeQuery("select movie4u.get_producer_log( '"+username+"' , '"+password+"' ) from dual");
 				ls.next();
-				ks = (ResultSet) ls.getObject(1);
-				while (ks.next()) {
-					user=new Users(ks.getString("NAME"),ks.getString("EMAIL"),ks.getString("PASSWORD"),ks.getDate("BIRTHDATE"),image.get_image(ks.getInt("IMAGE_ID")));
-					user.setID(ks.getInt("ID"));
+				try {
+					ks = (ResultSet) ls.getObject(1);
+				} catch (SQLException e) {
+					ks=null;
+				}
+				ks.next();
+				String name = null;
+				String email = null;
+				String passwords = null;
+				Date birthdate = null;
+				File images = null;
+				int id = 0;
+
+				try {
+					name = ks.getString("NAME");
+				} catch (Exception e) {
+					System.out.println("error name producer");
 				}
 
+				try {
+					email = ks.getString("EMAIL");
+				} catch (Exception e) {
+					System.out.println("error email producer");
+				}
+
+				try {
+					passwords = ks.getString("PASSWORD");
+				} catch (Exception e) {
+					System.out.println("error password producer");
+				}
+
+				try {
+					birthdate = ks.getDate("BIRTHDATE");
+				} catch (Exception e) {
+					System.out.println("error birthdate producer");
+				}
+
+				try {
+					images = image.get_image(ks.getInt("IMAGE_ID"));
+				} catch (Exception e) {
+					System.out.println("error image producer");
+				}
+
+				try {
+					id = ks.getInt("ID");
+				} catch (Exception e) {
+					System.out.println("error id producer");
+				}
+
+				user = new Users(name, email, passwords, birthdate, images);
+				user.setID(id);
 			}
 
 		}
+
 		return user;
 	}
 	/**<h1>after deleting the user the App automatically close</h1>
@@ -150,14 +198,31 @@ public class User {
 		java.sql.Statement cstmt = con.createStatement();
 		List<String> l=new ArrayList<String>();
 		ResultSet rs = cstmt.executeQuery("select movie4u.get_comment( '"+user_id+"','"+media_id+"' ) from dual");
-		rs.next();
-		rs = (ResultSet) rs.getObject(1);
-		while (rs.next())
-			l.add(rs.getString("COMMENTS"));
+		try{rs.next();}
+		catch(Exception e) {
+			return new Comments(l,"");
+		}
+		try {
+			rs = (ResultSet) rs.getObject(1);}
+		catch(Exception e) {
+			return new Comments(l,"");
+		}
+		while (rs.next()) {
+			try {
+				l.add(rs.getString("COMMENTS"));
+			} catch (Exception e) {
+				System.out.println("error here");
+			}
+		}
 		cstmt = con.createStatement();
 		rs = cstmt.executeQuery("select movie4u.get_media_name_id ('"+media_id+"' ) from dual");
+		try {
 		rs.next();
 		return new Comments(l,rs.getString("NAME"));
+	}
+		catch(Exception e) {
+			return new Comments(l,"");
+		}
 	}
 	
 	/**
@@ -188,14 +253,23 @@ public class User {
 		java.sql.Statement cstmt = con.createStatement();
 		List<Notification> l=new ArrayList<Notification>();
 		ResultSet rs = cstmt.executeQuery("select movie4u.get_notification( '"+user_id+"' ) from dual");
-		rs.next();
-		rs = (ResultSet) rs.getObject(1);
+		try {
+			rs.next();
+			rs = (ResultSet) rs.getObject(1);
+		}
+		catch(Exception e) {
+			return l;
+		}
 		while (rs.next())
 			cstmt = con.createStatement();
 			ResultSet ks= cstmt.executeQuery("select movie4u.get_media_name_id ('"+rs.getString("MEDIA_ID")+"' ) from dual");
-			ks.next();
-			l.add(new Notification(rs.getString("MESSAGE"),ks.getString(1)));
-		
+			try {
+				ks.next();
+				l.add(new Notification(rs.getString("MESSAGE"), ks.getString(1)));
+			}
+			catch(Exception e) {
+				return l;
+			}
 		return l;
 	}
 	

@@ -4,27 +4,16 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+
 public class Cnx {
 
 		private static Connection connexion;
 
 	    private final String DB_URL = "jdbc:oracle:thin:@localhost:1521:xe";
-	    private static String USER = "movie4u";
-		private static String PASS = "test1234";
+	    private final String USER = "movie4u";
+		private final String PASS = "test1234";
 	   
-		/**
-		 * @param uSER
-		 */
-		public static void setUSER(String uSER) {
-			USER = uSER;
-		}
 
-		/**
-		 * @param pASS
-		 */
-		public static void setPASS(String pASS) {
-			PASS = pASS;
-		}
 	    private Cnx() throws SQLException{
 
 	        try{

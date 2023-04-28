@@ -1,5 +1,6 @@
 package DAO;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -20,8 +21,85 @@ public class Season {
 		movie4u.models.Season f=null;
 		while (rs.next()) {
 			ResultSet ls = Media.get_dao(rs.getInt("MEDIA_ID"));
-			f = new movie4u.models.Season(ls.getString("NAME"),ls.getInt("year"),ls.getString("LANGUAGE"),ls.getString("COUNTRY"),ls.getInt("PRODUCER_ID"),image.get_image(ls.getInt("IMAGE_ID")),ls.getInt("NUMERO"),ls.getDate("START_DATE"),DAO.Synopsis.get(rs.getInt("SYNOPSIS_ID")));
+			try {
+				ls.next();
+			} catch (Exception e) {
+				ls = null;
+			}
+			String name = null;
+			int year = 0;
+			String language = null;
+			String country = null;
+			int producerId = 0;
+			File images = null;
+			int numero = 0;
+			java.sql.Date startDate = null;
+			movie4u.models.Synopsis synopsis = null;
+
+			try {
+				assert ls != null;
+				name = ls.getString("NAME");
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+			try {
+				year = ls.getInt("year");
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+			try {
+				language = ls.getString("LANGUAGE");
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+			try {
+				country = ls.getString("COUNTRY");
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+			try {
+				producerId = ls.getInt("PRODUCER_ID");
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+			try {
+				int imageId = ls.getInt("IMAGE_ID");
+				images = image.get_image(imageId);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+			try {
+				numero = ls.getInt("NUMERO");
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+			try {
+				startDate = ls.getDate("START_DATE");
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+			try {
+				int synopsisId = rs.getInt("SYNOPSIS_ID");
+				synopsis = DAO.Synopsis.get(synopsisId);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+			f = new movie4u.models.Season(name, year, language, country, producerId, images, numero, startDate, synopsis);
+			try {
 			f.setID(ls.getInt("ID"));
+		}
+		catch (SQLException e) {
+			System.out.println("no id found");
+		}
 		}
 		return f;
 	}
@@ -53,10 +131,18 @@ public class Season {
 		Connection con = Cnx.getInstance();
 		java.sql.Statement cstmt = con.createStatement();
 		ResultSet rs = cstmt.executeQuery("select movie4u.get_episode('"+id_season+"') from dual");
-		rs.next();
-		rs = (ResultSet) rs.getObject(1);
+		try {
+			rs.next();
+			rs = (ResultSet) rs.getObject(1);
+		} catch (SQLException e) {
+			return l;
+		}
 		while (rs.next())
-			l.add(Episode.convert(rs));
+			try {
+				l.add(Episode.convert(rs));
+			} catch (SQLException e) {
+				System.out.println("no episode found");
+			}
 		return l;
 	}
 

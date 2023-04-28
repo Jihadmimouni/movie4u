@@ -27,7 +27,12 @@ public class Genre {
 		 Connection con = Cnx.getInstance();
 		java.sql.Statement cstmt = con.createStatement();
 		ResultSet rs = cstmt.executeQuery("select movie4u.get_genre_id('"+g.getName()+"') from dual"); 
+		try {
 		rs.next();
+		}
+		catch (Exception e) {
+			return -1;
+		}
 		return rs.getInt(1);	
 	}
 }

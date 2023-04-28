@@ -19,9 +19,10 @@ public class Convert {
 	 * @throws IOException
 	 */
 	public static File toFile(Blob blob) throws SQLException, IOException {
-	    if (blob==null)
-	    	return null;
-		System.out.println("Read "+ blob.length() + " bytes ");
+		if (blob == null) {
+			return null;
+		}
+	    System.out.println("Read "+ blob.length() + " bytes ");
 	    byte [] array = blob.getBytes( 1, ( int ) blob.length() );
 	    File file = File.createTempFile("video", ".mp4", new File("./cache"));
 	    FileOutputStream out = new FileOutputStream( file );
@@ -35,6 +36,7 @@ public class Convert {
 	 * @throws SQLException
 	 */
 	public static Blob FileToBlob(File file) throws SQLException {
+
 	    byte[] bArray = new byte[1000];
 
 	    List<Byte> byteList = new ArrayList<>();
@@ -48,7 +50,7 @@ public class Convert {
 	        }
 
 	    } catch (IOException e) {
-	        return null;
+	        e.printStackTrace();
 	    }
 
 	    // Converting list of bytes into array of bytes

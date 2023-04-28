@@ -1,10 +1,8 @@
 package DAO;
 
+import java.io.File;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,27 +36,77 @@ public class Producer {
 	 */
 	public static Producers get(String username, String password) throws SQLException, IOException {
 		Connection con = Cnx.getInstance();
-		java.sql.Statement cstmt = con.createStatement();
+		Statement cstmt = con.createStatement();
 		ResultSet rs = cstmt.executeQuery("select movie4u.check_producer( '"+username+"' , '"+password+"' ) from dual");
 		int k = 0;
 		ResultSet ls, ks;
 		Producers user=null;
 
 		while (rs.next()) {
-			k = rs.getInt(1);
+			try {
+				k = rs.getInt(1);
+			} catch (SQLException e) {
+				k=0;
+			}
 			if (k == 1) {
 				cstmt = con.createStatement();
 				ls = cstmt.executeQuery("select movie4u.get_producer_log( '"+username+"' , '"+password+"' ) from dual");
 				ls.next();
-				ks = (ResultSet) ls.getObject(1);
-				while (ks.next()) {
-					user=new Producers(ks.getString("NAME"),ks.getString("EMAIL"),ks.getString("PASSWORD"),ks.getDate("BIRTHDATE"),image.get_image(ks.getInt("IMAGE_ID")));
-					user.setID(ks.getInt("ID"));
+				try {
+					ks = (ResultSet) ls.getObject(1);
+				} catch (SQLException e) {
+					ks=null;
+				}
+					ks.next();
+					String name = null;
+					String email = null;
+					String passwords = null;
+					Date birthdate = null;
+					File images = null;
+					int id = 0;
+
+					try {
+						name = ks.getString("NAME");
+					} catch (Exception e) {
+						System.out.println("error name producer");
+					}
+
+					try {
+						email = ks.getString("EMAIL");
+					} catch (Exception e) {
+						System.out.println("error email producer");
+					}
+
+					try {
+						passwords = ks.getString("PASSWORD");
+					} catch (Exception e) {
+						System.out.println("error password producer");
+					}
+
+					try {
+						birthdate = ks.getDate("BIRTHDATE");
+					} catch (Exception e) {
+						System.out.println("error birthdate producer");
+					}
+
+					try {
+						images = image.get_image(ks.getInt("IMAGE_ID"));
+					} catch (Exception e) {
+						System.out.println("error image producer");
+					}
+
+					try {
+						id = ks.getInt("ID");
+					} catch (Exception e) {
+						System.out.println("error id producer");
+					}
+
+					user = new Producers(name, email, passwords, birthdate, images);
+					user.setID(id);
 				}
 
 			}
 
-		}
 		return user;
 	}
 	/**<h3>after deleting the Producer the App automatically close</h3>
@@ -66,7 +114,7 @@ public class Producer {
 	 * @param name
 	 * @throws SQLException
 	 */
-	public static void delete(String name) throws SQLException {
+	public static void delete(String name)  {
 		String sql="{call movie4u.DELETE_producer('"+name+"')}";
 		Connection conn=Cnx.getInstance();
 	     
@@ -83,7 +131,7 @@ public class Producer {
 	 * @param user
 	 * @throws SQLException
 	 */
-	public static void insert(Producers user) throws SQLException {
+	public static void insert(Producers user)  {
 		String sql="{call movie4u.add_producer('"+user.toString()+"')}";
 		Connection conn=Cnx.getInstance();
 	     
@@ -99,8 +147,8 @@ public class Producer {
 	 * @param user
 	 * @throws SQLException
 	 */
-	public static void update(Producers user) throws SQLException {
-		String sql="{call movie4u.update_producer('"+user.getID()+"'"+user.toString()+"')}";
+	public static void update(Producers user)  {
+		String sql="{call movie4u.update_producer('"+user.getID()+"','"+user.toString()+"')}";
 		Connection conn=Cnx.getInstance();
 	     
     	try {
@@ -119,9 +167,14 @@ public class Producer {
 		 Connection con = Cnx.getInstance();
 		 java.sql.Statement cstmt = con.createStatement();
 		 ResultSet rs = cstmt.executeQuery("select movie4u.get_average_rating('"+media_id+"') from dual");
-		 rs.next();
-		 return new Rating(rs.getInt("SCORE"));
-	}
+		 try {
+			 rs.next();
+		 	return new Rating(rs.getInt("SCORE"));
+			 		 }catch(Exception e) {
+			 			 return new Rating(0);
+			 		 }
+		 }
+
 	/**
 	 * @param media_id
 	 * @return Comments
@@ -133,12 +186,25 @@ public class Producer {
 		List<String> l=new ArrayList<String>();
 		ResultSet rs = cstmt.executeQuery("select movie4u.get_comments_by_media_id( '"+media_id+"' ) from dual");
 		rs.next();
+		try {
 		rs = (ResultSet) rs.getObject(1);
+		}catch(Exception e){
+			return new Comments(l,"");
+		}
 		while (rs.next())
-			l.add(rs.getString("COMMENTS"));
+			try {
+				l.add(rs.getString("COMMENTS"));
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		cstmt = con.createStatement();
 		rs = cstmt.executeQuery("select movie4u.get_media_name_id ('"+media_id+"' ) from dual");
+		try{
 		rs.next();
-		return new Comments(l,rs.getString("NAME"));
+		String name = rs.getString("NAME");
+		return new Comments(l,name);
+		}catch(Exception e){
+			return new Comments(l,"");
+		}
 	} 
 }

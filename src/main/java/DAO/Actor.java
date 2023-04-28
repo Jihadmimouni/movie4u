@@ -2,16 +2,10 @@ package DAO;
 
 import java.io.File;
 import java.io.IOException;
-import java.lang.ModuleLayer.Controller;
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import Controller.Control;
 import movie4u.models.Actors;
 import movie4u.models.Comments;
 import movie4u.models.Producers;
@@ -46,21 +40,71 @@ public class Actor {
 		int k = 0;
 		ResultSet ls, ks;
 		Actors user=null;
-
 		while (rs.next()) {
-			k = rs.getInt(1);
-			if (k == 1) {
-				cstmt = con.createStatement();
-				ls = cstmt.executeQuery("select movie4u.get_actor_log( '"+username+"' , '"+password+"' ) from dual");
-				ls.next();
+			try {
+				k = rs.getInt(1);
+			} catch (SQLException e) {
+				k=0;
+			}
+		if (k == 1) {
+			cstmt = con.createStatement();
+			ls = cstmt.executeQuery("select movie4u.get_producer_log( '"+username+"' , '"+password+"' ) from dual");
+			ls.next();
+			try {
 				ks = (ResultSet) ls.getObject(1);
-				while (ks.next()) {
-					user=new Actors((String)Control.catchnull(ks.getString("NAME"))  , (String) Control.catchnull(ks.getString("EMAIL")) , (String) Control.catchnull(ks.getString("PASSWORD")), (Date)Control.catchnull(ks.getDate("BIRTHDATE")),(File)Control.catchnull(image.get_image(ks.getInt("IMAGE_ID"))));
-					user.setID((int)Control.catchnull(ks.getInt("ID")));
-				}
+			} catch (SQLException e) {
+				ks=null;
+			}
+			ks.next();
+			String name = null;
+			String email = null;
+			String passwords = null;
+			Date birthdate = null;
+			File images = null;
+			int id = 0;
+
+			try {
+				name = ks.getString("NAME");
+			} catch (Exception e) {
+				System.out.println("error name producer");
 			}
 
+			try {
+				email = ks.getString("EMAIL");
+			} catch (Exception e) {
+				System.out.println("error email producer");
+			}
+
+			try {
+				passwords = ks.getString("PASSWORD");
+			} catch (Exception e) {
+				System.out.println("error password producer");
+			}
+
+			try {
+				birthdate = ks.getDate("BIRTHDATE");
+			} catch (Exception e) {
+				System.out.println("error birthdate producer");
+			}
+
+			try {
+				images = image.get_image(ks.getInt("IMAGE_ID"));
+			} catch (Exception e) {
+				System.out.println("error image producer");
+			}
+
+			try {
+				id = ks.getInt("ID");
+			} catch (Exception e) {
+				System.out.println("error id producer");
+			}
+
+			user = new Actors(name, email, passwords, birthdate, images);
+			user.setID(id);
 		}
+
+	}
+
 		return user;
 	}
 	/**<h1>after deleting the user the App automatically close</h1>
@@ -80,7 +124,6 @@ public class Actor {
     	try {
 			ps=conn.prepareCall(sql);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			System.out.println("error here");
 		}
 		System.exit(0);
@@ -129,8 +172,13 @@ public class Actor {
 		 Connection con = Cnx.getInstance();
 		 java.sql.Statement cstmt = con.createStatement();
 		 ResultSet rs = cstmt.executeQuery("select movie4u.get_average_rating('"+media_id+"') from dual");
+		 try {
 		 rs.next();
 		 return new Rating(rs.getInt("SCORE"));
+	}
+		 catch (Exception e) {
+			 return new Rating(0);
+		}
 	}
 	/**
 	 * @param media_id
@@ -143,14 +191,28 @@ public class Actor {
 		List<String> l=new ArrayList<String>();
 		ResultSet rs = cstmt.executeQuery("select movie4u.get_comments_by_media_id( '"+media_id+"' ) from dual");
 		rs.next();
-		rs = (ResultSet) rs.getObject(1);
-		while (rs.next())
-			l.add(rs.getString("COMMENTS"));
+		try {
+			rs = (ResultSet) rs.getObject(1);
+		} catch (SQLException e) {
+			return new Comments(l,"");
+		}
+		while (rs.next()) {
+			try {
+				l.add(rs.getString("COMMENTS"));
+			} catch (SQLException e) {
+				continue;
+			}
+		}
 		cstmt = con.createStatement();
 		rs = cstmt.executeQuery("select movie4u.get_media_name_id ('"+media_id+"' ) from dual");
-		rs.next();
-		return new Comments(l,rs.getString("NAME"));
-	} 
+		try {
+			rs.next();
+			return new Comments(l,rs.getString("NAME"));
+		}
+		catch(Exception e) {
+			return new Comments(l,"");
+		}
+	}
 	
 	
 	

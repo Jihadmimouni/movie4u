@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Media {
 	
@@ -18,9 +19,15 @@ public class Media {
 	Connection con = Cnx.getInstance();
 	java.sql.Statement cstmt = con.createStatement();
 	ResultSet rs = cstmt.executeQuery("select movie4u.get_media_id('"+id+"') from dual");
+	try {
+
 	rs.next();
 	rs = (ResultSet) rs.getObject(1);
 	return rs;
+	}
+	catch (Exception e) {
+		return null;
+	}
 	}
 	/**
 	 * @param name
@@ -33,24 +40,33 @@ public class Media {
 		Connection con = Cnx.getInstance();
 		java.sql.Statement cstmt = con.createStatement();
 		ResultSet rs = cstmt.executeQuery("select movie4u.get_media_name('"+name+"') from dual");
+		try {
 		rs.next();
 		rs = (ResultSet) rs.getObject(1);
+		}
+		catch (Exception e) {
+			return l;
+		}
 		while (rs.next()) {
-			if (rs.getString("TYPE")=="SERIE") {
+			String type;
+			try {
+				type = rs.getString("TYPE");
+			} catch (SQLException e) {
+				continue;
+			}
+			if (Objects.equals(type, "SERIE")) {
 				cstmt = con.createStatement();
-				ResultSet ls = cstmt.executeQuery("select movie4u.get_serie('"+rs.getInt("id")+"') from dual");
+				ResultSet ls = cstmt.executeQuery("select movie4u.get_serie('" + rs.getInt("id") + "') from dual");
 				ls.next();
-				ls =(ResultSet) ls.getObject(1);
+				ls = (ResultSet) ls.getObject(1);
 				l.add(Serie.convert(ls));
-			}
-			else if (rs.getString("TYPE")=="FILM") {
+			} else if (Objects.equals(type, "FILM")) {
 				cstmt = con.createStatement();
-				ResultSet ls = cstmt.executeQuery("select movie4u.get_FILM('"+rs.getInt("id")+"') from dual");
+				ResultSet ls = cstmt.executeQuery("select movie4u.get_FILM('" + rs.getInt("id") + "') from dual");
 				ls.next();
-				ls =(ResultSet) ls.getObject(1);
+				ls = (ResultSet) ls.getObject(1);
 				l.add(Film.convert(ls));
-			}
-			else {
+			} else {
 				continue;
 			}
 		}
@@ -70,27 +86,52 @@ public class Media {
 		Connection con = Cnx.getInstance();
 		java.sql.Statement cstmt = con.createStatement();
 		ResultSet ks = cstmt.executeQuery("select movie4u.get_media_actor('"+name+"') from dual");
-		ks.next();
-		ks = (ResultSet) ks.getObject(1);
-		
+		try {
+			ks.next();
+			ks = (ResultSet) ks.getObject(1);
+		}
+		catch (Exception e) {
+			return l;
+		}
 		while (ks.next()){
 			cstmt = con.createStatement();
 			ResultSet rs = cstmt.executeQuery("select movie4u.get_media_id('"+ks.getInt("MEDIA_ID")+"') from dual");
-			rs.next();
-			rs = (ResultSet) ks.getObject(1);
+			try {
+				rs.next();
+				rs = (ResultSet) rs.getObject(1);
+			}
+			catch (Exception e) {
+				continue;
+			}
 		while (rs.next()) {
-			if (rs.getString("TYPE")=="SERIE") {
+			String type;
+			try {
+				type = rs.getString("TYPE");
+			} catch (SQLException e) {
+				continue;
+			}
+			if (Objects.equals(type, "SERIE")) {
 				cstmt = con.createStatement();
 				ResultSet ls = cstmt.executeQuery("select movie4u.get_serie('"+rs.getInt("ID")+"') from dual");
+				try {
 				ls.next();
 				ls =(ResultSet) ls.getObject(1);
+				}
+				catch (Exception e) {
+					continue;
+				}
 				l.add(Serie.convert(ls));
 			}
-			else if (rs.getString("TYPE")=="FILM") {
+			else if (Objects.equals(type, "FILM")) {
 				cstmt = con.createStatement();
 				ResultSet ls = cstmt.executeQuery("select movie4u.get_FILM('"+rs.getInt("id")+"') from dual");
+				try {
 				ls.next();
 				ls =(ResultSet) ls.getObject(1);
+				}
+				catch (Exception e) {
+					continue;
+				}
 				l.add(Film.convert(ls));
 			}
 			else {
@@ -113,24 +154,33 @@ public class Media {
 		Connection con = Cnx.getInstance();
 		java.sql.Statement cstmt = con.createStatement();
 		ResultSet rs = cstmt.executeQuery("select movie4u.get_media_producer('"+name+"') from dual");
-		rs.next();
-		rs = (ResultSet) rs.getObject(1);
+		try {
+			rs.next();
+			rs = (ResultSet) rs.getObject(1);
+		}
+		catch (Exception e) {
+			return l;
+		}
 		while (rs.next()) {
-			if (rs.getString("TYPE")=="SERIE") {
+			String type;
+			try {
+				type = rs.getString("TYPE");
+			} catch (SQLException e) {
+				continue;
+			}
+			if (Objects.equals(type, "SERIE")) {
 				cstmt = con.createStatement();
-				ResultSet ls = cstmt.executeQuery("select movie4u.get_serie('"+rs.getInt("id")+"') from dual");
+				ResultSet ls = cstmt.executeQuery("select movie4u.get_serie('" + rs.getInt("id") + "') from dual");
 				ls.next();
-				ls =(ResultSet) ls.getObject(1);
+				ls = (ResultSet) ls.getObject(1);
 				l.add(Serie.convert(ls));
-			}
-			else if (rs.getString("TYPE")=="FILM") {
+			} else if (Objects.equals(type, "FILM")) {
 				cstmt = con.createStatement();
-				ResultSet ls = cstmt.executeQuery("select movie4u.get_FILM('"+rs.getInt("id")+"') from dual");
+				ResultSet ls = cstmt.executeQuery("select movie4u.get_FILM('" + rs.getInt("id") + "') from dual");
 				ls.next();
-				ls =(ResultSet) ls.getObject(1);
+				ls = (ResultSet) ls.getObject(1);
 				l.add(Film.convert(ls));
-			}
-			else {
+			} else {
 				continue;
 			}
 		}
@@ -150,14 +200,24 @@ public class Media {
 		Connection con=Cnx.getInstance();
 		java.sql.Statement cstmt = con.createStatement();
 		ResultSet ls = cstmt.executeQuery("select movie4u.get_serie_genre('"+Genre.get_id(new movie4u.models.Genre(genre))+"') from dual");
-		ls.next();
-		ls =(ResultSet) ls.getObject(1);
+		try {
+			ls.next();
+			ls =(ResultSet) ls.getObject(1);
+		}
+		catch (Exception e) {
+			return l;
+		}
 		while(ls.next())
 			l.add(Serie.convert(ls));
 		cstmt = con.createStatement();
 		ls = cstmt.executeQuery("select movie4u.get_film_genre('"+Genre.get_id(new movie4u.models.Genre(genre))+"') from dual");
-		ls.next();
-		ls =(ResultSet) ls.getObject(1);
+		try {
+			ls.next();
+			ls =(ResultSet) ls.getObject(1);
+		}
+		catch (Exception e) {
+			return l;
+		}
 		while(ls.next())	
 			l.add(Film.convert(ls));
 		

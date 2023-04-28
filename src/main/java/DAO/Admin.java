@@ -33,9 +33,13 @@ public static Rating get_rate(int media_id) throws SQLException {
 	 Connection con = Cnx.getInstance();
 	 java.sql.Statement cstmt = con.createStatement();
 	 ResultSet rs = cstmt.executeQuery("select movie4u.get_average_rating('"+media_id+"') from dual");
+	try{
 	 rs.next();
 	 return new Rating(rs.getInt("SCORE"));
-}
+	}catch (Exception e) {
+		return new Rating(0);
+	}
+ }
 	/**
 	 * @param media_id
 	 * @return	Comments
@@ -46,14 +50,27 @@ public static Rating get_rate(int media_id) throws SQLException {
 		java.sql.Statement cstmt = con.createStatement();
 		List<String> l=new ArrayList<String>();
 		ResultSet rs = cstmt.executeQuery("select movie4u.get_comments_by_media_id( '"+media_id+"' ) from dual");
+		try {
 		rs.next();
 		rs = (ResultSet) rs.getObject(1);
+		}
+		catch (Exception e) {
+			return new Comments(l,"");
+		}
 		while (rs.next())
-			l.add(rs.getString("COMMENTS"));
+			try {
+				l.add(rs.getString("COMMENTS"));
+			} catch (SQLException e) {
+				continue;
+			}
 		cstmt = con.createStatement();
 		rs = cstmt.executeQuery("select movie4u.get_media_name_id ('"+media_id+"' ) from dual");
+		try {
 		rs.next();
 		return new Comments(l,rs.getString("NAME"));
-	} 
+	}catch (Exception e) {
+		return new Comments(l,"");
+	}
+	}
  
 }

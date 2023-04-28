@@ -17,9 +17,18 @@ public class image {
 		Connection con = Cnx.getInstance();
 		java.sql.Statement cstmt = con.createStatement();
 		ResultSet rs = cstmt.executeQuery("select movie4u.get_image( '"+id+"' ) from dual");
-		rs.next();
+		try {
+			rs.next();
+		} catch (SQLException e) {
+			return null;
+		}
+		try {
 		ResultSet ls =(ResultSet) rs.getObject(1);
 		ls.next();
 		return Convert.toFile(ls.getBlob("IMAGE"));
+	}
+		catch (SQLException e) {
+			return null;
+		}
 	}
 }
